@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="Hermione">
 <meta property="og:description" content="初入ReactJSX语法 定义标签时，只允许被一个标签包裹 标签一定要闭合 注释被{}包起来  React组件 无状态组件创建时始终保持了==一个实例== 有状态组件创建几次组件就会创建几次实例  React数据流state setState是==异步==方法props props本身是不可变的（==readonly==） ==defaultProps==静态变量可以定义props默认配置（==默">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-02-26T01:46:36.452Z">
+<meta property="og:updated_time" content="2019-02-26T01:57:15.895Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="React知识点整理">
 <meta name="twitter:description" content="初入ReactJSX语法 定义标签时，只允许被一个标签包裹 标签一定要闭合 注释被{}包起来  React组件 无状态组件创建时始终保持了==一个实例== 有状态组件创建几次组件就会创建几次实例  React数据流state setState是==异步==方法props props本身是不可变的（==readonly==） ==defaultProps==静态变量可以定义props默认配置（==默">
@@ -342,6 +342,7 @@
 <li>JavaScript不是强类型的语言，React对此做了改进，==propTypes==用于规范props的类型与必要状态（==类型检查==）。<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">static propTypes = &#123;</span><br><span class="line">  tab: React.PropTypes.oneOfType([</span><br><span class="line">    React.PropTypes.string,</span><br><span class="line">    React.PropTypes.node,</span><br><span class="line">  ]).isRequired,</span><br><span class="line">  order: React.PropTypes.string.isRequired,</span><br><span class="line">  disble: React.PropTypes.bool,</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
+<a id="more"></a>
 <h4 id="React生命周期"><a href="#React生命周期" class="headerlink" title="React生命周期"></a>React生命周期</h4><p>分为挂载、渲染、卸载几个阶段</p>
 <h5 id="挂载或卸载"><a href="#挂载或卸载" class="headerlink" title="挂载或卸载"></a>挂载或卸载</h5><p>主要做组件状态初始化</p>
 <h6 id="挂载"><a href="#挂载" class="headerlink" title="挂载"></a>挂载</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">graph LR</span><br><span class="line">componentWillMount--&gt;render</span><br><span class="line">render--&gt;componentDidMount</span><br></pre></td></tr></table></figure>
