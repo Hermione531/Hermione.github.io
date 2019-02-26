@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+
+  
+  <title>React知识点整理 | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="初入ReactJSX语法 定义标签时，只允许被一个标签包裹 标签一定要闭合 注释被{}包起来  React组件 无状态组件创建时始终保持了==一个实例== 有状态组件创建几次组件就会创建几次实例  React数据流state setState是==异步==方法props props本身是不可变的（==readonly==） ==defaultProps==静态变量可以定义props默认配置（==默">
+<meta property="og:type" content="article">
+<meta property="og:title" content="React知识点整理">
+<meta property="og:url" content="http://yoursite.com/2019/01/13/React知识点整理/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="初入ReactJSX语法 定义标签时，只允许被一个标签包裹 标签一定要闭合 注释被{}包起来  React组件 无状态组件创建时始终保持了==一个实例== 有状态组件创建几次组件就会创建几次实例  React数据流state setState是==异步==方法props props本身是不可变的（==readonly==） ==defaultProps==静态变量可以定义props默认配置（==默">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-02-26T00:53:30.865Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="React知识点整理">
+<meta name="twitter:description" content="初入ReactJSX语法 定义标签时，只允许被一个标签包裹 标签一定要闭合 注释被{}包起来  React组件 无状态组件创建时始终保持了==一个实例== 有状态组件创建几次组件就会创建几次实例  React数据流state setState是==异步==方法props props本身是不可变的（==readonly==） ==defaultProps==静态变量可以定义props默认配置（==默">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+</html>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-React知识点整理" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/01/13/React知识点整理/" class="article-date">
+  <time datetime="2019-01-13T06:56:42.000Z" itemprop="datePublished">2019-01-13</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      React知识点整理
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="初入React"><a href="#初入React" class="headerlink" title="初入React"></a>初入React</h2><h4 id="JSX语法"><a href="#JSX语法" class="headerlink" title="JSX语法"></a>JSX语法</h4><ul>
+<li>定义标签时，只允许被一个标签包裹</li>
+<li>标签一定要闭合</li>
+<li>注释被{}包起来</li>
+</ul>
+<h4 id="React组件"><a href="#React组件" class="headerlink" title="React组件"></a>React组件</h4><ul>
+<li>无状态组件创建时始终保持了==一个实例==</li>
+<li>有状态组件创建几次组件就会创建几次实例</li>
+</ul>
+<h4 id="React数据流"><a href="#React数据流" class="headerlink" title="React数据流"></a>React数据流</h4><h5 id="state"><a href="#state" class="headerlink" title="state"></a>state</h5><ul>
+<li>setState是==异步==方法<h5 id="props"><a href="#props" class="headerlink" title="props"></a>props</h5></li>
+<li>props本身是不可变的（==readonly==）</li>
+<li><p>==defaultProps==静态变量可以定义props默认配置（==默认类型==）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">static defaultProps = &#123;</span><br><span class="line">    classPrefix: &apos;tabs&apos;, </span><br><span class="line">    onChange: () =&gt; &#123;&#125;,</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>React中有一个内置的prop：children，代表组件的子组件集合</p>
+</li>
+<li>JavaScript不是强类型的语言，React对此做了改进，==propTypes==用于规范props的类型与必要状态（==类型检查==）。<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">static propTypes = &#123;</span><br><span class="line">  tab: React.PropTypes.oneOfType([</span><br><span class="line">    React.PropTypes.string,</span><br><span class="line">    React.PropTypes.node,</span><br><span class="line">  ]).isRequired,</span><br><span class="line">  order: React.PropTypes.string.isRequired,</span><br><span class="line">  disble: React.PropTypes.bool,</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h4 id="React生命周期"><a href="#React生命周期" class="headerlink" title="React生命周期"></a>React生命周期</h4><p>分为挂载、渲染、卸载几个阶段</p>
+<h5 id="挂载或卸载"><a href="#挂载或卸载" class="headerlink" title="挂载或卸载"></a>挂载或卸载</h5><p>主要做组件状态初始化</p>
+<h6 id="挂载"><a href="#挂载" class="headerlink" title="挂载"></a>挂载</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">graph LR</span><br><span class="line">componentWillMount--&gt;render</span><br><span class="line">render--&gt;componentDidMount</span><br></pre></td></tr></table></figure>
+<h6 id="卸载"><a href="#卸载" class="headerlink" title="卸载"></a>卸载</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">graph LR</span><br><span class="line">render--&gt;componentWillUnmount</span><br></pre></td></tr></table></figure>
+<h5 id="数据更新"><a href="#数据更新" class="headerlink" title="数据更新"></a>数据更新</h5><p>指父组件向下传递props或组件自身执行setState方法时发生的一系列更新动作<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">import React, &#123;Component, PropTypes&#125; from &apos;react&apos;;</span><br><span class="line"></span><br><span class="line">class App extends Component &#123;</span><br><span class="line">    componentWillReceiveProps(nextProps)&#123;</span><br><span class="line">        //this.setState(&#123;&#125;)</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    shouldComponentUpdate(nextProps, nextState) &#123;</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    componentWillUpdate(nextProps, nextState) &#123;</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    componentDidUpdate(prevProps, prevState) &#123;</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    render() &#123;</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h6 id="组件自身state更新"><a href="#组件自身state更新" class="headerlink" title="组件自身state更新"></a>组件自身state更新</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">graph TB</span><br><span class="line">shouldComponentUpdate--&gt;componentWillUpdate</span><br><span class="line">componentWillUpdate--&gt;render</span><br><span class="line">render--&gt;componentDidUpdate</span><br></pre></td></tr></table></figure>
+<p>==不能在componentWillUpdate里执行setState==。</p>
+<h6 id="父组件更新props而更新"><a href="#父组件更新props而更新" class="headerlink" title="父组件更新props而更新"></a>父组件更新props而更新</h6><ul>
+<li>在shouldComponentUpdate之前先执行componentWillReceiveProps。</li>
+<li>该方法可作为React在==props传入后，渲染之前==setState。<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">componentWillReceiveProps(nextProps) &#123;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h4 id="React与DOM"><a href="#React与DOM" class="headerlink" title="React与DOM"></a>React与DOM</h4><h5 id="refs"><a href="#refs" class="headerlink" title="refs"></a>refs</h5><p>refs是React组件中特殊的props，可以附加到任何一个组件上。组件被调用时会新建一个该组件的实例，refs则指向这个实例。</p>
+<ul>
+<li>refs放在原生DOM组件中可以得到其DOM节点</li>
+<li>refs放在React组件中则获得组件的实例，可以调用该组件的实例方法</li>
+</ul>
+<h2 id="漫谈React"><a href="#漫谈React" class="headerlink" title="漫谈React"></a>漫谈React</h2><h3 id="事件系统"><a href="#事件系统" class="headerlink" title="事件系统"></a>事件系统</h3><p>在React底层，主要对合成事件做了两件事：事件委派和自动绑定。</p>
+<h5 id="在React中使用原生事件"><a href="#在React中使用原生事件" class="headerlink" title="在React中使用原生事件"></a>在React中使用原生事件</h5><p>React生命周期方法中，componentDidMount会在组件已经完成安装并且在浏览器中存在真实的DOM后调用，此时可以完成原生事件的绑定。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">import React, &#123;Component&#125; from &apos;react&apos;;</span><br><span class="line"></span><br><span class="line">class NativeEventDemo extends Component &#123;</span><br><span class="line">    componentDidMound() &#123;</span><br><span class="line">        this.refs.button.addEventListener(&apos;click&apos;, e =&gt; &#123;</span><br><span class="line">            handleClick(e);</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    handerClick(e) &#123;</span><br><span class="line">        console.log(e);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    componentWillUnMount() &#123;</span><br><span class="line">        this.refs.button.removeEventListener(&apos;click&apos;);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    render() &#123;</span><br><span class="line">        return &lt;button ref=&quot;button&quot;&gt;Test&lt;/button&gt;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>==<strong>注：在React中使用DOM原生事件时，一定要在组件卸载时手动卸除，否则很可能会出现内存泄漏的问题。</strong>==</p>
+<h5 id="对比React合成事件与JavaScript原生事件"><a href="#对比React合成事件与JavaScript原生事件" class="headerlink" title="对比React合成事件与JavaScript原生事件"></a>对比React合成事件与JavaScript原生事件</h5><ul>
+<li>浏览器原生DOM事件的传播可以分为三个阶段：事件捕获阶段、事件处理以及事件冒泡。React的合成事件并没有实现事件捕获，仅仅支持了事件冒泡机制。阻止事件传播e.preventDefault();</li>
+<li>React合成事件的时间类型是JavaScript原生事件类型的一个子集。</li>
+</ul>
+<h3 id="组件间通信"><a href="#组件间通信" class="headerlink" title="组件间通信"></a>组件间通信</h3><h5 id="父组件向子组件通信"><a href="#父组件向子组件通信" class="headerlink" title="父组件向子组件通信"></a>父组件向子组件通信</h5><p>父组件通过props向子组件传递需要的信息<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">import React, &#123;Component&#125; from &apos;react&apos;;</span><br><span class="line"></span><br><span class="line">function ListItem(&#123;value&#125;) &#123;</span><br><span class="line">    return (</span><br><span class="line">        &lt;li&gt;</span><br><span class="line">            &lt;span&gt;&#123;value&#125;&lt;/span&gt;</span><br><span class="line">        &lt;/li&gt;</span><br><span class="line">    );</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">function List(&#123;list, title&#125;) &#123;</span><br><span class="line">    return(</span><br><span class="line">        &lt;div&gt;</span><br><span class="line">            &lt;ListTitle title=&#123;title&#125; /&gt;</span><br><span class="line">            &lt;ul&gt;</span><br><span class="line">                &#123;this.props.list.map((entry, index) =&gt; &#123;</span><br><span class="line">                    &lt;ListItem key=&#123;`list-$&#123;index&#125;`&#125; value=&#123;entry.text&#125;&gt;</span><br><span class="line">                    </span><br><span class="line">                &#125;)&#125;</span><br><span class="line">            &lt;/ul&gt;</span><br><span class="line">        &lt;/div&gt;</span><br><span class="line">    );</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h5 id="子组件向父组件通信"><a href="#子组件向父组件通信" class="headerlink" title="子组件向父组件通信"></a>子组件向父组件通信</h5><ul>
+<li>利用回调函数</li>
+<li>利用自定义事件机制</li>
+</ul>
+<p>this.props.function()</p>
+<h5 id="跨级组件通信"><a href="#跨级组件通信" class="headerlink" title="跨级组件通信"></a>跨级组件通信</h5><h3 id="组件新能优化"><a href="#组件新能优化" class="headerlink" title="组件新能优化"></a>组件新能优化</h3><p>影响网页性能最大的因素是浏览器的==重绘==和==重排版==。</p>
+<h5 id="纯函数"><a href="#纯函数" class="headerlink" title="纯函数"></a>纯函数</h5><p>纯函数由三大原则构成：</p>
+<ul>
+<li>给定相同的输入，返回相同的输出</li>
+<li>过程没有副作用（在纯函数中不能改变外部状态）</li>
+<li>没有额外的状态依赖（方法内的状态都只在方法的生命周期内存活，即不能再方法内使用共享变量）</li>
+</ul>
+<h5 id="PureRender"><a href="#PureRender" class="headerlink" title="PureRender"></a>PureRender</h5><p>Pure指的是组件满足纯函数的条件，即组件的渲染是被相同的props和state渲染进而得到相同的结果</p>
+<h5 id="Immutable"><a href="#Immutable" class="headerlink" title="Immutable"></a>Immutable</h5><h5 id="key"><a href="#key" class="headerlink" title="key"></a>key</h5><ul>
+<li>如果每一个子组件是一个数组或迭代器，必须有一个唯一的key prop</li>
+<li>key用来做Virtual DOM dif</li>
+<li>当key相同时，只渲染第一个相同key的项，且会报一个警告</li>
+</ul>
+<h2 id="解读React源码"><a href="#解读React源码" class="headerlink" title="解读React源码"></a>解读React源码</h2><p>Virtual DOM实际上是在浏览器端用JavaScript实现的一套DOM API，它之于React就好似一个虚拟空间，包括一套Virtual DOM模型、生命周期的维护和管理、性能高效的diff算法和将Virtual DOM展示为原生DOM的path方法。</p>
+<h4 id="Virtual-DOM模型"><a href="#Virtual-DOM模型" class="headerlink" title="Virtual DOM模型"></a>Virtual DOM模型</h4><p>一个DOM标签所需的基本元素：</p>
+<ul>
+<li>标签名</li>
+<li>节点属性，包含样式、属性、事件等</li>
+<li>子节点</li>
+<li>标识id</li>
+<li>Virtual DOM中的节点称为ReactNode，它分为三种类型ReactElement、ReactFragment和ReactText。其中，ReactElement又分为ReactComponentElement和ReactDOMElement。</li>
+</ul>
+<h5 id="创建React元素"><a href="#创建React元素" class="headerlink" title="创建React元素"></a>创建React元素</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">//createElement只是做了简单的参数修正，返回一个ReactElement实例对象，也就是虚拟元素的实例</span><br><span class="line">ReactElement.createElement = function(type, config, children)&#123;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h5 id="DOM标签组件"><a href="#DOM标签组件" class="headerlink" title="DOM标签组件"></a>DOM标签组件</h5><p>ReactDOMComponent针对Virtual DOM标签的处理主要分为：</p>
+<ul>
+<li>属性的更新，包括更新样式、更新属性、处理事件等。</li>
+<li>子节点的更新，包括更新内容、更新子节点，涉及diff算法。</li>
+</ul>
+<h6 id="更新属性"><a href="#更新属性" class="headerlink" title="更新属性"></a>更新属性</h6><ul>
+<li>如果存在事件，则针对当前的节点添加事件代理</li>
+<li>如果存在样式，首先会对样式进行合并操作，然后创建样式</li>
+<li>创建属性</li>
+<li>创建唯一标识</li>
+</ul>
+<p>删除不需要的旧属性，更新新属性。</p>
+<h6 id="更新子节点"><a href="#更新子节点" class="headerlink" title="更新子节点"></a>更新子节点</h6><ul>
+<li>删除不需要的子节点和内容</li>
+<li>更新子节点和内容</li>
+</ul>
+<h4 id="生命周期的管理艺术"><a href="#生命周期的管理艺术" class="headerlink" title="生命周期的管理艺术"></a>生命周期的管理艺术</h4><p>生命周期在不同状态下的执行顺序：</p>
+<ul>
+<li>当首次挂载时，按顺序执行==getDefaultProps==、==getInitialState==、componentWillMount、render、componentDidMount</li>
+<li>当卸载组件时，执行componentWillUnmount</li>
+<li>当重新挂载组件时，按顺序执行==getInitialState==、componentWillMount、render和componentDidMount，但并不执行getDefaultProps</li>
+<li>当再次渲染组件时，组件接受到更新的状态，此时按顺序执行componentWillReceiveProps、shouldComponentUpdate、componentWillUpdate、render和componentDidUpdate。</li>
+</ul>
+<h6 id="first-render"><a href="#first-render" class="headerlink" title="first render"></a>first render</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">graph TB</span><br><span class="line">getDefaultProps--&gt;getInitialState</span><br><span class="line">getInitialState--&gt;componentWillMount</span><br><span class="line">componentWillMount--&gt;render</span><br><span class="line">render--&gt;componentDidMount</span><br></pre></td></tr></table></figure>
+<h6 id="props-change"><a href="#props-change" class="headerlink" title="props change"></a>props change</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">graph TB</span><br><span class="line">componentWillReceiveProps--&gt;shouldComponentUpdate</span><br><span class="line">shouldComponentUpdate--&gt;componentWillUpdate</span><br><span class="line">componentWillUpdate--&gt;render</span><br><span class="line">render--&gt;componentDidUpdate</span><br></pre></td></tr></table></figure>
+<h6 id="state-change"><a href="#state-change" class="headerlink" title="state change"></a>state change</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">graph TB</span><br><span class="line">shouldComponentUpdate--&gt;componentWillUpdate</span><br><span class="line">componentWillUpdate--&gt;render</span><br><span class="line">render--&gt;componentDidUpdate</span><br></pre></td></tr></table></figure>
+<p>自定义组件的声明周期主要通过3个阶段进行管理：MOUNTING、RECEIVE_PROPS、UNMOUNTING</p>
+<h6 id="MOUNTING"><a href="#MOUNTING" class="headerlink" title="MOUNTING"></a>MOUNTING</h6><p>mountComponent负责管理生命周期中的getInitialState、componentWillMount、render和componentDidMount。</p>
+<ul>
+<li>==getDefault是通过构造函数进行管理==的，所以也是整个生命周期中最先开始执行的，==只执行一次==。</li>
+<li>此时在componentWillMount中调用setState方法不会触发re-render，而是会进行==state合并==</li>
+<li>mountComponent的本质是通过==递归==渲染内容，由于递归的特性，父组件的componentWillMount在其子组件的componentWillMount之前调用，父组件的componentDidMount在子组件的componentDidMount之后调用】</li>
+</ul>
+<h6 id="RECEIVE-PROPS"><a href="#RECEIVE-PROPS" class="headerlink" title="RECEIVE_PROPS"></a>RECEIVE_PROPS</h6><p>updateComponent负责管理生命周期中的componentWillReceiveProps、shouldComponentUpdate、componentWillUpdate、render和componentDidUpdate。</p>
+<ul>
+<li>首先通过updateComponent更新组件，如果前后元素不一致，说明需要进行组件更新</li>
+<li>此时在componentWillReceiveProps中调用setState不会触发re-render，而是会进行==state合并==</li>
+<li>只有在render和componentDidUpdate中才能获取到更新后的this.state</li>
+<li>updateComponent本质上也是通过递归渲染内容，父组件的componentWillUpdate是在其子组件的componentWillUpdate之前调用，父组件的componentDidUpdate子组件的componentDidUpdate之后调用</li>
+</ul>
+<h6 id="UNMOUNTING"><a href="#UNMOUNTING" class="headerlink" title="UNMOUNTING"></a>UNMOUNTING</h6><p>unmountComponent负责管理生命周期中的componentWilUnmount。</p>
+<ul>
+<li>如果存在componentWillUnmount，则执行并重置所有相关参数、更新队列以及更新状态</li>
+<li>此时在componentWillUnmount中调用setState不会触发re-render，因为==所有更新队列和更新状态都被重置为null，并清除了公共类，完成了组件卸载操作==。</li>
+</ul>
+<h4 id="解密setState机制"><a href="#解密setState机制" class="headerlink" title="解密setState机制"></a>解密setState机制</h4><ul>
+<li>setState通过一个队列机制实现state更新</li>
+<li>当执行setState时，会将需要更新的state合并后放入状态机，而不会立刻更新this.state</li>
+<li>如果在shouldComponentUpdate或componentWillUpdate方法中调用setState，会造成循环调用，使得浏览器内存占满后崩溃</li>
+</ul>
+<h6 id="setState调用栈"><a href="#setState调用栈" class="headerlink" title="setState调用栈"></a>setState调用栈</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">import React, &#123;component&#125; from &apos;react&apos;;</span><br><span class="line"></span><br><span class="line">class Example extends Component &#123;</span><br><span class="line">    constructor() &#123;</span><br><span class="line">        super();</span><br><span class="line">        this.state = &#123;</span><br><span class="line">            val: 0;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    componentDidMount() &#123;</span><br><span class="line">        this.setState(&#123;val: this.state.val + 1&#125;);</span><br><span class="line">        console.log(this.state.val);</span><br><span class="line">        </span><br><span class="line">        this.setState(&#123;val: this.state.val + 1&#125;);</span><br><span class="line">        console.log(this.state.val);</span><br><span class="line">        </span><br><span class="line">        setTimeout(() =&gt; &#123;</span><br><span class="line">            this.setState(&#123;val: this.state.val + 1&#125;);</span><br><span class="line">            console.log(this.state.val);</span><br><span class="line">            </span><br><span class="line">            this.setState(&#123;val: this.state.val + 1&#125;);</span><br><span class="line">            console.log(this.state.val);</span><br><span class="line">        &#125;, 0);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    render() &#123;</span><br><span class="line">        return null;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//输出 0 0 2 3</span><br></pre></td></tr></table></figure>
+<h6 id="事务"><a href="#事务" class="headerlink" title="事务"></a>事务</h6><ul>
+<li>事务就是将需要执行的方法使用wrapper封装起来，再通过事务提供的perform方法执行</li>
+</ul>
+<h4 id="diff算法"><a href="#diff算法" class="headerlink" title="diff算法"></a>diff算法</h4><p>diff帮助计算出Virtual DOM中真正变化的部分，并只针对该部分进行原生DOM操作，而非重新渲染整个页面</p>
+<h5 id="详解diff"><a href="#详解diff" class="headerlink" title="详解diff"></a>详解diff</h5><h6 id="diff策略"><a href="#diff策略" class="headerlink" title="diff策略"></a>diff策略</h6><ul>
+<li>Web UI中DOM节点跨层级的移动操作特别少，可以忽略不计</li>
+<li>拥有相同类的两个组件将会生成相似的树形结构，拥有不同类的两个组件将会生成不同的树形结构</li>
+<li>对于同一层级的一组子节点，可以通过唯一id进行区分</li>
+</ul>
+<p>React分别对tree diff、component diff以及element diff进行算法优化。</p>
+<h6 id="tree-diff"><a href="#tree-diff" class="headerlink" title="tree diff"></a>tree diff</h6><ul>
+<li>对树进行分层比较，两棵树只会对==同一层次==的节点进行比较</li>
+<li>当发现节点已经不存在时，则改节点及其子节点会被完全删除掉</li>
+</ul>
+<h6 id="component-diff"><a href="#component-diff" class="headerlink" title="component diff"></a>component diff</h6><ul>
+<li>如果是同一类型的组件，按照原策略继续比较Virtual DOM树即可</li>
+<li>如果不是，则将改组件判断为dirty component，从而替换整个组件下的所有子节点</li>
+<li>React允许用户通过shouldComponentUpdate()来判断该组件是否需要进行diff算法分析</li>
+</ul>
+<h6 id="element-diff"><a href="#element-diff" class="headerlink" title="element diff"></a>element diff</h6><ul>
+<li>INSERT_MARKUP: 新的组件类型不在旧集合里，需对新节点执行插入操作</li>
+<li>MOVE_EXISTING: 旧集合中有新组件类型，且element是可更新类型，需要做移动操作，可以复用以前的DOM节点</li>
+<li>REMOVE_NODE: 旧组件类型，在新集合里也有，但对应的element不同则不能直接复用和更新，需要执行删除操作，或者旧组件不在新集合里的，也需要执行删除操作</li>
+</ul>
+<p>==节点在新集合中的索引值大于在旧集合中的索引时，需移动==<br>==删除操作是移动完成之后遍历旧集合，若有新集合中未出现的节点则删除==</p>
+<h4 id="React-Patch方法"><a href="#React-Patch方法" class="headerlink" title="React Patch方法"></a>React Patch方法</h4><p>将tree diff计算出来的DOM差异队列更新到真实的DOM节点上，让浏览器能够渲染出更新的数据</p>
+<ul>
+<li>主要通过遍历差异队列实现</li>
+</ul>
+<h2 id="认识Flux架构模式"><a href="#认识Flux架构模式" class="headerlink" title="认识Flux架构模式"></a>认识Flux架构模式</h2><h4 id="React独立架构"><a href="#React独立架构" class="headerlink" title="React独立架构"></a>React独立架构</h4><ul>
+<li>含有抽象数据而没有业务逻辑的组件为容器型组件</li>
+<li>没有数据请求逻辑只有业务逻辑的组件为展示型组件</li>
+</ul>
+<h4 id="MV-与Flux"><a href="#MV-与Flux" class="headerlink" title="MV*与Flux"></a>MV*与Flux</h4><h6 id="MVC-MVVM"><a href="#MVC-MVVM" class="headerlink" title="MVC/MVVM"></a>MVC/MVVM</h6><p>主要涉及三种角色：Model、View和Controller</p>
+<ul>
+<li>Model：负责保存应用数据，和后端交互同步应用数据，或校验数据</li>
+<li>View：是Model的可视化表示，表示当前状态的视图。前端View负责构建和维护DOM元素。</li>
+<li>Controller：负责连接View和Model，Model的任何改变会应用到View中，View的操作会通过Controller应用到Model中</li>
+</ul>
+<h6 id="Flux"><a href="#Flux" class="headerlink" title="Flux"></a>Flux</h6><p>核心思想是==数据和逻辑永远单向流动==。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">graph LR</span><br><span class="line">A[Action] --&gt; B[Dispatcher]</span><br><span class="line">B --&gt; C[store]</span><br><span class="line">C --&gt; D[View]</span><br><span class="line">D --&gt; E[Action]</span><br><span class="line">E --&gt; B</span><br></pre></td></tr></table></figure>
+<p>在Flux应用中，数据从action到dispatcher再到store，最终到view的路线是单项不可逆的</p>
+<h4 id="Flux基本概念"><a href="#Flux基本概念" class="headerlink" title="Flux基本概念"></a>Flux基本概念</h4><p>一个Flux应用由3大部分组成：dispatcher、store和view，其中dispatcher负责分发事件；store负责保存数据，同时响应时间并更新数据；view负责订阅store中的数据。</p>
+<h6 id="dispatcher"><a href="#dispatcher" class="headerlink" title="dispatcher"></a>dispatcher</h6><p>dispatcher是Flux中最核心的方法，也是flux这个npm包中的核心方法。<br>只需关心.register(callback)和.dispatch(action)这两个API。</p>
+<ul>
+<li>register方法用来注册一个监听器</li>
+<li>dispatch方法用来分发一个action</li>
+</ul>
+<h6 id="action"><a href="#action" class="headerlink" title="action"></a>action</h6><p>action是一个普通的JavaScript对象，一般包含type、payload等字段，用于描述一个事件以及需要改变的相关数据。</p>
+<h6 id="store"><a href="#store" class="headerlink" title="store"></a>store</h6><ul>
+<li>在Flux中，store负责保存数据，并定义修改数据的逻辑，同时调用dispatcher的register方法将自己注册为一个监听器。</li>
+<li>每次使用dispatcher的dispatch方法分发一个action时，store注册的监听器会被调用，同时得到这个action作为参数。</li>
+<li>在Flux中，store对外只暴露getter而不暴露setter，即只能读取store中的数据而不能进行任何修改。</li>
+</ul>
+<h6 id="controller-view"><a href="#controller-view" class="headerlink" title="controller-view"></a>controller-view</h6><p>一般来说，controller-view是整个应用最顶层的view，主要进行store与React组件之间的绑定，定义数据更新以及传递的方式</p>
+<h6 id="view"><a href="#view" class="headerlink" title="view"></a>view</h6><p>如果界面操作需要修改数据，必须使用dispatcher分发一个action。</p>
+<h6 id="actionCreator"><a href="#actionCreator" class="headerlink" title="actionCreator"></a>actionCreator</h6><h2 id="深入Redux应用架构"><a href="#深入Redux应用架构" class="headerlink" title="深入Redux应用架构"></a>深入Redux应用架构</h2><h4 id="Redux简介"><a href="#Redux简介" class="headerlink" title="Redux简介"></a>Redux简介</h4><h5 id="Redux三大原则"><a href="#Redux三大原则" class="headerlink" title="Redux三大原则"></a>Redux三大原则</h5><h6 id="单一数据源"><a href="#单一数据源" class="headerlink" title="单一数据源"></a>单一数据源</h6><ul>
+<li>在Redux的思想里，一个应用永远只有唯一的数据源。</li>
+<li>整个应用状态都保存在一个对象中</li>
+</ul>
+<h6 id="状态是只读的"><a href="#状态是只读的" class="headerlink" title="状态是只读的"></a>状态是只读的</h6><p>定义一个reducer，其功能是根据当前触发的action对当前应用的状态（state）进行迭代。没有直接修改应用的状态，而是==返回了一份全新的状态==。</p>
+<ul>
+<li>Reducer提供的createStore方法会根据reducer生成store</li>
+<li>用store.dispatch方法来修改状态</li>
+</ul>
+<p>==###### ==状态修改均由纯函数完成<br>在Redux里，通过定义reducer来确定状态的修改，而每一个reducer都是纯函数，即其没有副作用，接受一定的输入，必定会得到一定的输出。</p>
+<h5 id="Redux核心API"><a href="#Redux核心API" class="headerlink" title="Redux核心API"></a>Redux核心API</h5><p>Redux的核心是一个store，这个store由Redux提供的createStore（reducers[, initialState]）方法生成。</p>
+<ul>
+<li>在Redux里，负责响应action并修改数据的角色就是reducer</li>
+<li>reducer在处理action的同时，还需接受一个previousState参数</li>
+<li>reducer的职责是根据previousState和action计算出新的newState</li>
+</ul>
+<p>Redux中最核心的API是createStore，通过createStore方法创建的store是一个对象，包含四个方法：</p>
+<ul>
+<li>getState（）：获取store当前状态</li>
+<li>dispatch（action）：分发一个action，并返回这个action，这是==唯一能改变store中数据的方式==</li>
+<li>subscribe（listener）：注册一个监听者，在store发生变化时调用</li>
+<li>replaceReducer（nextReducer）：更新当前store里的reducer，一般只在开发模式中调用该方法</li>
+</ul>
+<p>subscribe（）和replaceReducer（）方法一般会在Redux与某个系统做桥接的时候使用</p>
+<h5 id="与React绑定"><a href="#与React绑定" class="headerlink" title="与React绑定"></a>与React绑定</h5><p>react-redux提供了一个组件和一个API帮助Redux和React进行绑定。</p>
+<p>一个是React组件<provider>，一个是connect（）</provider></p>
+<ul>
+<li><provider>接受一个store作为props，它是整个Redux应用的顶层组件</provider></li>
+<li>connect（）提供了在整个React应用的任意组件中获取store中数据的功能</li>
+</ul>
+<h4 id="Redux-middleware"><a href="#Redux-middleware" class="headerlink" title="Redux middleware"></a>Redux middleware</h4><h5 id="middleware的由来"><a href="#middleware的由来" class="headerlink" title="middleware的由来"></a>middleware的由来</h5><h6 id="Redux同步数据流动"><a href="#Redux同步数据流动" class="headerlink" title="Redux同步数据流动"></a>Redux同步数据流动</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">graph LR</span><br><span class="line"></span><br><span class="line">button -. callback .-&gt; dispatch</span><br><span class="line">dispatch == action ==&gt; reducer</span><br><span class="line">reducer -. state .-&gt; view</span><br></pre></td></tr></table></figure>
+<h6 id="应用middleware后Redux处理事件的逻辑"><a href="#应用middleware后Redux处理事件的逻辑" class="headerlink" title="应用middleware后Redux处理事件的逻辑"></a>应用middleware后Redux处理事件的逻辑</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">graph LR</span><br><span class="line"></span><br><span class="line">button -. callback .-&gt; mid1</span><br><span class="line">mid1 --&gt; mid2</span><br><span class="line">mid2 == action ==&gt; ...</span><br><span class="line">... --&gt; dispatch</span><br><span class="line">dispatch == action ==&gt; reducer</span><br><span class="line">reducer -. state .-&gt; view</span><br></pre></td></tr></table></figure>
+<p>每一个middleware处理一个相对独立的业务需求，通过串联不同的middleware实现变化多样的功能</p>
+<h5 id="理解middleware机制"><a href="#理解middleware机制" class="headerlink" title="理解middleware机制"></a>理解middleware机制</h5><p>Redux提供了applyMiddleware方法来加载middleware。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">import compose from &apos;./compose&apos;;</span><br><span class="line"></span><br><span class="line">export default function applyMiddleware(...middlewares) &#123;</span><br><span class="line">    return (next) =&gt; (reducer, initialState) &#123;</span><br><span class="line">        let store = next(reducer, initialState);</span><br><span class="line">        let dispatch = sotre.dispatch;</span><br><span class="line">        let chain = [];</span><br><span class="line">        </span><br><span class="line">        var middlewareAPI = &#123;</span><br><span class="line">            getState: store.getState,</span><br><span class="line">            dispatch: (action) =&gt; dispatch(action),</span><br><span class="line">        &#125;;</span><br><span class="line">        </span><br><span class="line">        chain = middlewares.map(middleware =&gt; middleware(middlewareAPI));</span><br><span class="line">        dispatch = compose(...chain)(store.dispatch);</span><br><span class="line">        </span><br><span class="line">        return &#123;</span><br><span class="line">            ...store,</span><br><span class="line">            dispatch,</span><br><span class="line">        &#125;;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h6 id="函数式编程思想设计"><a href="#函数式编程思想设计" class="headerlink" title="函数式编程思想设计"></a>函数式编程思想设计</h6><p>middleware是一个层层包裹的匿名函数，即函数式编程中的currying，是一种使用匿名单参数函数来实现多参数的方法。</p>
+<p>currying的middleware皆有的好处：</p>
+<ul>
+<li>易串联：currying函数具有延迟执行的特性，通过不断currying形成的middleware可以累积参数，再配合组合（compose）的方式，很容易形成pipeline来处理数据流</li>
+<li>共享store：在applyMiddleware执行的过程中，store还是旧的，但是因为闭包的存在，applyMiddleware完成后，所有的middleware内部拿到的store是最新且相同的。</li>
+</ul>
+<h6 id="给middleware分发store"><a href="#给middleware分发store" class="headerlink" title="给middleware分发store"></a>给middleware分发store</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">//创建普通的store</span><br><span class="line">let newStore = applyMiddleware(mid1, mid2, mid3, ...)(createStore)(reducer, null);</span><br></pre></td></tr></table></figure>
+<h6 id="组合串联middleware"><a href="#组合串联middleware" class="headerlink" title="组合串联middleware"></a>组合串联middleware</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">dispatch = compose(...chain)(store.dispatch);</span><br><span class="line"></span><br><span class="line">//假设n=3，dispatch为</span><br><span class="line">dispatch = f1(f2(f3(store.dispatch)));</span><br></pre></td></tr></table></figure>
+<h6 id="不能在middleware中调用dispatch"><a href="#不能在middleware中调用dispatch" class="headerlink" title="不能在middleware中调用dispatch"></a>不能在middleware中调用dispatch</h6><h4 id="Redux异步流"><a href="#Redux异步流" class="headerlink" title="Redux异步流"></a>Redux异步流</h4><h4 id="Redux与路由"><a href="#Redux与路由" class="headerlink" title="Redux与路由"></a>Redux与路由</h4><p>在Redux应用中，遇到了一些新的问题，其中最迫切的是，应用程序的所有状态都应该保存在一个单一的store中，而当前的路由状态很明显也属于应用状态的一部分。如果直接使用React Router，就意味着所有路由相关的信息脱离了Redux store的控制，这样就违背了Redux的设计思想。</p>
+<h5 id="React-Router"><a href="#React-Router" class="headerlink" title="React Router"></a>React Router</h5><h6 id="路由的基本原理"><a href="#路由的基本原理" class="headerlink" title="路由的基本原理"></a>路由的基本原理</h6><p>理由的基本原理即是保证View和URL同步，而View可以看成是资源的一种表现。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">graph LR</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">A((Action)) == 获取资源 ==&gt; B((Action))</span><br><span class="line"></span><br><span class="line">B == render ==&gt; C((Action))</span><br><span class="line">C == 用户与界面交互 ==&gt; A</span><br></pre></td></tr></table></figure>
+<h6 id="React-Router特性"><a href="#React-Router特性" class="headerlink" title="React Router特性"></a>React Router特性</h6><ul>
+<li>在React中，组件就是一个方法，props作为方法的参数，当它们发生变化时触发方法执行，重绘View</li>
+<li>在React Router中，可以把Router组件看成一个方法，location作为参数，返回的结果同样是View</li>
+</ul>
+<h6 id="声明式路由"><a href="#声明式路由" class="headerlink" title="声明式路由"></a>声明式路由</h6><ul>
+<li>React是声明式编程，所有的交互逻辑都在render返回的JSX标签中得到体现</li>
+<li>React Router允许使用JSX表现来书写声明式的路由</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">import &#123;Router, Route, browserHistory&#125; from &apos;react-router&apos;;</span><br><span class="line"></span><br><span class="line">const routes = (</span><br><span class="line">    &lt;Router history=&#123;browserHistory&#125;&gt;</span><br><span class="line">        &lt;Route path=&quot;/&quot; component=&#123;App&#125; /&gt;</span><br><span class="line">    &lt;/Router&gt;</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+<h6 id="嵌套路由及路径匹配"><a href="#嵌套路由及路径匹配" class="headerlink" title="嵌套路由及路径匹配"></a>嵌套路由及路径匹配</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">import &#123;Router, Route, IndexRoute, browserHistory&#125; from &apos;react-router&apos;;</span><br><span class="line"></span><br><span class="line">const routes = (</span><br><span class="line">    &lt;Router history=&#123;browserHistory&#125;&gt;</span><br><span class="line">        &lt;IndexRoute component=&#123;MailList&#125; /&gt;</span><br><span class="line">        &lt;Route path=&quot;/mail/:mailId&quot; component=&#123;Mail&#125;&gt;&lt;/Route&gt;</span><br><span class="line">    &lt;/Route&gt;</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+<ul>
+<li>在声明路由时，==path==属性指明了当前路由匹配的路径形式</li>
+<li>若某条路由需要参数，只用==加上 :参数名== 即可</li>
+</ul>
+<h6 id="支持多种路由切换方式"><a href="#支持多种路由切换方式" class="headerlink" title="支持多种路由切换方式"></a>支持多种路由切换方式</h6><p>路由切换可以使用hashChange或history.pushState。</p>
+<ul>
+<li>hashChange拥有良好的浏览器兼容性，但是url中多了/#/部分</li>
+<li>history.pushState能提供优雅的url，但需要额外的服务端配置解决任意路径刷新的问题</li>
+</ul>
+<p>React Router提供了两种解决方案</p>
+<p>==browserHistory即history.pushState的实现==</p>
+<h4 id="React-Router-Redux"><a href="#React-Router-Redux" class="headerlink" title="React Router Redux"></a>React Router Redux</h4><p>职责主要是将应用的路由信息与Redux的store绑定在一起</p>
+<p>采用Redux架构时，所有的应用状态都必须放在一个单一的store中管理，路由状态也不例外</p>
+<h6 id="将React-Router与Redux-store绑定"><a href="#将React-Router与Redux-store绑定" class="headerlink" title="将React Router与Redux store绑定"></a>将React Router与Redux store绑定</h6><p>React Router Redux提供了简单直白的API syncHistoryWithStore来完成与Redux store的绑定工作。只需传入React Router中的history，以及Redux中的store，就可以获得一个增强后的history对象。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">import &#123; browserHistory &#125; from  &apos;react-router&apos;;</span><br><span class="line">import &#123; syncHistoryWithState &#125; from &apos;react-router-redux&apos;;</span><br><span class="line">import reducers from &apos;&lt;project-path&gt;/reducers&apos;</span><br><span class="line"></span><br><span class="line">const store = createStore(reducers);</span><br><span class="line">const history = syncHistoryWithStore(browserHistory, store);</span><br></pre></td></tr></table></figure>
+<h6 id="用Redux的方式改变路由"><a href="#用Redux的方式改变路由" class="headerlink" title="用Redux的方式改变路由"></a>用Redux的方式改变路由</h6><p>无论是Flux还是Redux，想要改变数据，必须要分发一个action</p>
+<ul>
+<li>在此之前，需要对Redux的store进行一些增强，以便分发的action能被正确识别</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">import &#123; browserHistory &#125; from &apos;react-router&apos;;</span><br><span class="line">import &#123; routerMiddleware&#125; from &apos;react-router-redux&apos;;</span><br><span class="line"></span><br><span class="line">const middleware = routerMiddleware(browserHistory);</span><br><span class="line">const store = createStore(</span><br><span class="line">    reducers,</span><br><span class="line">    applyMiddleware(middleware)</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+<ul>
+<li>用store.dispatch来分发一个路由变动的action<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">import &#123;push&#125; from &apos;react-router-redux&apos;;</span><br><span class="line"></span><br><span class="line">store.dispatch(push(&apos;/home&apos;));</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h4 id="Redux与组件"><a href="#Redux与组件" class="headerlink" title="Redux与组件"></a>Redux与组件</h4><h5 id="容器型组件"><a href="#容器型组件" class="headerlink" title="容器型组件"></a>容器型组件</h5><p>容器型组件，意为组件是怎么工作的，具体一些就是数据是怎么更新的。不包含任何Virtual DOM的修改或组合，也不会包含组件的样式。</p>
+<ul>
+<li>如果映射到Flux上，容器型组件就是与store绑定的组件</li>
+<li>如果映射到Redux上，容器型组件就是使用connect的组件</li>
+</ul>
+<h5 id="展示型组件"><a href="#展示型组件" class="headerlink" title="展示型组件"></a>展示型组件</h5><p>展示型组件，意为组件是怎么渲染的。包含Virtual DOM的修改和组合，也可能包含组件的样式。</p>
+<h5 id="Redux中的组件"><a href="#Redux中的组件" class="headerlink" title="Redux中的组件"></a>Redux中的组件</h5><h6 id="Layouts"><a href="#Layouts" class="headerlink" title="Layouts"></a>Layouts</h6><ul>
+<li>指的是页面布局组件，描述了页面的基本结构，目的是将主框架与页面主题内容分离</li>
+<li>常常是无状态函数，传入主题内容的children属性</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">//一般写法为</span><br><span class="line">const layout = (&#123; children &#125;) =&gt; (</span><br><span class="line">    &lt;div className=&apos;container&apos;&gt;</span><br><span class="line">        &lt;Header /&gt;</span><br><span class="line">        &lt;div className=&apos;content&apos;&gt;</span><br><span class="line">            &#123; children &#125;</span><br><span class="line">        &lt;/div&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+<h6 id="views"><a href="#views" class="headerlink" title="views"></a>views</h6><ul>
+<li>指的是子路由入口组件，描述子路由入口的基本结构，包含由此路由下所有的展示型组件</li>
+<li>为了保持子组件的纯净，在这一层组件中定义了数据和action的入口，从这里开始将它们分发到子组件中去</li>
+</ul>
+<h6 id="Components"><a href="#Components" class="headerlink" title="Components"></a>Components</h6><ul>
+<li>末级渲染组件，描述了从路由以下的子组件</li>
+<li>包含具体的业务逻辑和交互</li>
+<li>所有的数据和action都是由Views传下来的，即其是可以完全脱离数据层而存在的展示型组件</li>
+</ul>
+<h2 id="Redux高阶运用"><a href="#Redux高阶运用" class="headerlink" title="Redux高阶运用"></a>Redux高阶运用</h2><h4 id="高阶Reducer"><a href="#高阶Reducer" class="headerlink" title="高阶Reducer"></a>高阶Reducer</h4><p>在Redux架构中，reducer是一个纯函数，其职责是根据previousState和action计算出新的state</p>
+<p>高阶reducer是指将reducer作为一个参数或者返回值的函数</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/01/13/React知识点整理/" data-id="cjsl288ep0000msi0p1ybtrrv" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2019/02/25/hello-world/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Hello World
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2018/07/11/flex 布局/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">flex布局</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">February 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2019/02/25/test-my-site/">test_my_site</a>
+          </li>
+        
+          <li>
+            <a href="/2019/02/25/hello-world/">Hello World</a>
+          </li>
+        
+          <li>
+            <a href="/2019/01/13/React知识点整理/">React知识点整理</a>
+          </li>
+        
+          <li>
+            <a href="/2018/07/11/flex 布局/">flex布局</a>
+          </li>
+        
+          <li>
+            <a href="/2018/06/15/git学习笔记/">git学习笔记</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2019 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>

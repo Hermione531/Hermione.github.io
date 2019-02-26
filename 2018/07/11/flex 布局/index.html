@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+
+  
+  <title>flex布局 | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="flex是Flexible Box的缩写，意为“弹性布局”，是css3中作用于动态元素或者不知名大小元素的新布局，主要用于元素对齐、方向和容器的组织方式。flex容器最主要的特点是其能以最好的方式修改不同大小子元素的width和height，使其填满可用空间。 基础flex布局由flex容器的父元素和其直接子元素flex items 组成。 用法在父HTML元素上设置属性display就可以使用f">
+<meta property="og:type" content="article">
+<meta property="og:title" content="flex布局">
+<meta property="og:url" content="http://yoursite.com/2018/07/11/flex 布局/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="flex是Flexible Box的缩写，意为“弹性布局”，是css3中作用于动态元素或者不知名大小元素的新布局，主要用于元素对齐、方向和容器的组织方式。flex容器最主要的特点是其能以最好的方式修改不同大小子元素的width和height，使其填满可用空间。 基础flex布局由flex容器的父元素和其直接子元素flex items 组成。 用法在父HTML元素上设置属性display就可以使用f">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="https://cdn.scotch.io/scotchy-uploads/2015/04/CSS3-Flexbox-Model.jpg">
+<meta property="og:image" content="https://cask.scotch.io/2015/04/flexbox-flex-direction-row.jpg">
+<meta property="og:image" content="https://cask.scotch.io/2015/04/flexbox-flex-direction-row-reverse.jpg">
+<meta property="og:image" content="https://cask.scotch.io/2015/04/flexbox-flex-direction-column.jpg">
+<meta property="og:image" content="https://cask.scotch.io/2015/04/flexbox-flex-direction-column-reverse.jpg">
+<meta property="og:image" content="https://cask.scotch.io/2015/04/flexbox-flex-wrap-nowrap.jpg">
+<meta property="og:image" content="https://cask.scotch.io/2015/04/flexbox-flex-wrap-wrap.jpg">
+<meta property="og:image" content="https://cask.scotch.io/2015/04/flexbox-flex-wrap-wrap-reverse.jpg">
+<meta property="og:image" content="https://cask.scotch.io/2015/04/flexbox-justify-content-flex-start.jpg">
+<meta property="og:image" content="https://cask.scotch.io/2015/04/flexbox-justify-content-flex-end.jpg">
+<meta property="og:image" content="https://cask.scotch.io/2015/04/flexbox-justify-content-center.jpg">
+<meta property="og:image" content="https://cask.scotch.io/2015/04/flexbox-justify-content-space-between.jpg">
+<meta property="og:image" content="https://cask.scotch.io/2015/04/flexbox-justify-content-space-around.jpg">
+<meta property="og:image" content="https://cask.scotch.io/2015/04/flexbox-align-items-stretch.jpg">
+<meta property="og:image" content="https://cask.scotch.io/2015/04/flexbox-align-items-flex-start.jpg">
+<meta property="og:image" content="https://cask.scotch.io/2015/04/flexbox-align-items-flex-end.jpg">
+<meta property="og:image" content="https://cask.scotch.io/2015/04/flexbox-align-items-center.jpg">
+<meta property="og:image" content="https://cask.scotch.io/2015/04/flexbox-align-items-baseline.jpg">
+<meta property="og:image" content="https://cask.scotch.io/2015/04/flexbox-align-content-stretch.jpg">
+<meta property="og:image" content="https://cask.scotch.io/2015/04/flexbox-align-content-flex-start.jpg">
+<meta property="og:image" content="https://cask.scotch.io/2015/04/flexbox-align-content-flex-end.jpg">
+<meta property="og:image" content="https://cask.scotch.io/2015/04/flexbox-align-content-center.jpg">
+<meta property="og:image" content="https://cask.scotch.io/2015/04/flexbox-align-content-space-between.jpg">
+<meta property="og:image" content="https://cask.scotch.io/2015/04/flexbox-align-content-space-around.jpg">
+<meta property="og:image" content="https://cask.scotch.io/2015/04/flexbox-order.jpg">
+<meta property="og:image" content="https://cask.scotch.io/2015/04/flexbox-flex-grow-1.jpg">
+<meta property="og:image" content="https://cask.scotch.io/2015/04/flexbox-flex-grow-2.jpg">
+<meta property="og:image" content="https://cask.scotch.io/2015/04/flexbox-flex-shrink.jpg">
+<meta property="og:image" content="https://cask.scotch.io/2015/04/flexbox-flex-basis.jpg">
+<meta property="og:image" content="https://cask.scotch.io/2015/04/flexbox-align-self.jpg">
+<meta property="og:updated_time" content="2019-02-26T00:51:06.241Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="flex布局">
+<meta name="twitter:description" content="flex是Flexible Box的缩写，意为“弹性布局”，是css3中作用于动态元素或者不知名大小元素的新布局，主要用于元素对齐、方向和容器的组织方式。flex容器最主要的特点是其能以最好的方式修改不同大小子元素的width和height，使其填满可用空间。 基础flex布局由flex容器的父元素和其直接子元素flex items 组成。 用法在父HTML元素上设置属性display就可以使用f">
+<meta name="twitter:image" content="https://cdn.scotch.io/scotchy-uploads/2015/04/CSS3-Flexbox-Model.jpg">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+</html>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-flex 布局" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/07/11/flex 布局/" class="article-date">
+  <time datetime="2018-07-11T07:44:09.000Z" itemprop="datePublished">2018-07-11</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      flex布局
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>flex是Flexible Box的缩写，意为“弹性布局”，是css3中作用于动态元素或者不知名大小元素的新布局，主要用于元素对齐、方向和容器的组织方式。flex容器最主要的特点是其能以最好的方式修改不同大小子元素的width和height，使其填满可用空间。</p>
+<h4 id="基础"><a href="#基础" class="headerlink" title="基础"></a>基础</h4><p>flex布局由flex容器的父元素和其直接子元素flex items 组成。<br><img src="https://cdn.scotch.io/scotchy-uploads/2015/04/CSS3-Flexbox-Model.jpg" alt="image"></p>
+<h4 id="用法"><a href="#用法" class="headerlink" title="用法"></a>用法</h4><p>在父HTML元素上设置属性display就可以使用flex布局。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">.flex-container &#123;</span><br><span class="line">    display: -webkit-flex;      //Safari</span><br><span class="line">    display: flex;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>若想表现得像行内元素<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">.flex-container &#123;</span><br><span class="line">    display: -webkit-inline-flex;       //Safari</span><br><span class="line">    display: inline-flex;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p><strong>父元素上只需设置这一个属性，其全部直接子元素会自动转变为flex items。</strong></p>
+<p>有许多方式能组织flexbox属性，但总的来说，最简便的还是将元素分为两个部分：flex容器和flexZ子元素。以下会介绍它们，并且说明其如何影响布局表现。</p>
+<h4 id="flexbox容器属性"><a href="#flexbox容器属性" class="headerlink" title="flexbox容器属性"></a>flexbox容器属性</h4><h4 id="flex-direction"><a href="#flex-direction" class="headerlink" title="flex-direction"></a>flex-direction</h4><p>该属性通过设置flex容器的主轴方向来指定flex元素在容器中排列的方向。</p>
+<table>
+<thead>
+<tr>
+<th>flex-direction</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>row（默认值）</td>
+<td>主轴为水平方向，起点在左端</td>
+</tr>
+<tr>
+<td>row-reverse</td>
+<td>主轴为水平方向，起点在右端</td>
+</tr>
+<tr>
+<td>column</td>
+<td>主轴为垂直方向，起点在上沿</td>
+</tr>
+<tr>
+<td>column-reverse</td>
+<td>主轴为垂直方向，起点在下沿</td>
+</tr>
+</tbody>
+</table>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">.flex-container &#123;</span><br><span class="line">    -webkit-flex-direction: row;        //Safari</span><br><span class="line">    flex-direction: row;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>row 方向为从左到右排列<br><img src="https://cask.scotch.io/2015/04/flexbox-flex-direction-row.jpg" alt="image"></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">.flex-container &#123;</span><br><span class="line">    -webkit-flex-direction: row-reverse;        //Safari</span><br><span class="line">    flex-direction: row-reverse;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>row-reverse方向，flex元素从右到左行排列<br><img src="https://cask.scotch.io/2015/04/flexbox-flex-direction-row-reverse.jpg" alt="image"></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">.flex-container &#123;</span><br><span class="line">    -webkit-flex-direction: column;         //Safari</span><br><span class="line">    flex-direction: column;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>column flex元素从上到下列排列<br><img src="https://cask.scotch.io/2015/04/flexbox-flex-direction-column.jpg" alt="image"></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">.flex-container &#123;</span><br><span class="line">    -webkit-flex-direction: column-reverse;         //Safari</span><br><span class="line">    flex-direction: column-reverse;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>选择column-reverse，flex元素从下到上列排列<br><img src="https://cask.scotch.io/2015/04/flexbox-flex-direction-column-reverse.jpg" alt="image"></p>
+<h4 id="flex-wrap"><a href="#flex-wrap" class="headerlink" title="flex-wrap"></a>flex-wrap</h4><p>原始flexbox观念是容器在一条线上设置其子元素。flex-wrap属性用于控制flex容器中的子元素是在一条还是多条线上排列，并且控制多出来的行堆叠的方向。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">.flex-container &#123;</span><br><span class="line">    -webkit-flex-wrap: nowrap;          //Safari</span><br><span class="line">    flex-wrap: nowrap;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>flex元素一行排列，默认情况下会有一定缩放来适应元素的宽度<br><img src="https://cask.scotch.io/2015/04/flexbox-flex-wrap-nowrap.jpg" alt="image"></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">.flex-container &#123;</span><br><span class="line">    -webkit-flex-wrap: wrap;            //Safari</span><br><span class="line">    flex-wrap: wrap;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>flex元素在多行上按从上从左到右，从上到下的方式排列<br><img src="https://cask.scotch.io/2015/04/flexbox-flex-wrap-wrap.jpg" alt="image"></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">.flex-container &#123;</span><br><span class="line">    -webkit-flex-wrap: wap-reverse;     //Safari</span><br><span class="line">    flex-wrap: wap-reverse;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>flex元素在多行上按从左到右，从下到上的方式排列<br><img src="https://cask.scotch.io/2015/04/flexbox-flex-wrap-wrap-reverse.jpg" alt="image"></p>
+<p><strong>默认值：==nowrap==</strong></p>
+<h4 id="flex-flow"><a href="#flex-flow" class="headerlink" title="flex-flow"></a>flex-flow</h4><p>该属性是flex-direction 和 flex-wrap 属性的简写。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">.flex-container &#123;</span><br><span class="line">    -webkit-flex-flow: ||;      //Safari</span><br><span class="line">    flex-flow: ||;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p><strong>默认值：==row nowrap==</strong></p>
+<h4 id="justify-content"><a href="#justify-content" class="headerlink" title="justify-content"></a>justify-content</h4><p>justify-content属性在flex容器当前行主轴线上对齐flex元素。它能分配多余可用空间，不管flex元素在一条线上表现为不可改变，或者可变但是已是最大尺寸。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">.flex-container &#123;</span><br><span class="line">    -webkit-justify-content: flex-start;    //Safari</span><br><span class="line">    justify-content: flex-start;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>flex元素左对齐<br><img src="https://cask.scotch.io/2015/04/flexbox-justify-content-flex-start.jpg" alt="image"></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">.flex-container &#123;</span><br><span class="line">    -webkit-justify-content: flex-end;      //Safari</span><br><span class="line">    justify-content: flex-end;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>flex元素右对齐<br><img src="https://cask.scotch.io/2015/04/flexbox-justify-content-flex-end.jpg" alt="image"></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">.flex-container &#123;</span><br><span class="line">    -webkit-justify-content: center;    //Safari</span><br><span class="line">    justify-content: center;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>flex元素居中<br><img src="https://cask.scotch.io/2015/04/flexbox-justify-content-center.jpg" alt="image"></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">.flex-container &#123;</span><br><span class="line">    -webkit-justify-content: space-between;     //Safari</span><br><span class="line">    justify-content: space-between;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>flex元素相邻元素之间有等距间隔，首位元素与容器边缘对齐</p>
+<p><img src="https://cask.scotch.io/2015/04/flexbox-justify-content-space-between.jpg" alt="image"></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">.flex-container &#123;</span><br><span class="line">    -webkit-justify-content: space-around;      //Safari</span><br><span class="line">    justify-content: space-around;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>flex元素每个元素周围有一定间距，首位元素亦如此<br><img src="https://cask.scotch.io/2015/04/flexbox-justify-content-space-around.jpg" alt="images"></p>
+<p><strong>默认值：==flex-start==</strong></p>
+<h4 id="align-items"><a href="#align-items" class="headerlink" title="align-items"></a>align-items</h4><p>flex元素沿当前容器交叉轴对齐，与justify-content相同，所不同的是方向。该属性设置所有元素的默认对齐方式，即使是未布局的元素。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">.flex-container &#123;</span><br><span class="line">    -webkit-align-items: stretch;       //Safari</span><br><span class="line">    align-items: stretch;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>flex元素从交叉轴起点到终点填满整个高度<br><img src="https://cask.scotch.io/2015/04/flexbox-align-items-stretch.jpg" alt="images"></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">.flex-container &#123;</span><br><span class="line">    -webkit-align-items: flex-start;    //Safari</span><br><span class="line">    align-items: flex-start;    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>flex元素按交叉轴起点对齐<br><img src="https://cask.scotch.io/2015/04/flexbox-align-items-flex-start.jpg" alt="images"></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">.flex-container &#123;</span><br><span class="line">    -webkit-align-items: flex-end;      //Safari</span><br><span class="line">    align-items: flex-end;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>flex元素按交叉轴终点对齐<br><img src="https://cask.scotch.io/2015/04/flexbox-align-items-flex-end.jpg" alt="images"></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">.flex-container &#123;</span><br><span class="line">    -webkit-align-items: center;    //Safari</span><br><span class="line">    align-items: center;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>flex元素按交叉轴中点对齐<br><img src="https://cask.scotch.io/2015/04/flexbox-align-items-center.jpg" alt="image"></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">.flex-container&#123;</span><br><span class="line">    -webkit-align-items: baseline;      //Safari</span><br><span class="line">    align-items: baseline;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>flex元素按每一行基线对齐<br><img src="https://cask.scotch.io/2015/04/flexbox-align-items-baseline.jpg" alt="image"></p>
+<p><strong>默认值：==stretch==</strong></p>
+<h4 id="align-center"><a href="#align-center" class="headerlink" title="align-center"></a>align-center</h4><p>该属性轴线有多余空间时，定义flex容器每一行的对齐方式，当只有一行元素时，与justify-content属性对齐方式相同。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">.flex-container &#123;</span><br><span class="line">    -webkit-align-content: stretch;     //Safari</span><br><span class="line">    align-content: stretch;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>flex元素每行分配相等间距<br><img src="https://cask.scotch.io/2015/04/flexbox-align-content-stretch.jpg" alt="image"></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">.flex-container &#123;</span><br><span class="line">    -webkit-align-content: flex-start;      //Safari</span><br><span class="line">    align-content: flex-start;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>flex元素沿交叉轴起点对齐<br><img src="https://cask.scotch.io/2015/04/flexbox-align-content-flex-start.jpg" alt="images"></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">.flex-container &#123;</span><br><span class="line">    -webkit-align-content: flex-end;    //Safari</span><br><span class="line">    align-content: flex-end;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>flex元素沿交叉轴终点对齐<br><img src="https://cask.scotch.io/2015/04/flexbox-align-content-flex-end.jpg" alt="image"></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">.flex-container &#123;</span><br><span class="line">    -webkit-align-content: center;      //Safari</span><br><span class="line">    align-content: center;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>flex元素每行在容器内居中对齐<br><img src="https://cask.scotch.io/2015/04/flexbox-align-content-center.jpg" alt="image"></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">.flex-container &#123;</span><br><span class="line">    -webkit-align-content: space-between;       //Safari</span><br><span class="line">    align-content: space-between;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>flex元素每行有等距间隔，首位行与flex容器边缘对齐<br><img src="https://cask.scotch.io/2015/04/flexbox-align-content-space-between.jpg" alt="image"></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">.flex-container &#123;</span><br><span class="line">    -webkit-align-content: space-around;    //Safari</span><br><span class="line">    align-content: space-around;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>flex元素每行周围有相等空间<br><img src="https://cask.scotch.io/2015/04/flexbox-align-content-space-around.jpg" alt="images"></p>
+<p><strong>默认值：==stretch==</strong></p>
+<p><strong>注意事项：该属性只有在flex容器包含多行元素时才会生效，若为当行元素，该属性无效。</strong></p>
+<h4 id="flex容器注意事项"><a href="#flex容器注意事项" class="headerlink" title="flex容器注意事项"></a>flex容器注意事项</h4><ul>
+<li>所有colunm-*属性对flex container 均无效。</li>
+<li>::first-line与::first-letter伪元素对flex容器无效</li>
+</ul>
+<h4 id="flexbox元素属性"><a href="#flexbox元素属性" class="headerlink" title="flexbox元素属性"></a>flexbox元素属性</h4><h4 id="order"><a href="#order" class="headerlink" title="order"></a>order</h4><p>该属性控制flex容器中子元素排列顺序，数值越小，排列越靠前，默认值伪0。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">.flex-item &#123;</span><br><span class="line">    -webkit-order: ;    //Safari</span><br><span class="line">    order: ;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>该属性能在不重构HTML代码的情况下重新排列flex元素。<br><img src="https://cask.scotch.io/2015/04/flexbox-order.jpg" alt="image"></p>
+<p><strong>默认值：==0==</strong></p>
+<h4 id="flex-grow"><a href="#flex-grow" class="headerlink" title="flex-grow"></a>flex-grow</h4><p>当容器有剩余空间时，该属性定义flex元素相对于其它元素的放大比例<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">.flex-ite &#123;</span><br><span class="line">    -webkit-flex-grow: ;    //Safari</span><br><span class="line">    flex-grow: ;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>若所有元素均有相同flex-grow值，则在容器中它们大小相同。<br><img src="https://cask.scotch.io/2015/04/flexbox-flex-grow-1.jpg" alt="images"></p>
+<p>第二个元素相对于其它元素而言占据更多空间<br><img src="https://cask.scotch.io/2015/04/flexbox-flex-grow-2.jpg" alt="image"></p>
+<p><strong>m默认值：==0==</strong></p>
+<p><strong>注意事项：==负值无效==</strong></p>
+<h4 id="flex-shrink"><a href="#flex-shrink" class="headerlink" title="flex-shrink"></a>flex-shrink</h4><p>若空间不足，该属性定义元素相较于其它元素而言缩小比例<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">.flex-item &#123;</span><br><span class="line">    -webkit-flex-shrink: ;      //Safari</span><br><span class="line">    flex-shrink: ;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>一般情况下，所有元素都可以被缩小，但若值设为0则保留原始大小<br><img src="https://cask.scotch.io/2015/04/flexbox-flex-shrink.jpg" alt="images"></p>
+<p><strong>默认值：==1==</strong></p>
+<p><strong>注意：==负值无效==</strong></p>
+<h4 id="flex-basis"><a href="#flex-basis" class="headerlink" title="flex-basis"></a>flex-basis</h4><p>该属性与width和heigh属性取值相同，在分配多余空间之前定义flex元素的初始大小。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">.flex-item &#123;</span><br><span class="line">    -webkit-flex-basis: auto;       //Safari</span><br><span class="line">    flex-basis: auto;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>flex-basis确定了第四个元素的初始大小<br><img src="https://cask.scotch.io/2015/04/flexbox-flex-basis.jpg" alt="images"></p>
+<p><strong>m默认值：==auto==</strong></p>
+<h4 id="flex"><a href="#flex" class="headerlink" title="flex"></a>flex</h4><p>该属性是flex-grow, flex-shrink和flex-basis的简写。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">.flex-item &#123;</span><br><span class="line">    -webkit-flex: ;     //Safari</span><br><span class="line">    flex:  ;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p><strong>默认值：==0 1 auto==</strong></p>
+<h4 id="align-self"><a href="#align-self" class="headerlink" title="align-self"></a>align-self</h4><p>align-self属性允许单个元素与其它元素有不一样的对齐方式，可覆盖align-items属性。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">.flex-item &#123;</span><br><span class="line">    -webkit-align-self: auto | flex-start | flex-end | center | baseline | stretch;     //Safari</span><br><span class="line">    align-self: auto | flex-start | flex-end | center | baseline | stretch;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>第三、四个元素的align-self属性覆盖了其对齐方式<br><img src="https://cask.scotch.io/2015/04/flexbox-align-self.jpg" alt="images"></p>
+<p><strong>默认值：==auto==</strong></p>
+<p><strong>注意：默认值为auto，表示继承父元素align-items属性，如果没有父元素，则等同于stretch</strong></p>
+<h4 id="flex元素注意事项"><a href="#flex元素注意事项" class="headerlink" title="flex元素注意事项"></a>flex元素注意事项</h4><ul>
+<li>float，clear与vertical-align均对其无效，也不会使其脱离文档流。</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/07/11/flex 布局/" data-id="cjsl288f50003msi0gfp0cyui" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2019/01/13/React知识点整理/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          React知识点整理
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2018/06/15/git学习笔记/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">git学习笔记</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">February 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2019/02/25/test-my-site/">test_my_site</a>
+          </li>
+        
+          <li>
+            <a href="/2019/02/25/hello-world/">Hello World</a>
+          </li>
+        
+          <li>
+            <a href="/2019/01/13/React知识点整理/">React知识点整理</a>
+          </li>
+        
+          <li>
+            <a href="/2018/07/11/flex 布局/">flex布局</a>
+          </li>
+        
+          <li>
+            <a href="/2018/06/15/git学习笔记/">git学习笔记</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2019 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>
