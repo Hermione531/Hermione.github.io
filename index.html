@@ -1180,8 +1180,7 @@
 
       
         
-          
-            <h3 id="undefined-与-null"><a href="#undefined-与-null" class="headerlink" title="undefined 与 null"></a>undefined 与 null</h3><ul>
+          <h3 id="undefined-与-null"><a href="#undefined-与-null" class="headerlink" title="undefined 与 null"></a>undefined 与 null</h3><ul>
 <li><h5 id="区别"><a href="#区别" class="headerlink" title="区别"></a>区别</h5>在使用var声明变量但未对其初始化时，变量的指为undefined；<br>null 指表示一个空对象指针。</li>
 </ul>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">typeof(undefined);      //undefined</span><br><span class="line">typeof(null);           //object</span><br></pre></td></tr></table></figure>
@@ -1189,45 +1188,13 @@
 <li><h5 id="联系"><a href="#联系" class="headerlink" title="联系"></a>联系</h5>undefined 值派生自 null值<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">alert(null == undefined);       //true</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
-<h3 id="作用域和作用域链"><a href="#作用域和作用域链" class="headerlink" title="作用域和作用域链"></a>作用域和作用域链</h3><ul>
-<li><h5 id="作用域"><a href="#作用域" class="headerlink" title="作用域"></a>作用域</h5>js中，作用域只有两个：全局作用域和函数作用域，无块级作用域。</li>
-<li><h5 id="作用域链"><a href="#作用域链" class="headerlink" title="作用域链"></a>作用域链</h5>当代码在一个环境中执行时，会创建变量的作用域链。作用域链的用途，是<strong>保证对执行环境有权访问的所有变量和函数的==有序访问==</strong>。作用域链的前端，始终都是当前执行的代码所在环境的变量对象，下一个变量对象来自包含（外部）环境，在下一个对象则来自下一个包含环境，这样，一直延续到全局环境。<strong>全局执行环境的变量对象始终都是作用域链中的最后一个对象</strong>。</li>
-</ul>
-<h3 id="this"><a href="#this" class="headerlink" title="this"></a>this</h3><p>this 是函数内部的对象，引用的是函数执行环境的对象，当在网页的全局作用域中调用函数时，this对象引用的就是window，<strong>当函数作为某个对象的方法调用时，this等于那个对象</strong>。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">var name = &quot;name&quot;;</span><br><span class="line">var object = &#123;</span><br><span class="line">    name : &quot;object&quot;,</span><br><span class="line">    getName : function() &#123;</span><br><span class="line">        return this.name</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">object.getName();       //object</span><br></pre></td></tr></table></figure>
-<h3 id="apply-call-bind"><a href="#apply-call-bind" class="headerlink" title="apply call bind"></a>apply call bind</h3><p>每个函数都包含两个非继承而来的方法：apply() 和 call()。它们的用途都是在特定的作用域种调用函数，实际上等于<strong>设置==函数体内的this对象==的值</strong>。</p>
-<ul>
-<li><h5 id="apply"><a href="#apply" class="headerlink" title="apply"></a>apply</h5>apply()方法接收两个参数——运行函数的作用域和参数数组，其中，第二个参数可以是Array的实例，也可以是arguments对象。</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">function sum(num1, num2) &#123;</span><br><span class="line">    return num1 + num2;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">function callSum1(num1, num2) &#123;</span><br><span class="line">    return sum.apply(this, arguments);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">function callSum2(num1, num2) &#123;</span><br><span class="line">    return sum.apply(this, [num1, num2]);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">console.log(callSum1(10, 10));      //20</span><br><span class="line">console.log(callSum2(10, 10));      //20</span><br></pre></td></tr></table></figure>
-<ul>
-<li><h5 id="call"><a href="#call" class="headerlink" title="call"></a>call</h5>call() 与 apply() 方法的作用相同，不同的是调用参数，call() 也接收两个参数，第一个参数为this指没有变化，变化的是其余参数都直接传递给函数。</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">function sum(num1, num2) &#123;</span><br><span class="line">    return num1 + num2;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">function callSum(num1, num2) &#123;</span><br><span class="line">    return sum.call(this, num1, num2);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">console.log(callSum(10, 10));       //20</span><br></pre></td></tr></table></figure>
-<p><strong>call() 与 apply() 能==扩充函数作用域==</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">window.color = &quot;red&quot;;</span><br><span class="line">var o = &#123;color : &quot;blue&quot;&#125;;</span><br><span class="line"></span><br><span class="line">function getColor() &#123;</span><br><span class="line">    return this.color;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">getColor();             //red</span><br><span class="line"></span><br><span class="line">getColor.call(this);    //red</span><br><span class="line">getColor.call(window);  //red</span><br><span class="line">getColor.call(o);       //blue</span><br></pre></td></tr></table></figure>
-<p><strong>使用call() 与 apply() 扩充作用域，对象不需与方法有任何耦合的关系</strong></p>
-<ul>
-<li><h5 id="bind"><a href="#bind" class="headerlink" title="bind"></a>bind</h5>bind() 会创建一个函数的实例，其this值会被绑定到传给bind()函数的值。</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">window.color = &quot;red&quot;;</span><br><span class="line">var o = &#123;color : &quot;blue&quot;&#125;;</span><br><span class="line">function getColor() &#123;</span><br><span class="line">    return this.color;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">var bindColor = getColor.bind(o);</span><br><span class="line">bindColor();            //blue</span><br></pre></td></tr></table></figure>
-<h3 id="forEach-map-reduce"><a href="#forEach-map-reduce" class="headerlink" title="forEach map reduce"></a>forEach map reduce</h3><p>该方法为==数组方法==。其中forEach() 和 map() 为迭代方法，接收三个参数：数组项的值、该项在数组中的位置和数组对象本身。</p>
-<ul>
-<li><h5 id="forEach"><a href="#forEach" class="headerlink" title="forEach()"></a>forEach()</h5>对数组中的每一项运行给定的函数，==无返回值==，<strong>本质上与使用for循环迭代数组一样</strong>。</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">var num = [1, 2, 3, 4, 5];</span><br><span class="line"></span><br><span class="line">num.forEach(function(item, index, array) &#123;</span><br><span class="line">    console.log(item);      //operations</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-<ul>
-<li><h5 id="map"><a href="#map" class="headerlink" title="map()"></a>map()</h5>对数组中的每一项运行给定函数，==返回每次函数调用结果组成的数组==。</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">var num = [1, 2, 3, 4, 5];</span><br><span class="line"></span><br><span class="line">var mapResult = num.map(function(item, index, array) &#123;</span><br><span class="line">    return item * 2;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">console.log(mapResult);         //[2, 4, 6, 8, 10]</span><br></pre></td></tr></table></figure>
-<ul>
-<li><h5 id="reduce"><a href="#reduce" class="headerlink" title="reduce()"></a>reduce()</h5>reduce() 为归并数组的方法，从数组的第一项开始，逐个遍历到最后，然后构建一个最终返回的值。该方法接收四个参数：前一个值、当前值、项的索引和数组对象。<strong>函数返回的任何值都会作为第一个参数自动传递给下一项</strong>。</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">var num = [1, 2, 3, 4, 5];</span><br><span class="line">var sum = num.reduce(function(prev, cur, index, array)&#123;</span><br><span class="line">    return prev + cur;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">console.log(sum);</span><br></pre></td></tr></table></figure>
-<h3 id="函数柯里化"><a href="#函数柯里化" class="headerlink" title="函数柯里化"></a>函数柯里化</h3><p>函数柯里化用于创建已经设置好了一个或多个参数的函数，基本方法是使用闭包返回一个函数，当函数被调用时，返回的函数还需设置一些传入参数。</p>
-<p>柯里化动态创建步骤：调用另一个函数并为它传入要柯里化的函数和必要参数。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">function curry(fn) &#123;</span><br><span class="line">    var args = Array.prototype.slice.call(arguments, 1);</span><br><span class="line">    return function() &#123;</span><br><span class="line">        var innerArgs = Array.prototype.slice.call(arguments);</span><br><span class="line">        var finalArgs = args.concat(innerArgs);</span><br><span class="line">        return fn.apply(null, finalArgs);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">function sum(num1, num2) &#123;</span><br><span class="line">    return num1 + num2;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">var currySum = curry(add, 5);</span><br><span class="line">console.log(currySum(3));       //8</span><br></pre></td></tr></table></figure>
-          
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/06/07/js 遗漏知识点/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>

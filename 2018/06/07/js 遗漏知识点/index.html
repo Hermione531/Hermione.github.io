@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="Hermione">
 <meta property="og:description" content="undefined 与 null 区别在使用var声明变量但未对其初始化时，变量的指为undefined；null 指表示一个空对象指针。  12typeof(undefined);      //undefinedtypeof(null);           //object  联系undefined 值派生自 null值1alert(null == undefined);       //t">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-02-26T03:00:55.577Z">
+<meta property="og:updated_time" content="2019-02-26T03:03:51.421Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="js遗漏知识点">
 <meta name="twitter:description" content="undefined 与 null 区别在使用var声明变量但未对其初始化时，变量的指为undefined；null 指表示一个空对象指针。  12typeof(undefined);      //undefinedtypeof(null);           //object  联系undefined 值派生自 null值1alert(null == undefined);       //t">
@@ -330,6 +330,7 @@
 <li><h5 id="联系"><a href="#联系" class="headerlink" title="联系"></a>联系</h5>undefined 值派生自 null值<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">alert(null == undefined);       //true</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
+<a id="more"></a>
 <h3 id="作用域和作用域链"><a href="#作用域和作用域链" class="headerlink" title="作用域和作用域链"></a>作用域和作用域链</h3><ul>
 <li><h5 id="作用域"><a href="#作用域" class="headerlink" title="作用域"></a>作用域</h5>js中，作用域只有两个：全局作用域和函数作用域，无块级作用域。</li>
 <li><h5 id="作用域链"><a href="#作用域链" class="headerlink" title="作用域链"></a>作用域链</h5>当代码在一个环境中执行时，会创建变量的作用域链。作用域链的用途，是<strong>保证对执行环境有权访问的所有变量和函数的==有序访问==</strong>。作用域链的前端，始终都是当前执行的代码所在环境的变量对象，下一个变量对象来自包含（外部）环境，在下一个对象则来自下一个包含环境，这样，一直延续到全局环境。<strong>全局执行环境的变量对象始终都是作用域链中的最后一个对象</strong>。</li>
