@@ -1,0 +1,744 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="js,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="前言寒假在家随便做个网站demo的时候用到了antd的轮播，当时没有找到左边有上下页按钮的示例，回到学校，发现实验的项目也有轮播，不过是用angular做的，这个轮播只有上下页按钮，没有antd的中间可任意选择第几章图片的工具，就想着自己用js实现一下轮播功能，把这两种功能都合起来。 感谢 十五分钟用 JavaScript 基础写一个图片轮播效果 + 思路详解 提供的思路，在实现的时候基本是以上博">
+<meta name="keywords" content="js">
+<meta property="og:type" content="article">
+<meta property="og:title" content="React知识点整理">
+<meta property="og:url" content="http://yoursite.com/2019/02/20/原生js实现图片轮播/index.html">
+<meta property="og:site_name" content="Hermione">
+<meta property="og:description" content="前言寒假在家随便做个网站demo的时候用到了antd的轮播，当时没有找到左边有上下页按钮的示例，回到学校，发现实验的项目也有轮播，不过是用angular做的，这个轮播只有上下页按钮，没有antd的中间可任意选择第几章图片的工具，就想着自己用js实现一下轮播功能，把这两种功能都合起来。 感谢 十五分钟用 JavaScript 基础写一个图片轮播效果 + 思路详解 提供的思路，在实现的时候基本是以上博">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-02-26T02:51:59.995Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="React知识点整理">
+<meta name="twitter:description" content="前言寒假在家随便做个网站demo的时候用到了antd的轮播，当时没有找到左边有上下页按钮的示例，回到学校，发现实验的项目也有轮播，不过是用angular做的，这个轮播只有上下页按钮，没有antd的中间可任意选择第几章图片的工具，就想着自己用js实现一下轮播功能，把这两种功能都合起来。 感谢 十五分钟用 JavaScript 基础写一个图片轮播效果 + 思路详解 提供的思路，在实现的时候基本是以上博">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/02/20/原生js实现图片轮播/">
+
+
+
+
+
+  <title>React知识点整理 | Hermione</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Hermione</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/02/20/原生js实现图片轮播/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="张倩倩">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hermione">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">React知识点整理</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-02-20T10:51:56+08:00">
+                2019-02-20
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/js基础/" itemprop="url" rel="index">
+                    <span itemprop="name">js基础</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>寒假在家随便做个网站demo的时候用到了antd的轮播，当时没有找到左边有上下页按钮的示例，回到学校，发现实验的项目也有轮播，不过是用angular做的，这个轮播只有上下页按钮，没有antd的中间可任意选择第几章图片的工具，就想着自己用js实现一下轮播功能，把这两种功能都合起来。</p>
+<p>感谢 <a href="https://juejin.im/entry/58ec67d88d6d81006c983ab5" target="_blank" rel="noopener">十五分钟用 JavaScript 基础写一个图片轮播效果 + 思路详解</a> 提供的思路，在实现的时候基本是以上博客的思想，有改动。</p>
+<p>主要从三个方面记录自己的实现过程，有部分自己的想法，也有待优化的部分。</p>
+<h3 id="HTML"><a href="#HTML" class="headerlink" title="HTML"></a>HTML</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">&lt;div class=&quot;img-content&quot;&gt;</span><br><span class="line">    &lt;div class=&quot;img-carousel&quot;&gt;</span><br><span class="line">        &lt;div class=&quot;img-container&quot;&gt;&lt;img src=&quot;./images/1.jpg&quot; alt=&quot;&quot;&gt;&lt;/div&gt;</span><br><span class="line">        &lt;div class=&quot;img-container&quot;&gt;&lt;img src=&quot;./images/2.jpg&quot; alt=&quot;&quot;&gt;&lt;/div&gt;</span><br><span class="line">        &lt;div class=&quot;img-container&quot;&gt;&lt;img src=&quot;./images/3.jpg&quot; alt=&quot;&quot;&gt;&lt;/div&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">    &lt;div class=&quot;arrow&quot;&gt;</span><br><span class="line">        &lt;span class=&quot;left-arrow&quot;&gt;&amp;lt;&lt;/span&gt;</span><br><span class="line">        &lt;span class=&quot;right-arrow&quot;&gt;&amp;gt;&lt;/span&gt;  </span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">     </span><br><span class="line">     &lt;div class=&quot;dot-choose&quot;&gt;</span><br><span class="line">        &lt;span class=&quot;dot&quot; style=&quot;background-color: #D4D4D4&quot;&gt;&lt;/span&gt;</span><br><span class="line">        &lt;span class=&quot;dot&quot;&gt;&lt;/span&gt;</span><br><span class="line">        &lt;span class=&quot;dot&quot;&gt;&lt;/span&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure>
+<p>html分三个部分，图片显示、左右方向键以及底部四个圆角矩形可供任意选择图片。<br>（习惯在img标签外面套一层div）</p>
+<a id="more"></a>
+<h3 id="css"><a href="#css" class="headerlink" title="css"></a>css</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br></pre></td><td class="code"><pre><span class="line">* &#123;</span><br><span class="line">    margin: 0;</span><br><span class="line">    padding: 0;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">.img-content &#123;</span><br><span class="line">    width: 800px;</span><br><span class="line">    position: relative;</span><br><span class="line">    overflow: hidden;</span><br><span class="line">    margin: auto;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">.img-carousel &#123;</span><br><span class="line">    width: 4000px;</span><br><span class="line">    display: inline-block;</span><br><span class="line">    overflow: hidden;</span><br><span class="line">    transition: all 2s;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">.img-container &#123;</span><br><span class="line">    width: 800px;</span><br><span class="line">    height: 600px;</span><br><span class="line">    text-align: center;</span><br><span class="line">    line-height: 600px;</span><br><span class="line">    translate: all 2s;</span><br><span class="line">    float: left;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">.img-container img &#123;</span><br><span class="line">    width: 100%;</span><br><span class="line">    vertical-align: middle;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">.arrow &#123;</span><br><span class="line">    position: absolute;</span><br><span class="line">    top: 289px;</span><br><span class="line">    font-size: 36px;</span><br><span class="line">    z-index: 999;</span><br><span class="line">    width: 800px;</span><br><span class="line">    color: white;</span><br><span class="line">&#125;</span><br><span class="line">.right-arrow &#123;</span><br><span class="line">    float: right;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">.arrow:hover, .dot:hover &#123;</span><br><span class="line">    cursor: pointer;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">.dot-choose &#123;</span><br><span class="line">    position: absolute;</span><br><span class="line">    bottom: 100px;</span><br><span class="line">    width: 600px;</span><br><span class="line">    text-align: center;</span><br><span class="line">    z-index: 999;</span><br><span class="line">    margin-left: 300px;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">.dot&#123;</span><br><span class="line">    float: left;</span><br><span class="line">    width: 50px;</span><br><span class="line">    height: 5px;</span><br><span class="line">    border-radius: 100px;</span><br><span class="line">    background-color: #D4D4D4;</span><br><span class="line">    margin-right: 20px;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">.dot:hover &#123;</span><br><span class="line">    background-color: white;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>css主要有两点：</p>
+<ul>
+<li>img标签的图片全部排成一行，设置外层图片显示区域（img-carouse）的宽度为一定值（此处设为800px），多余的隐藏，即可每次显示一张图片。</li>
+<li>img-carouse 设置transition，可供移动。</li>
+</ul>
+<h3 id="Javascript"><a href="#Javascript" class="headerlink" title="Javascript"></a>Javascript</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br></pre></td><td class="code"><pre><span class="line">var idx = 0;</span><br><span class="line">var timer;</span><br><span class="line">window.onload = function() &#123;</span><br><span class="line">    var imgCarousel = document.getElementsByClassName(&quot;img-carousel&quot;)[0];</span><br><span class="line">    var imgContainer = document.getElementsByClassName(&quot;img-container&quot;);</span><br><span class="line"></span><br><span class="line">    var prev = document.getElementsByClassName(&quot;left-arrow&quot;)[0];</span><br><span class="line">    var next = document.getElementsByClassName(&quot;right-arrow&quot;)[0];</span><br><span class="line">    var arrows = document.getElementsByClassName(&quot;arrow&quot;);</span><br><span class="line"></span><br><span class="line">    var dots = document.getElementsByClassName(&apos;dot&apos;);</span><br><span class="line"></span><br><span class="line">    var count = imgContainer.length;</span><br><span class="line"></span><br><span class="line">    slideImg();</span><br><span class="line"></span><br><span class="line">    function changeDotBg(index) &#123;</span><br><span class="line">        for(var j = 0; j &lt; dots.length; ++j) &#123;</span><br><span class="line">                dots[j].style.backgroundColor = &quot;#D4D4D4&quot;;</span><br><span class="line">            &#125;</span><br><span class="line">            </span><br><span class="line">        dots[index].style.backgroundColor = &quot;white&quot;;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    function slideImg() &#123;</span><br><span class="line">        timer = setInterval(function() &#123;</span><br><span class="line">            idx ++ ;</span><br><span class="line">            if(idx &lt; count) &#123;</span><br><span class="line">                </span><br><span class="line">                imgCarousel.style.transform = &quot;translate(&quot; + -800 * idx + &quot;px)&quot;;</span><br><span class="line">                imgCarousel.style.transition = &quot;2s&quot;;</span><br><span class="line">             &#125; else &#123;</span><br><span class="line">                imgCarousel.style.transition = &quot;0s&quot;;</span><br><span class="line">                imgCarousel.style.transform = &quot;translate(0px)&quot;;</span><br><span class="line">                idx = 0;</span><br><span class="line">             &#125;</span><br><span class="line"></span><br><span class="line">            changeDotBg(idx);</span><br><span class="line">           </span><br><span class="line">        &#125;, 2000);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    for (var i = 0; i &lt; arrows.length; ++i) &#123;</span><br><span class="line">        arrows[i].onmouseover = function() &#123;</span><br><span class="line">            clearInterval(timer);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        arrows[i].onmouseout = function() &#123;</span><br><span class="line">            slideImg();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  </span><br><span class="line">        </span><br><span class="line">    prev.onclick = function() &#123;</span><br><span class="line">        if(idx !== 0) &#123;</span><br><span class="line">            idx --;</span><br><span class="line">            imgCarousel.style.transition = &quot;2s&quot;;</span><br><span class="line">        &#125; else &#123;</span><br><span class="line">           idx = count - 1;</span><br><span class="line">           imgCarousel.style.transition = &quot;0s&quot;;</span><br><span class="line">        &#125;</span><br><span class="line">        changeDotBg(idx);</span><br><span class="line">        imgCarousel.style.transform = &quot;translate(&quot; + -800 * idx + &quot;px)&quot;;        </span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    next.onclick = function() &#123;</span><br><span class="line">        if(idx &lt; count - 1) &#123;</span><br><span class="line">            idx ++;</span><br><span class="line">            imgCarousel.style.transition = &quot;2s&quot;;</span><br><span class="line">        &#125; else &#123;</span><br><span class="line">            idx = 0;</span><br><span class="line">            imgCarousel.style.transition = &quot;0s&quot;;</span><br><span class="line">        &#125;</span><br><span class="line">        changeDotBg(idx);</span><br><span class="line">        imgCarousel.style.transform = &quot;translate(&quot; + -800 * idx + &quot;px)&quot;;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    for(var i = 0; i &lt; dots.length; ++i) &#123;</span><br><span class="line">        dots[i].index = i;</span><br><span class="line">        dots[i].onclick = function() &#123;</span><br><span class="line">            clearInterval(timer);      </span><br><span class="line">            changeDotBg(this.index);</span><br><span class="line">            imgCarousel.style.transition = &quot;0s&quot;;</span><br><span class="line">                imgCarousel.style.transform = &quot;translate(&quot; + -800 * this.index + &quot;px)&quot;;</span><br><span class="line">            idx = this.index;</span><br><span class="line">            </span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Javascript部分代码也是分为三块：图片定时滑动到下一张、左右功能键选择、底部矩形框选择。</p>
+<h4 id="图片定时滑动"><a href="#图片定时滑动" class="headerlink" title="图片定时滑动"></a>图片定时滑动</h4><ul>
+<li>使用一个定时器setInterval，可在固定时间之后更换到下一张</li>
+<li>显示区域图片更换用transition移动图片宽度（此处为800px）</li>
+<li>计时器对象timer设置为全局变量，可供某些时刻停止计时。</li>
+<li>idx记录当前显示是第几张图片，全局变量</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">var idx = 0;</span><br><span class="line">var timer;</span><br><span class="line"></span><br><span class="line">window.onload = function() &#123;</span><br><span class="line">    var imgCarousel = document.getElementsByClassName(&quot;img-carousel&quot;)[0];</span><br><span class="line">    var imgContainer = document.getElementsByClassName(&quot;img-container&quot;);</span><br><span class="line"></span><br><span class="line">    var dots = document.getElementsByClassName(&apos;dot&apos;);</span><br><span class="line"></span><br><span class="line">    var count = imgContainer.length;</span><br><span class="line"></span><br><span class="line">    slideImg();</span><br><span class="line"></span><br><span class="line">    function slideImg() &#123;</span><br><span class="line">        timer = setInterval(function() &#123;</span><br><span class="line">            idx ++ ;</span><br><span class="line">            if(idx &lt; count) &#123;</span><br><span class="line">                </span><br><span class="line">                imgCarousel.style.transform = &quot;translate(&quot; + -800 * idx + &quot;px)&quot;;</span><br><span class="line">                imgCarousel.style.transition = &quot;2s&quot;;</span><br><span class="line">             &#125; else &#123;</span><br><span class="line">                imgCarousel.style.transition = &quot;0s&quot;;</span><br><span class="line">                imgCarousel.style.transform = &quot;translate(0px)&quot;;</span><br><span class="line">                idx = 0;</span><br><span class="line">             &#125;</span><br><span class="line">            changeDotBg(idx);</span><br><span class="line">        &#125;, 2000);</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h5 id="滑动到最后一张时应注意"><a href="#滑动到最后一张时应注意" class="headerlink" title="滑动到最后一张时应注意"></a>滑动到最后一张时应注意</h5><p>先判断当前图片索引号是否小于总图片数量，若小于则直接滑动到下一张，否则先取消滑动动画（duration设置为0s）,然后直接跳到第一张。若按最开始参考链接的思路，最后一张会滑动到第一张，影响视觉效果。但直接跳到第一张的做法也不太可取，此处也是待改进的点。之前也想过最后一张图片后接上第一张图片，这样可以从最后一张（视觉上的）先滑动到第一张（拼接之后为实际最后一张图），然后快速定位到第一张，但此处多引入了一个图片元素，就没有采取此种做法。（<strong>如何实现动画效果一样的循环轮播？</strong>）</p>
+<h4 id="上下页按钮"><a href="#上下页按钮" class="headerlink" title="上下页按钮"></a>上下页按钮</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line">var prev = document.getElementsByClassName(&quot;left-arrow&quot;)[0];</span><br><span class="line">var next = document.getElementsByClassName(&quot;right-arrow&quot;)[0];</span><br><span class="line">var arrows = document.getElementsByClassName(&quot;arrow&quot;);</span><br><span class="line"></span><br><span class="line">for (var i = 0; i &lt; arrows.length; ++i) &#123;</span><br><span class="line">    arrows[i].onmouseover = function() &#123;</span><br><span class="line">        clearInterval(timer);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    arrows[i].onmouseout = function() &#123;</span><br><span class="line">        slideImg();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">    </span><br><span class="line">prev.onclick = function() &#123;</span><br><span class="line">    if(idx !== 0) &#123;</span><br><span class="line">        idx --;</span><br><span class="line">        imgCarousel.style.transition = &quot;2s&quot;;</span><br><span class="line">    &#125; else &#123;</span><br><span class="line">       idx = count - 1;</span><br><span class="line">       imgCarousel.style.transition = &quot;0s&quot;;</span><br><span class="line">    &#125;</span><br><span class="line">    changeDotBg(idx);</span><br><span class="line">    imgCarousel.style.transform = &quot;translate(&quot; + -800 * idx + &quot;px)&quot;;        </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">next.onclick = function() &#123;</span><br><span class="line">    if(idx &lt; count - 1) &#123;</span><br><span class="line">        idx ++;</span><br><span class="line">        imgCarousel.style.transition = &quot;2s&quot;;</span><br><span class="line">    &#125; else &#123;</span><br><span class="line">        idx = 0;</span><br><span class="line">        imgCarousel.style.transition = &quot;0s&quot;;</span><br><span class="line">    &#125;</span><br><span class="line">    changeDotBg(idx);</span><br><span class="line">    imgCarousel.style.transform = &quot;translate(&quot; + -800 * idx + &quot;px)&quot;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>就是当前图片索引idx 加1与减1的做法，需要注意的点与上相同，也是最后一张点击向右滑动到最后一张，第一张点击向左滑动到第一张的问题。由于是方向键控制，所以直接跳转在视觉上也不是很突兀，或许方向键可以做成直接切换的效果（duration:0s）。</p>
+<h4 id="底部矩形选择图片"><a href="#底部矩形选择图片" class="headerlink" title="底部矩形选择图片"></a>底部矩形选择图片</h4><p>这里将切换矩形背景色封装为一个函数，方便其他功能调用<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">var dots = document.getElementsByClassName(&apos;dot&apos;);</span><br><span class="line"></span><br><span class="line">function changeDotBg(index) &#123;</span><br><span class="line">    for(var j = 0; j &lt; dots.length; ++j) &#123;</span><br><span class="line">            dots[j].style.backgroundColor = &quot;#D4D4D4&quot;;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">    dots[index].style.backgroundColor = &quot;white&quot;;</span><br><span class="line">&#125;</span><br><span class="line">    </span><br><span class="line">for(var i = 0; i &lt; dots.length; ++i) &#123;</span><br><span class="line">    dots[i].index = i;</span><br><span class="line">    dots[i].onclick = function() &#123;</span><br><span class="line">        clearInterval(timer);      </span><br><span class="line">        changeDotBg(this.index);</span><br><span class="line">        imgCarousel.style.transition = &quot;0s&quot;;</span><br><span class="line">            imgCarousel.style.transform = &quot;translate(&quot; + -800 * this.index + &quot;px)&quot;;</span><br><span class="line">        idx = this.index;</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="待改进点"><a href="#待改进点" class="headerlink" title="待改进点"></a>待改进点</h3><p>如前所述，主要是实现动画效果一致的循环轮播功能。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/js/" rel="tag"># js</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/01/13/React知识点整理/" rel="next" title="React知识点整理">
+                <i class="fa fa-chevron-left"></i> React知识点整理
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">张倩倩</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-name">categories</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-name">tags</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/Hermione531" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-globe"></i>GitHub</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#HTML"><span class="nav-number">2.</span> <span class="nav-text">HTML</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#css"><span class="nav-number">3.</span> <span class="nav-text">css</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Javascript"><span class="nav-number">4.</span> <span class="nav-text">Javascript</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#图片定时滑动"><span class="nav-number">4.1.</span> <span class="nav-text">图片定时滑动</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#滑动到最后一张时应注意"><span class="nav-number">4.1.1.</span> <span class="nav-text">滑动到最后一张时应注意</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#上下页按钮"><span class="nav-number">4.2.</span> <span class="nav-text">上下页按钮</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#底部矩形选择图片"><span class="nav-number">4.3.</span> <span class="nav-text">底部矩形选择图片</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#待改进点"><span class="nav-number">5.</span> <span class="nav-text">待改进点</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">张倩倩</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
