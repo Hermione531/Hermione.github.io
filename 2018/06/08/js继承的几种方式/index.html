@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="Hermione">
 <meta property="og:description" content="1. 原型链方法将原型对象的指针指向另一个类的实例。1234567891011121314function SuperType() &amp;#123;   this.name = &amp;quot;SuperType&amp;quot;;&amp;#125;SuperType.prototype.getSuperName = function() &amp;#123;    return this.name;&amp;#125;functi">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-02-26T01:46:07.840Z">
+<meta property="og:updated_time" content="2019-02-26T01:59:05.441Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="js继承的几种方式">
 <meta name="twitter:description" content="1. 原型链方法将原型对象的指针指向另一个类的实例。1234567891011121314function SuperType() &amp;#123;   this.name = &amp;quot;SuperType&amp;quot;;&amp;#125;SuperType.prototype.getSuperName = function() &amp;#123;    return this.name;&amp;#125;functi">
@@ -331,6 +331,7 @@
 <li>若子类要覆盖超类中的方法，或添加自己的方法，添加方法的代码要放在替换原型的语句之后。</li>
 </ul>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">function SuperType() &#123;</span><br><span class="line">   this.name = &quot;SuperType&quot;;</span><br><span class="line">&#125;</span><br><span class="line">SuperType.prototype.getSuperName = function() &#123;</span><br><span class="line">    return this.name;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">function SubType() &#123;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br><span class="line">//原型链继承</span><br><span class="line">SubType.prototype = new SuperType();</span><br><span class="line"></span><br><span class="line">//添加方法需放在原型继承语句之后</span><br><span class="line">SubType.prototype.getSubName = function() &#123;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
 <h5 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h5><ul>
 <li>若包含引用类型，不可通过原型链的方式来实现继承。原型中定义的属性和方法会在所有实例中共享。</li>
 </ul>

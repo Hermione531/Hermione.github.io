@@ -637,8 +637,7 @@
 
       
         
-          
-            <h4 id="一级目录"><a href="#一级目录" class="headerlink" title="一级目录"></a>一级目录</h4><table>
+          <h4 id="一级目录"><a href="#一级目录" class="headerlink" title="一级目录"></a>一级目录</h4><table>
 <thead>
 <tr>
 <th>名称</th>
@@ -721,224 +720,13 @@
 <li>暂存文件，将文件的快照放入暂存区域</li>
 <li>提交更新，找到暂存区域的文件，将快照永久性存储到Git仓库目录</li>
 </ol>
-<h4 id="工作目录下Git文件两种状态"><a href="#工作目录下Git文件两种状态" class="headerlink" title="工作目录下Git文件两种状态"></a>工作目录下Git文件两种状态</h4><p>==已跟踪和未跟踪==。</p>
-<p>已跟踪文件:</p>
-<ul>
-<li>被纳入了版本控制的文件</li>
-<li>在上一次快照中有记录</li>
-<li>状态可能处于未修改、已修改或已放入暂存区</li>
-</ul>
-<p>为跟踪文件：</p>
-<ul>
-<li>除已跟踪文件外的所有文件</li>
-</ul>
-<p>使用Git时文件的生命周期：<br><img src="https://progit.bootcss.com/images/lifecycle.png" alt="image"></p>
-<h2 id="Git基础"><a href="#Git基础" class="headerlink" title="Git基础"></a>Git基础</h2><h4 id="获取Git仓库"><a href="#获取Git仓库" class="headerlink" title="获取Git仓库"></a>获取Git仓库</h4><p>有两种获取Git仓库的方法：</p>
-<h5 id="在现有项目或目录下导入所有文件到Git中"><a href="#在现有项目或目录下导入所有文件到Git中" class="headerlink" title="在现有项目或目录下导入所有文件到Git中"></a>在现有项目或目录下导入所有文件到Git中</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git init</span><br></pre></td></tr></table></figure>
-<p>该命令创建一个名为.git的子目录，包含初始化的Git仓库中所有的必须文件，这些文件是Git仓库的主干。</p>
-<h6 id="git文件夹"><a href="#git文件夹" class="headerlink" title=".git文件夹"></a>.git文件夹</h6><p><img src="https://img-blog.csdn.net/20171128121600539?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvbWF5Zmxh/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center" alt="image"></p>
-<table>
-<thead>
-<tr>
-<th>文件（夹）</th>
-<th>描述</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>hooks/</td>
-<td>存放一些shell脚本</td>
-</tr>
-<tr>
-<td>info/</td>
-<td>存放仓库信息</td>
-</tr>
-<tr>
-<td>logs/</td>
-<td>保存所有更新的引用记录</td>
-</tr>
-<tr>
-<td>logs/HEAD</td>
-<td>内容：上一次提交哈希值 本次提交哈希值 <em> </em> Linux时间、东八区 提交信息</td>
-</tr>
-<tr>
-<td>objects/</td>
-<td>存放所有的git对象</td>
-</tr>
-<tr>
-<td>refs/heads/</td>
-<td>保存当前最新的一次提交的哈希值</td>
-</tr>
-<tr>
-<td>COMMIT_CDITMSG</td>
-<td>保存当前最新的一次提交的哈希值</td>
-</tr>
-<tr>
-<td>config</td>
-<td>git仓库的配置文件</td>
-</tr>
-<tr>
-<td>description</td>
-<td>仓库的描述信息，主要给gitweb等git托管系统使用</td>
-</tr>
-<tr>
-<td>FETCH_HEAD</td>
-<td>一个版本链接，指向着目前已经从远程仓库取下来的分支的末端</td>
-</tr>
-<tr>
-<td>HEAD</td>
-<td>映射到ref引用，能够找到下一次commit的前一次哈希值（logs内）</td>
-</tr>
-<tr>
-<td>index</td>
-<td>暂存区（stage），二进制文件</td>
-</tr>
-<tr>
-<td>ORIG_HEAD</td>
-<td>HEAD指针的前一个状态</td>
-</tr>
-<tr>
-<td>packed-refs</td>
-<td></td>
-</tr>
-</tbody>
-</table>
-<p>当更新一个引用时，git不会packed-refs，而是会在refs/heads下写入一个新文件。当查找一个引用时，git首先在refs目录下查找，如果未找到则到packed-refs文件中去查找</p>
-<h5 id="从一个服务器克隆一个现有的Git仓库"><a href="#从一个服务器克隆一个现有的Git仓库" class="headerlink" title="从一个服务器克隆一个现有的Git仓库"></a>从一个服务器克隆一个现有的Git仓库</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone [url]</span><br></pre></td></tr></table></figure>
-<p>==Git克隆的是该Git仓库服务器上的几乎所有数据==<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone ../../test</span><br></pre></td></tr></table></figure></p>
-<p>上命令会在当前目录下创建一个名为test的目录，并在这个目录下<strong>初始化一个.git文件夹</strong>，然后从中读取最新版本的文件的拷贝。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">//本地文件夹名为 name</span><br><span class="line">git clone [url] name</span><br></pre></td></tr></table></figure>
-<h4 id="记录更新到仓库"><a href="#记录更新到仓库" class="headerlink" title="记录更新到仓库"></a>记录更新到仓库</h4><p>工作目录下的每个文件都不外乎两种状态：已跟踪和未跟踪。</p>
-<p>已跟踪文件:</p>
-<ul>
-<li>被纳入了版本控制的文件</li>
-<li>在上一次快照中有记录</li>
-<li>状态可能处于未修改、已修改或已放入暂存区</li>
-</ul>
-<p>为跟踪文件：</p>
-<ul>
-<li>除已跟踪文件外的所有文件</li>
-</ul>
-<p>使用Git时文件的生命周期：<br><img src="https://progit.bootcss.com/images/lifecycle.png" alt="image"></p>
-<h5 id="检查当前文件状态"><a href="#检查当前文件状态" class="headerlink" title="检查当前文件状态"></a>检查当前文件状态</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">git status</span><br><span class="line"></span><br><span class="line">//状态简揽</span><br><span class="line">git status -s</span><br></pre></td></tr></table></figure>
-<table>
-<thead>
-<tr>
-<th>状态</th>
-<th>描述</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>??</td>
-<td>未跟踪</td>
-</tr>
-<tr>
-<td>A</td>
-<td>新添加到暂存区的文件</td>
-</tr>
-<tr>
-<td>M</td>
-<td>修改过的文件</td>
-</tr>
-<tr>
-<td>MM</td>
-<td>文件修改且已放入暂存区（左M），文件修改后未放入暂存区（右M）</td>
-</tr>
-</tbody>
-</table>
-<h5 id="跟踪新文件"><a href="#跟踪新文件" class="headerlink" title="跟踪新文件"></a>跟踪新文件</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git add [file]</span><br></pre></td></tr></table></figure>
-<p>此时再运行git status查看文件状态。</p>
-<h5 id="忽略文件"><a href="#忽略文件" class="headerlink" title="忽略文件"></a>忽略文件</h5><p>无需纳入Git管理，也不希望出现在未跟踪文件列表的文件。</p>
-<p>创建.gitignore文件，列出要忽略的文件模式</p>
-<h5 id="提交更新"><a href="#提交更新" class="headerlink" title="提交更新"></a>提交更新</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git commit</span><br></pre></td></tr></table></figure>
-<p>提价更新前要确认是否所有需更新文件都有git add。<br>每次准备提交前，先用git status查看文件是否已暂存，然后再提交。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git commit -m &quot;提交信息&quot;</span><br></pre></td></tr></table></figure>
-<p>==提交时记录的是放在<strong>暂存区域的快照</strong>==。</p>
-<p>跳过使用暂存区域:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git commit -a</span><br></pre></td></tr></table></figure></p>
-<p>提交后，Git终端会显示的信息：</p>
-<ul>
-<li>提交的分支</li>
-<li>提交的完整SHA-1校验和</li>
-<li>修改过的文件和行信息</li>
-</ul>
-<h5 id="移除文件"><a href="#移除文件" class="headerlink" title="移除文件"></a>移除文件</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git rm [file_name]</span><br></pre></td></tr></table></figure>
-<p>强制删除<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git rm -f [file_name]</span><br></pre></td></tr></table></figure></p>
-<p>把文件从Git仓库中删除（亦即从暂存区域移除），但仍保留在当前工作目录中。即让文件保留在磁盘，但是并不让Git继续跟踪。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git rm --cached [file_name]</span><br></pre></td></tr></table></figure></p>
-<h5 id="查看提交历史"><a href="#查看提交历史" class="headerlink" title="查看提交历史"></a>查看提交历史</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git log</span><br></pre></td></tr></table></figure>
-<h5 id="撤销对文件的修改"><a href="#撤销对文件的修改" class="headerlink" title="撤销对文件的修改"></a>撤销对文件的修改</h5><p>命令行输入git status有提示。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git checkout -- [file]</span><br></pre></td></tr></table></figure></p>
-<h5 id="推送到远程仓库"><a href="#推送到远程仓库" class="headerlink" title="推送到远程仓库"></a>推送到远程仓库</h5><p>将master分支推送到origin服务器：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git push origin master</span><br></pre></td></tr></table></figure></p>
-<h2 id="Git分支"><a href="#Git分支" class="headerlink" title="Git分支"></a>Git分支</h2><h4 id="分支简介"><a href="#分支简介" class="headerlink" title="分支简介"></a>分支简介</h4><p>Git保存的不是文件的变化，而是一系列不同时刻的文件快照。</p>
-<p>在进行提交操作时，Git会保存一个提交对象，该提交对象会包含一个指向暂时内容快照的指针（该提交对象还包含了作者的姓名、邮箱、提交时输入的信息以及指向它的父对象的指针）。首次提交的对象没有父对象，普通提交操作产生的提交对象有一个父对象，而由多个分支合并产生的提交对象有多个父对象。</p>
-<p>Git的分支，本质上是<strong>指向提交对象的==可变指针==</strong>。</p>
-<h4 id="创建分支"><a href="#创建分支" class="headerlink" title="创建分支"></a>创建分支</h4><p>Git创建新分支只是创建了一个可以移动的新指针。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">//创建名为testing的分支</span><br><span class="line">git branch testing</span><br></pre></td></tr></table></figure>
-<p>这会在当前所在的提交对象上创建一个指针。</p>
-<p>==Git中有一个名为HEAD的特殊指针，指向当前所在的本地分支==。git branch命令仅仅创建一个分支，并不会自动切换到新分支中去。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">//查看各个分支当前所指的对象</span><br><span class="line">git lot --oneline --decorate</span><br></pre></td></tr></table></figure>
-<h4 id="分支切换"><a href="#分支切换" class="headerlink" title="分支切换"></a>分支切换</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">//切换到testing分支</span><br><span class="line">git checkout testing</span><br></pre></td></tr></table></figure>
-<p>切换分支会使HEAD指向分支（testing），并且将工作目录恢复成分支（testing）所指向的快照内容。<br>在切换分支时，工作目录里的文件会被改变。如果是切换到一个较旧的分支，工作目录会恢复到该分支最后一次提交时的样子。如果Git不能干净利落地完成这个任务，它将禁止切换分支。</p>
-<h5 id="分叉历史"><a href="#分叉历史" class="headerlink" title="分叉历史"></a>分叉历史</h5><p>输出提交历史、各个分支的指向以及项目分支分叉情况：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git log --oneline --decorate --graph --all</span><br></pre></td></tr></table></figure></p>
-<p>Git分支实质上仅是包含所指对象校验和的文件。</p>
-<h4 id="分支的新建与合并"><a href="#分支的新建与合并" class="headerlink" title="分支的新建与合并"></a>分支的新建与合并</h4><h5 id="新建分支"><a href="#新建分支" class="headerlink" title="新建分支"></a>新建分支</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">//新建issue分支，并切换到该分支</span><br><span class="line">git checkout -b issue</span><br></pre></td></tr></table></figure>
-<h5 id="删除分支"><a href="#删除分支" class="headerlink" title="删除分支"></a>删除分支</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">//删除issue分支</span><br><span class="line">git branch -d issue</span><br></pre></td></tr></table></figure>
-<h5 id="分支的合并"><a href="#分支的合并" class="headerlink" title="分支的合并"></a>分支的合并</h5><p>若合并分支issue到master<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git checkout master</span><br><span class="line">git merge issue</span><br></pre></td></tr></table></figure></p>
-<h5 id="分支管理"><a href="#分支管理" class="headerlink" title="分支管理"></a>分支管理</h5><p>查看分支列表：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git branch</span><br></pre></td></tr></table></figure></p>
-<p>查看每一分支最后一次提交：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git branch -v</span><br></pre></td></tr></table></figure></p>
-<p>查看已合并分支：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git branch --merged</span><br></pre></td></tr></table></figure></p>
-<p>查看未合并分支：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git branch --no-merged</span><br></pre></td></tr></table></figure></p>
-<p>新建和合并分支的时候，所有操作只发生在本地的Git版本库中，没有与服务器发生交互。</p>
-<h4 id="远程分支"><a href="#远程分支" class="headerlink" title="远程分支"></a>远程分支</h4><p>远程引用是对远程仓库的引用（指针），包括分支、标签等。</p>
-<h5 id="拉取"><a href="#拉取" class="headerlink" title="拉取"></a>拉取</h5><p>当git fetch命令从服务器上抓取本地没有的数据时，它并不会修改工作目录中的内容。</p>
-<p>如果有设置好的跟踪分支，git pull会查找当前分支所跟踪的服务器与分支，从服务器上抓取数据然后尝试合并入那个远程分支。</p>
-<h5 id="删除远程分支"><a href="#删除远程分支" class="headerlink" title="删除远程分支"></a>删除远程分支</h5><p>从服务器上删除serverfix分支：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git push origin --delete serverfix</span><br></pre></td></tr></table></figure></p>
-<h4 id="变基"><a href="#变基" class="headerlink" title="变基"></a>变基</h4><p>在Git中整合来自不同分支的修改方法：==merge和rebase==。</p>
-<h5 id="Git钩子"><a href="#Git钩子" class="headerlink" title="Git钩子"></a>Git钩子</h5><p>Git能在特定的重要动作发生时触发自定义脚本，有两组这样的钩子：客户端和服务端。</p>
-<ul>
-<li>客户端钩子由提交和合并等操作调用</li>
-<li>服务端钩子作用于诸如接受被推送的提交的联网操作</li>
-</ul>
-<h4 id="Git内部原理"><a href="#Git内部原理" class="headerlink" title="Git内部原理"></a>Git内部原理</h4><h5 id="底层命令和高层命令"><a href="#底层命令和高层命令" class="headerlink" title="底层命令和高层命令"></a>底层命令和高层命令</h5><p>.git目录初始默认结构：</p>
-<table>
-<thead>
-<tr>
-<th>文件（夹）</th>
-<th>描述</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>HEAD</td>
-<td>指示目前被检出的分支</td>
-</tr>
-<tr>
-<td>config</td>
-<td>包含项目特有的配置选项</td>
-</tr>
-<tr>
-<td>info/</td>
-<td>包含一个全局性排除文件，用以放置不希望被记录在.gitignore文件中的忽略模式</td>
-</tr>
-<tr>
-<td>hooks/</td>
-<td>包含客户端或服务端的钩子脚本</td>
-</tr>
-<tr>
-<td>objects/</td>
-<td>存储所有数据内容</td>
-</tr>
-<tr>
-<td>refs/</td>
-<td>存储指向数据（分支）的提交对象的指针</td>
-</tr>
-<tr>
-<td>index</td>
-<td>保存暂存区信息</td>
-</tr>
-</tbody>
-</table>
-<h5 id="Git对象"><a href="#Git对象" class="headerlink" title="Git对象"></a>Git对象</h5>
-          
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/06/15/git学习笔记/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1077,8 +865,7 @@
 
       
         
-          
-            <h3 id="1-原型链"><a href="#1-原型链" class="headerlink" title="1. 原型链"></a>1. 原型链</h3><h5 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h5><p>将原型对象的指针指向另一个类的实例。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">function SuperType() &#123;</span><br><span class="line">   this.name = &quot;SuperType&quot;;</span><br><span class="line">&#125;</span><br><span class="line">SuperType.prototype.getSuperName = function() &#123;</span><br><span class="line">    return this.name;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">function SubType() &#123;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br><span class="line">SubType.prototype = new SuperType();</span><br><span class="line"></span><br><span class="line">var sub = new SubType();</span><br><span class="line">console.log(sub.getSuperName());</span><br></pre></td></tr></table></figure></p>
+          <h3 id="1-原型链"><a href="#1-原型链" class="headerlink" title="1. 原型链"></a>1. 原型链</h3><h5 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h5><p>将原型对象的指针指向另一个类的实例。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">function SuperType() &#123;</span><br><span class="line">   this.name = &quot;SuperType&quot;;</span><br><span class="line">&#125;</span><br><span class="line">SuperType.prototype.getSuperName = function() &#123;</span><br><span class="line">    return this.name;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">function SubType() &#123;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br><span class="line">SubType.prototype = new SuperType();</span><br><span class="line"></span><br><span class="line">var sub = new SubType();</span><br><span class="line">console.log(sub.getSuperName());</span><br></pre></td></tr></table></figure></p>
 <h5 id="注意使用"><a href="#注意使用" class="headerlink" title="注意使用"></a>注意使用</h5><ul>
 <li>用原型链实现继承时，<strong>==不能使用对象字面量创建原型方法==</strong>，这样会重写原型链。如下：</li>
 </ul>
@@ -1087,53 +874,13 @@
 <li>若子类要覆盖超类中的方法，或添加自己的方法，添加方法的代码要放在替换原型的语句之后。</li>
 </ul>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">function SuperType() &#123;</span><br><span class="line">   this.name = &quot;SuperType&quot;;</span><br><span class="line">&#125;</span><br><span class="line">SuperType.prototype.getSuperName = function() &#123;</span><br><span class="line">    return this.name;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">function SubType() &#123;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br><span class="line">//原型链继承</span><br><span class="line">SubType.prototype = new SuperType();</span><br><span class="line"></span><br><span class="line">//添加方法需放在原型继承语句之后</span><br><span class="line">SubType.prototype.getSubName = function() &#123;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h5 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h5><ul>
-<li>若包含引用类型，不可通过原型链的方式来实现继承。原型中定义的属性和方法会在所有实例中共享。</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">function SuperType() &#123;</span><br><span class="line">   this.name = [&quot;s&quot;, &quot;u&quot;, &quot;p&quot;, &quot;e&quot;, &quot;r&quot;];</span><br><span class="line">&#125;</span><br><span class="line">SuperType.prototype.getSuperName = function() &#123;</span><br><span class="line">    return this.name;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">function SubType() &#123;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br><span class="line">SubType.prototype = new SuperType();</span><br><span class="line"></span><br><span class="line">var sub1 = new SubType();</span><br><span class="line">sub1.name.push(&quot;sub&quot;);</span><br><span class="line">console.log(sub1.getSuperName());       //[ &apos;s&apos;, &apos;u&apos;, &apos;p&apos;, &apos;e&apos;, &apos;r&apos;, &apos;sub&apos; ]</span><br><span class="line"></span><br><span class="line">var sub2 = new SubType();</span><br><span class="line">console.log(sub2.getSuperName());       //[ &apos;s&apos;, &apos;u&apos;, &apos;p&apos;, &apos;e&apos;, &apos;r&apos;, &apos;sub&apos; ]</span><br></pre></td></tr></table></figure>
-<ul>
-<li>在创建子类实例时，不可向超类构造函数传递参数。</li>
-</ul>
-<h3 id="2-借用构造函数"><a href="#2-借用构造函数" class="headerlink" title="2. 借用构造函数"></a>2. 借用构造函数</h3><ul>
-<li><h5 id="改进"><a href="#改进" class="headerlink" title="改进"></a>改进</h5>当原型中包含引用类型时，借用构造函数每个实例都有其父类属性的副本，并不是共享所有属性。</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">function SuperType() &#123;</span><br><span class="line">    this.name = [&quot;s&quot;, &quot;u&quot;, &quot;p&quot;, &quot;e&quot;, &quot;r&quot;];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">function SubType() &#123;</span><br><span class="line">    //调用超类构造函数实现继承</span><br><span class="line">    SuperType.call(this);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">var sub = new SubType();</span><br><span class="line">console.log(sub.name);</span><br></pre></td></tr></table></figure>
-<p><strong>借用构造函数可向父类构造函数中传递参数。</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">function SuperType(type) &#123;</span><br><span class="line">    this.name = [&quot;s&quot;, &quot;u&quot;, &quot;p&quot;, &quot;e&quot;, &quot;r&quot;];</span><br><span class="line">    this.type = type;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">SuperType.prototype.getName = function() &#123;</span><br><span class="line">    return this.name;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">function SubType(type) &#123;</span><br><span class="line">    SuperType.call(this, type);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">SubType.prototype = new SuperType();</span><br><span class="line">SubType.prototype.constructor = SubType;</span><br><span class="line"></span><br><span class="line">var sub1 = new SubType(&quot;SubType&quot;);</span><br><span class="line">console.log(sub1.getName());</span><br></pre></td></tr></table></figure>
-<ul>
-<li><h5 id="问题-1"><a href="#问题-1" class="headerlink" title="问题"></a>问题</h5>借用构造函数方式，方法都在构造函数中定义，<strong>无法实现函数复用</strong>。</li>
-</ul>
-<h3 id="3-组合继承"><a href="#3-组合继承" class="headerlink" title="3. 组合继承"></a>3. 组合继承</h3><ul>
-<li><h5 id="改进-1"><a href="#改进-1" class="headerlink" title="改进"></a>改进</h5>将原型链与借用构造函数方法结合。使用原型链实现对原型属性和方法的继承，借用构造函数实现对实例属性的继承。<strong>函数复用</strong>得以实现。</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">function SuperType(type) &#123;</span><br><span class="line">    this.name = [&quot;s&quot;, &quot;u&quot;, &quot;p&quot;, &quot;e&quot;, &quot;r&quot;];</span><br><span class="line">    this.type = type;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">SuperType.prototype.getType = function() &#123;</span><br><span class="line">    return this.type;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">function SubType(name) &#123;</span><br><span class="line">    //继承共有属性</span><br><span class="line">    SuperType.call(this, name);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">SubType.prototype = new SuperType();</span><br><span class="line">SubType.prototype.constructor = SubType;</span><br><span class="line">//实例共用的方法</span><br><span class="line">SubType.prototype.getName = function() &#123;</span><br><span class="line">    return this.name;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">var sub1 = new SubType(&quot;sub1&quot;);</span><br><span class="line">sub1.name.push(&quot;sub&quot;);</span><br><span class="line">console.log(sub1.getType());</span><br><span class="line">console.log(sub1.getName());</span><br><span class="line"></span><br><span class="line">var sub2 =new SubType(&quot;sub2&quot;);</span><br><span class="line">console.log(sub2.getType());</span><br><span class="line">console.log(sub2.getName());</span><br></pre></td></tr></table></figure>
-<ul>
-<li>缺点</li>
-</ul>
-<p>组合继承会调用两次超类构造函数。</p>
-<h3 id="4-原型式继承"><a href="#4-原型式继承" class="headerlink" title="4. 原型式继承"></a>4. 原型式继承</h3><p>借助原型，基于已有对象创建新对象</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">function object(obj) &#123;</span><br><span class="line">    function F() &#123;&#125;</span><br><span class="line">    F.prototype = obj;</span><br><span class="line">    return new F();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">var person = &#123;</span><br><span class="line">    name: &quot;zhangsan&quot;,</span><br><span class="line">    array: [1, 2, 3]</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">var obj1 = new object(person);</span><br><span class="line">obj1.array.push(4);</span><br><span class="line">console.log(obj1.name);             //zhangsan</span><br><span class="line">console.log(obj1.array);            //[ 1, 2, 3, 4 ]</span><br><span class="line"></span><br><span class="line">var obj2 = new object(person);</span><br><span class="line">console.log(obj2.name);             //zhangsan</span><br><span class="line">console.log(obj2.array);            //[ 1, 2, 3, 4 ]</span><br></pre></td></tr></table></figure>
-<p>ECMAScript5 新增Object.create()方法规范原型式继承。</p>
-<h5 id="问题-2"><a href="#问题-2" class="headerlink" title="问题"></a>问题</h5><ul>
-<li>所有子类实例<strong>共享</strong>父类属性</li>
-<li>无法实现函数复用</li>
-</ul>
-<h3 id="5-寄生式继承"><a href="#5-寄生式继承" class="headerlink" title="5. 寄生式继承"></a>5. 寄生式继承</h3><p>创建一个仅用于封装继承过程的函数，在函数内部以某种方式增强对象，后返回该对象</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">function createObj(obj) &#123;</span><br><span class="line">    var clone = Object.create(obj);</span><br><span class="line">    clone.greet = function() &#123;</span><br><span class="line">        console.log(&quot;hi&quot;);</span><br><span class="line">    &#125;;</span><br><span class="line">    return clone;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">var person = &#123;</span><br><span class="line">    name: &quot;zhangsan&quot;,</span><br><span class="line">    array: [1, 2, 3]</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">var obj = createObj(person);</span><br></pre></td></tr></table></figure>
-<ul>
-<li>缺点</li>
-</ul>
-<p>未实现函数复用</p>
-<h3 id="6-寄生组合式继承"><a href="#6-寄生组合式继承" class="headerlink" title="6. 寄生组合式继承"></a>6. 寄生组合式继承</h3><ul>
-<li>通过借用构造函数来继承属性，通过原型链的混合形式来继承方法。</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">function inherPrototype(subType, superType) &#123;</span><br><span class="line">    var prototype = Object.create(superType.prototype);</span><br><span class="line">    prototype.constructor = subType;</span><br><span class="line">    subType.prototype = prototype;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">function SuperType(type) &#123;</span><br><span class="line">    this.type = type;</span><br><span class="line">    this.name = [&quot;s&quot;, &quot;u&quot;, &quot;p&quot;, &quot;e&quot;, &quot;r&quot;];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">SuperType.prototype.getType = function() &#123;</span><br><span class="line">    return this.type;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">function SubType(type, name) &#123;</span><br><span class="line">    SuperType.call(this, type);</span><br><span class="line"></span><br><span class="line">    this.name = name;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">inherPrototype(SubType, SuperType);</span><br><span class="line"></span><br><span class="line">SubType.prototype.getName = function() &#123;</span><br><span class="line">    return this.name;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<ul>
-<li>改进</li>
-</ul>
-<p>仅调用一次超类构造函数。</p>
-
-          
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/06/08/js继承的几种方式/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
