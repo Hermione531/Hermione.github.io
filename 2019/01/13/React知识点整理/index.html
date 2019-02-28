@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="Hermione">
 <meta property="og:description" content="初入ReactJSX语法 定义标签时，只允许被一个标签包裹 标签一定要闭合 注释被{}包起来  React组件 无状态组件创建时始终保持了==一个实例== 有状态组件创建几次组件就会创建几次实例  React数据流state setState是==异步==方法props props本身是不可变的（==readonly==） ==defaultProps==静态变量可以定义props默认配置（==默">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-02-26T01:57:15.895Z">
+<meta property="og:updated_time" content="2019-02-27T06:03:13.407Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="React知识点整理">
 <meta name="twitter:description" content="初入ReactJSX语法 定义标签时，只允许被一个标签包裹 标签一定要闭合 注释被{}包起来  React组件 无状态组件创建时始终保持了==一个实例== 有状态组件创建几次组件就会创建几次实例  React数据流state setState是==异步==方法props props本身是不可变的（==readonly==） ==defaultProps==静态变量可以定义props默认配置（==默">
@@ -421,7 +421,7 @@
 </ul>
 <h6 id="first-render"><a href="#first-render" class="headerlink" title="first render"></a>first render</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">graph TB</span><br><span class="line">getDefaultProps--&gt;getInitialState</span><br><span class="line">getInitialState--&gt;componentWillMount</span><br><span class="line">componentWillMount--&gt;render</span><br><span class="line">render--&gt;componentDidMount</span><br></pre></td></tr></table></figure>
 <h6 id="props-change"><a href="#props-change" class="headerlink" title="props change"></a>props change</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">graph TB</span><br><span class="line">componentWillReceiveProps--&gt;shouldComponentUpdate</span><br><span class="line">shouldComponentUpdate--&gt;componentWillUpdate</span><br><span class="line">componentWillUpdate--&gt;render</span><br><span class="line">render--&gt;componentDidUpdate</span><br></pre></td></tr></table></figure>
-<h6 id="state-change"><a href="#state-change" class="headerlink" title="state change"></a>state change</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">graph TB</span><br><span class="line">shouldComponentUpdate--&gt;componentWillUpdate</span><br><span class="line">componentWillUpdate--&gt;render</span><br><span class="line">render--&gt;componentDidUpdate</span><br></pre></td></tr></table></figure>
+<h6 id="state-change"><a href="#state-change" class="headerlink" title="state change"></a>state change</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">graph TB</span><br><span class="line">shouldComponentUpdate--&gt;componentWillMount</span><br><span class="line">componentWillMount--&gt;render</span><br><span class="line">render--&gt;componentDidMount</span><br></pre></td></tr></table></figure>
 <p>自定义组件的声明周期主要通过3个阶段进行管理：MOUNTING、RECEIVE_PROPS、UNMOUNTING</p>
 <h6 id="MOUNTING"><a href="#MOUNTING" class="headerlink" title="MOUNTING"></a>MOUNTING</h6><p>mountComponent负责管理生命周期中的getInitialState、componentWillMount、render和componentDidMount。</p>
 <ul>
@@ -637,8 +637,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/08/02/canvas绘图/" rel="next" title="canvas绘图">
-                <i class="fa fa-chevron-left"></i> canvas绘图
+              <a href="/2018/08/04/圣杯布局&双飞翼布局/" rel="next" title="圣杯布局&双飞翼布局">
+                <i class="fa fa-chevron-left"></i> 圣杯布局&双飞翼布局
               </a>
             
           </div>
@@ -726,7 +726,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-count">8</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -737,7 +737,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-count">4</span>
                   <span class="site-state-item-name">categories</span>
                 </a>
               </div>
