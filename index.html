@@ -321,8 +321,7 @@
 
       
         
-          
-            <h4 id="jsonp"><a href="#jsonp" class="headerlink" title="jsonp"></a>jsonp</h4><p><a href="http://www.cnblogs.com/dowinning/archive/2012/04/19/json-jsonp-jquery.html" target="_blank" rel="noopener">说说json与jsonp</a></p>
+          <h4 id="jsonp"><a href="#jsonp" class="headerlink" title="jsonp"></a>jsonp</h4><p><a href="http://www.cnblogs.com/dowinning/archive/2012/04/19/json-jsonp-jquery.html" target="_blank" rel="noopener">说说json与jsonp</a></p>
 <p>jsonp原理是动态添加一个script标签，script标签的src属性是没有跨域限制的。</p>
 <p>在访问的url里传入回调函数及参数。</p>
 <p>缺点：</p>
@@ -350,39 +349,13 @@
 <li>请求中的任意XMLHttpRequestUpload对象均没有注册任何事件监听器；XMLHTTPRequestUpload对象可以使用XMLHttpRequest.upload属性访问</li>
 <li>请求中没有使用ReadableStream对象</li>
 </ul>
-<h6 id="非简单请求"><a href="#非简单请求" class="headerlink" title="非简单请求"></a>非简单请求</h6><p>与简单请求不同是的，非简单请求需==使用options方法发起一个预检请求到服务区，以获知服务器是否允许该实际请求==。</p>
-<p>预检请求与实际请求区别</p>
-<ul>
-<li>首部字段Access-Control-Request-Method告知服务器实际使用的请求方法</li>
-<li>Access-Control-Request-Headers告知服务器实际请求将携带两个自定义请求首部字段X-PINGOTHER与Content-Type</li>
-</ul>
-<p>服务器据此决定改实际请求是否被允许。</p>
-<p>大多数浏览器不支持预检请求的重定向。如果一个预检请求发生了重定向，浏览器将报告错误。</p>
-<p>避免改报错方法：</p>
-<ul>
-<li>在服务端去掉对预检请求的重定向</li>
-<li>将实际请求变成一个简单请求</li>
-</ul>
-<h4 id="document-domain"><a href="#document-domain" class="headerlink" title="document.domain"></a>document.domain</h4><p>该方法只能用于二级域名相同的情况，比如a.test.com和b.test.com</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">//a.html</span><br><span class="line">&lt;iframe src=&quot;http://b.test.com/b.html&quot; id=&quot;iFrame&quot; onload=&quot;load()&quot;&gt;&lt;/iframe&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">    document.domain = &quot;test.com&quot;</span><br><span class="line">    function load() &#123;</span><br><span class="line">        console.log(document.getElementById(&quot;iFrame&quot;).contentWindow);</span><br><span class="line">    &#125;</span><br><span class="line">&lt;/script&gt;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">//b.html</span><br><span class="line">&lt;script&gt;</span><br><span class="line">    document.domain = &quot;test.com&quot;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
-<h4 id="window-name"><a href="#window-name" class="headerlink" title="window.name"></a>window.name</h4><p>name值在不同的页面加载后依旧存在，并且可以支持非常长的那么值（2MB）</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">//a.html</span><br><span class="line">&lt;script&gt;</span><br><span class="line">    window.name = &quot;messages from a&quot;;</span><br><span class="line">    setTimeout(function() &#123;</span><br><span class="line">        window.location = &quot;b.html&quot;;</span><br><span class="line">    &#125;, 3000);</span><br><span class="line">&lt;/script&gt;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">//b.html</span><br><span class="line">&lt;script&gt;</span><br><span class="line">    console.log(window.name);       //messages from a</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
-<h4 id="window-postMessage"><a href="#window-postMessage" class="headerlink" title="window.postMessage"></a>window.postMessage</h4><p>postMessage是HTML5 XMLHttpRequest Level2中可以跨域操作的window属性之一，可以解决一下方面的问题</p>
-<ul>
-<li>页面和其打开的新窗口的数据传递</li>
-<li>多窗口之间消息传递</li>
-<li>页面与嵌套的iframe消息传递</li>
-<li>上面三个场景的跨域数据传递</li>
-</ul>
-<p>postMessage()方法允许来自不同源的脚本采用异步方式进行有限的通信，可以实现跨文本档、多窗口、跨域消息传递。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">//a.html</span><br><span class="line">&lt;iframe src=&quot;http://localhost:8080/b.html&quot; id=&quot;iFrame&quot; onload=&quot;load()&quot;&gt;&lt;/iframe&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">    function load() &#123;</span><br><span class="line">        var iframe = document.getElementById(&quot;iFrame&quot;);</span><br><span class="line">        iframe.contentWindow.postMessage(&quot;messages from a&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">&lt;/script&gt;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">//b.html</span><br><span class="line">&lt;script&gt;</span><br><span class="line">    window.onmessage = function(e) &#123;</span><br><span class="line">        e = e || event;</span><br><span class="line">        console.log(e.data);        //messages from a</span><br><span class="line">    &#125;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
-<p>参考资料：</p>
-<p><a href="http://www.cnblogs.com/dowinning/archive/2012/04/19/json-jsonp-jquery.html" target="_blank" rel="noopener">说说json与jsonp</a></p>
-<p><a href="https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Access_control_CORS" target="_blank" rel="noopener">HTTP访问控制（CORS）</a></p>
-<p><a href="http://www.cnblogs.com/2050/p/3191744.html" target="_blank" rel="noopener">js中几种实用的跨域方法原理详解</a></p>
-<p><a href="https://mp.weixin.qq.com/s?__biz=MzAxODE2MjM1MA==&amp;mid=2651555851&amp;idx=1&amp;sn=8022abfe1f84b3ac8d29f1d1291b557b&amp;chksm=80255fcab752d6dc44801850a345733c07ecfc731d38fba59443cc29bd1911f3433d54f15c21&amp;mpshare=1&amp;scene=1&amp;srcid=#rd" target="_blank" rel="noopener">九种跨域方式实现原理</a></p>
-
-          
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2019/02/21/跨域的几种方式/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
