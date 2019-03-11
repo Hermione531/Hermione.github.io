@@ -534,6 +534,162 @@
 
 
     
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/03/02/记录在浏览器地址栏按回车、F5、Ctrl+F5刷新网页的区别/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="张倩倩">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hermione">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/03/02/记录在浏览器地址栏按回车、F5、Ctrl+F5刷新网页的区别/" itemprop="url">ant design修改默认样式</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-03-02T17:07:21+08:00">
+                2018-03-02
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/网络基础/" itemprop="url" rel="index">
+                    <span itemprop="name">网络基础</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>看了 <a href="https://blog.csdn.net/yui/article/details/6584401" target="_blank" rel="noopener">在浏览器地址栏按回车、F5、Ctrl+F5刷新网页的区别</a> 一文，觉得很神奇，就想着验证一下(以请求百度首页为例)。</p>
+<h5 id="Firefox"><a href="#Firefox" class="headerlink" title="Firefox"></a>Firefox</h5><h6 id="在浏览器地址栏回车"><a href="#在浏览器地址栏回车" class="headerlink" title="在浏览器地址栏回车"></a>在浏览器地址栏回车</h6><blockquote>
+<p>Accept \<br>Accept-Encoding \<br>Accept-Language \<br>Connection: keep-alive \<br>Cookie \<br>Host \<br>Upgrade-Insecure-Requests \<br>User-Agent \</p>
+</blockquote>
+<p>这是初次访问的请求头，缓存过期的情况没能实践成功，也就没法验证请求头中是否有If-Modified-Since这一字段。</p>
+<h6 id="F5刷新请求头"><a href="#F5刷新请求头" class="headerlink" title="F5刷新请求头"></a>F5刷新请求头</h6><blockquote>
+<p>Accept \<br>Accept-Encoding \<br>Accept-Language \<br>Cache-Control: max-age=0 \<br>Connection: keep-alive \<br>Cookie \<br>Host \<br>Upgrade-Insecure-Requests \<br>User-Agent \</p>
+</blockquote>
+<p>与上相比多了Cache-Control字段，值为max-age=0</p>
+<h6 id="Ctrl-F5刷新"><a href="#Ctrl-F5刷新" class="headerlink" title="Ctrl+F5刷新"></a>Ctrl+F5刷新</h6><p>Firefox请求头</p>
+<blockquote>
+<p>Accept \<br>Accept-Encoding \<br>Accept-Language \<br>Cache-Control: no-cache \<br>Connection: keep-alive \<br>Cookie \<br>Host \<br>Pragma: no-cache \<br>Upgrade-Insecure-Requests \<br>User-Agent \</p>
+</blockquote>
+<p>与上不同的是Cache-Controe值为no-cache</p>
+<h5 id="Chrome"><a href="#Chrome" class="headerlink" title="Chrome"></a>Chrome</h5><p>与Firefox不同，Chrome三次请求的请求头都是一样的，与上Ctrl+F5请求头字段一致，可见Chrome不管怎样刷新，都不读取缓存，直接向服务器请求资源。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
   </section>
 
   
@@ -584,7 +740,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">12</span>
+                  <span class="site-state-item-count">13</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -595,7 +751,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-count">6</span>
                   <span class="site-state-item-name">categories</span>
                 </a>
               </div>
@@ -606,7 +762,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-count">9</span>
                   <span class="site-state-item-name">tags</span>
                 </a>
               </div>
