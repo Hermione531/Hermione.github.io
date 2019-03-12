@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="wepback,">
+  <meta name="keywords" content="js,">
 
 
 
@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="将ant design文件编译成less文件，首先需安装less、less-loader 版本信息12345&amp;quot;antd&amp;quot;: &amp;quot;^3.13.4&amp;quot;,&amp;quot;less&amp;quot;: &amp;quot;^3.9.0&amp;quot;,&amp;quot;less-loader&amp;quot;: &amp;quot;^4.1.0&amp;quot;,&amp;quot;css-loader&amp;quot;: &amp;qu">
-<meta name="keywords" content="wepback">
+<meta name="description" content="面试的时候有问到DOM操作，全给忘了，整理一下。 DOMNode类型DOM1级定义了一个Node接口，该接口由DOM中所有节点类型实现。每个节点都有一个nodeType属性，用于表明节点类型。 属性 nodeType nodeName nodeValue childNodes 保存类数组对象NodeList   parentNode ： 指向文档树中的父节点 父节点有firstChild与last">
+<meta name="keywords" content="js">
 <meta property="og:type" content="article">
-<meta property="og:title" content="ant design修改默认样式">
-<meta property="og:url" content="http://yoursite.com/2018/12/07/ant design修改默认样式/index.html">
+<meta property="og:title" content="【整理】JS DOM基本操作方法">
+<meta property="og:url" content="http://yoursite.com/2019/03/12/【整理】JS DOM操作方法/index.html">
 <meta property="og:site_name" content="Hermione">
-<meta property="og:description" content="将ant design文件编译成less文件，首先需安装less、less-loader 版本信息12345&amp;quot;antd&amp;quot;: &amp;quot;^3.13.4&amp;quot;,&amp;quot;less&amp;quot;: &amp;quot;^3.9.0&amp;quot;,&amp;quot;less-loader&amp;quot;: &amp;quot;^4.1.0&amp;quot;,&amp;quot;css-loader&amp;quot;: &amp;qu">
+<meta property="og:description" content="面试的时候有问到DOM操作，全给忘了，整理一下。 DOMNode类型DOM1级定义了一个Node接口，该接口由DOM中所有节点类型实现。每个节点都有一个nodeType属性，用于表明节点类型。 属性 nodeType nodeName nodeValue childNodes 保存类数组对象NodeList   parentNode ： 指向文档树中的父节点 父节点有firstChild与last">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-03-07T06:24:36.735Z">
+<meta property="og:updated_time" content="2019-03-12T15:03:58.432Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="ant design修改默认样式">
-<meta name="twitter:description" content="将ant design文件编译成less文件，首先需安装less、less-loader 版本信息12345&amp;quot;antd&amp;quot;: &amp;quot;^3.13.4&amp;quot;,&amp;quot;less&amp;quot;: &amp;quot;^3.9.0&amp;quot;,&amp;quot;less-loader&amp;quot;: &amp;quot;^4.1.0&amp;quot;,&amp;quot;css-loader&amp;quot;: &amp;qu">
+<meta name="twitter:title" content="【整理】JS DOM基本操作方法">
+<meta name="twitter:description" content="面试的时候有问到DOM操作，全给忘了，整理一下。 DOMNode类型DOM1级定义了一个Node接口，该接口由DOM中所有节点类型实现。每个节点都有一个nodeType属性，用于表明节点类型。 属性 nodeType nodeName nodeValue childNodes 保存类数组对象NodeList   parentNode ： 指向文档树中的父节点 父节点有firstChild与last">
 
 
 
@@ -120,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/12/07/ant design修改默认样式/">
+  <link rel="canonical" href="http://yoursite.com/2019/03/12/【整理】JS DOM操作方法/">
 
 
 
 
 
-  <title>ant design修改默认样式 | Hermione</title>
+  <title>【整理】JS DOM基本操作方法 | Hermione</title>
   
 
 
@@ -233,7 +233,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/12/07/ant design修改默认样式/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/12/【整理】JS DOM操作方法/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="张倩倩">
@@ -250,7 +250,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">ant design修改默认样式</h1>
+          <h1 class="post-title" itemprop="name headline">【整理】JS DOM基本操作方法</h1>
         
 
         <div class="post-meta">
@@ -262,8 +262,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-12-07T14:23:52+08:00">
-                2018-12-07
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-03-12T23:02:06+08:00">
+                2019-03-12
               </time>
             
 
@@ -285,8 +285,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/前端基础应用/" itemprop="url" rel="index">
-                    <span itemprop="name">前端基础应用</span>
+                  <a href="/categories/js基础/" itemprop="url" rel="index">
+                    <span itemprop="name">js基础</span>
                   </a>
                 </span>
 
@@ -322,10 +322,89 @@
       
 
       
-        <p>将ant design文件编译成less文件，首先需安装less、less-loader</p>
-<h6 id="版本信息"><a href="#版本信息" class="headerlink" title="版本信息"></a>版本信息</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&quot;antd&quot;: &quot;^3.13.4&quot;,</span><br><span class="line">&quot;less&quot;: &quot;^3.9.0&quot;,</span><br><span class="line">&quot;less-loader&quot;: &quot;^4.1.0&quot;,</span><br><span class="line">&quot;css-loader&quot;: &quot;^2.1.0&quot;,</span><br><span class="line">&quot;style-loader&quot;: &quot;^0.23.1&quot;,</span><br></pre></td></tr></table></figure>
-<h6 id="babelrc配置"><a href="#babelrc配置" class="headerlink" title=".babelrc配置"></a>.babelrc配置</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    &quot;presets&quot;: [</span><br><span class="line">        &quot;env&quot;,</span><br><span class="line">        &quot;latest&quot;,</span><br><span class="line">        &quot;react&quot;,</span><br><span class="line">        &quot;stage-0&quot;</span><br><span class="line">    ],</span><br><span class="line">    &quot;plugins&quot;:[</span><br><span class="line">        &quot;transform-runtime&quot;,</span><br><span class="line">        &quot;transform-object-rest-spread&quot;,</span><br><span class="line">        [</span><br><span class="line">            &quot;import&quot;, &#123;</span><br><span class="line">                &quot;libraryName&quot;: &quot;antd&quot;,</span><br><span class="line">                &quot;style&quot;: true</span><br><span class="line">            &#125;</span><br><span class="line">        ]</span><br><span class="line">    ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h6 id="webpack-module"><a href="#webpack-module" class="headerlink" title="webpack module"></a>webpack module</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    test: /\.less$/,</span><br><span class="line">    use: [&apos;style-loader&apos;, &apos;css-loader&apos;, &#123;</span><br><span class="line">        loader: &apos;less-loader&apos;,</span><br><span class="line">        options: &#123;</span><br><span class="line">            modifyVars: &#123;</span><br><span class="line">                &quot;primary-color&quot;: &quot;#169BD5&quot;,</span><br><span class="line">                &quot;link-color&quot;: &quot;#169BD5&quot;</span><br><span class="line">            &#125;,</span><br><span class="line">            javascriptEnabled: true</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+        <p>面试的时候有问到DOM操作，全给忘了，整理一下。</p>
+<h3 id="DOM"><a href="#DOM" class="headerlink" title="DOM"></a>DOM</h3><h5 id="Node类型"><a href="#Node类型" class="headerlink" title="Node类型"></a>Node类型</h5><p>DOM1级定义了一个Node接口，该接口由DOM中所有节点类型实现。每个节点都有一个nodeType属性，用于表明节点类型。</p>
+<h6 id="属性"><a href="#属性" class="headerlink" title="属性"></a>属性</h6><ul>
+<li>nodeType</li>
+<li>nodeName</li>
+<li>nodeValue</li>
+<li>childNodes<ul>
+<li>保存类数组对象NodeList</li>
+</ul>
+</li>
+<li>parentNode ： 指向文档树中的父节点<ul>
+<li>父节点有firstChild与lastChild属性，分别指向childNodes列表中的第一个和最后一个节点</li>
+</ul>
+</li>
+<li>nextSibling</li>
+<li>previousSibling</li>
+<li>ownerDocument： 指向整个文档的文档节点</li>
+</ul>
+<h6 id="节点操作方法"><a href="#节点操作方法" class="headerlink" title="节点操作方法"></a>节点操作方法</h6><ul>
+<li>appendChild()</li>
+<li>insertBefore()</li>
+<li>replaceChild()<ul>
+<li>接收两个参数：要插入的节点和要替换的节点</li>
+</ul>
+</li>
+<li>removeChild()</li>
+</ul>
+<h6 id="其他方法"><a href="#其他方法" class="headerlink" title="其他方法"></a>其他方法</h6><p>所有节点共有的方法</p>
+<ul>
+<li>cloneNode(): 用于创建节点副本</li>
+<li>normalize(): 处理文档树中的文本节点</li>
+</ul>
+<h5 id="Document类型"><a href="#Document类型" class="headerlink" title="Document类型"></a>Document类型</h5><p>Document类型表示文档，document对象是HTMLDocument的一个实例，表示整个HTML页面。document对象是window对象的一个属性，可以作为全局对象来访问。</p>
+<h6 id="特征"><a href="#特征" class="headerlink" title="特征"></a>特征</h6><ul>
+<li>nodeType: 9</li>
+<li>nodeName:  #document</li>
+<li>nodeValue: null</li>
+<li>parentNode: null</li>
+</ul>
+<h6 id="属性-1"><a href="#属性-1" class="headerlink" title="属性"></a>属性</h6><ul>
+<li>documentElement</li>
+<li>body: 指向<body>元素</body></li>
+<li>doctype: 取得对&lt;!DOCTYPE&gt;的引用</li>
+<li>title: 取得文档标题</li>
+<li>URL</li>
+<li>domain</li>
+</ul>
+<h6 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h6><ul>
+<li>getElementById()</li>
+<li>getElementsByTagName()</li>
+</ul>
+<h5 id="Element类型"><a href="#Element类型" class="headerlink" title="Element类型"></a>Element类型</h5><ul>
+<li>nodeTye: 1</li>
+<li>nodeName:</li>
+<li>nodeValue</li>
+</ul>
+<h6 id="方法-1"><a href="#方法-1" class="headerlink" title="方法"></a>方法</h6><p>主要是属性方法，自定义特性应加上“data-”前缀以便验证</p>
+<ul>
+<li>getAttribute()</li>
+<li>setAttribute()</li>
+<li>removeAttribute()</li>
+<li>attributes()：返回属性的集合</li>
+<li>createElement()</li>
+<li>appendChild()</li>
+</ul>
+<h5 id="Text类型"><a href="#Text类型" class="headerlink" title="Text类型"></a>Text类型</h5><ul>
+<li>nodeType: 3</li>
+<li>nodeName: #text</li>
+<li>nodeValue</li>
+</ul>
+<h3 id="DOM扩展"><a href="#DOM扩展" class="headerlink" title="DOM扩展"></a>DOM扩展</h3><p>核心方法有两个,可以通过Document及Element类型的实例调用，接收css选择器为参数</p>
+<ul>
+<li>querySelector()</li>
+<li>querySelectorAll()</li>
+</ul>
+<h6 id="元素遍历方法"><a href="#元素遍历方法" class="headerlink" title="元素遍历方法"></a>元素遍历方法</h6><ul>
+<li>childElementCount: 返回子元素的个数</li>
+<li>firstElementChild</li>
+<li>lastElementChild</li>
+<li>previousElementSibling</li>
+<li>nextElementSibling</li>
+</ul>
+
       
     </div>
     
@@ -342,7 +421,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/wepback/" rel="tag"># wepback</a>
+            <a href="/tags/js/" rel="tag"># js</a>
           
         </div>
       
@@ -355,8 +434,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/11/09/与后台进行通信webpack配置/" rel="next" title="与后台进行通信webpack配置">
-                <i class="fa fa-chevron-left"></i> 与后台进行通信webpack配置
+              <a href="/2019/03/02/记录在浏览器地址栏按回车、F5、Ctrl+F5刷新网页的区别/" rel="next" title="记录浏览器在地址栏按回车、F5、Ctrl+F5刷新网页的区别">
+                <i class="fa fa-chevron-left"></i> 记录浏览器在地址栏按回车、F5、Ctrl+F5刷新网页的区别
               </a>
             
           </div>
@@ -364,10 +443,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/01/13/React知识点整理/" rel="prev" title="React知识点整理">
-                React知识点整理 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -509,7 +584,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-6"><a class="nav-link" href="#版本信息"><span class="nav-number">1.</span> <span class="nav-text">版本信息</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#babelrc配置"><span class="nav-number">2.</span> <span class="nav-text">.babelrc配置</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#webpack-module"><span class="nav-number">3.</span> <span class="nav-text">webpack module</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#DOM"><span class="nav-number">1.</span> <span class="nav-text">DOM</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Node类型"><span class="nav-number">1.0.1.</span> <span class="nav-text">Node类型</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#属性"><span class="nav-number">1.0.1.1.</span> <span class="nav-text">属性</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#节点操作方法"><span class="nav-number">1.0.1.2.</span> <span class="nav-text">节点操作方法</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#其他方法"><span class="nav-number">1.0.1.3.</span> <span class="nav-text">其他方法</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Document类型"><span class="nav-number">1.0.2.</span> <span class="nav-text">Document类型</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#特征"><span class="nav-number">1.0.2.1.</span> <span class="nav-text">特征</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#属性-1"><span class="nav-number">1.0.2.2.</span> <span class="nav-text">属性</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#方法"><span class="nav-number">1.0.2.3.</span> <span class="nav-text">方法</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Element类型"><span class="nav-number">1.0.3.</span> <span class="nav-text">Element类型</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#方法-1"><span class="nav-number">1.0.3.1.</span> <span class="nav-text">方法</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Text类型"><span class="nav-number">1.0.4.</span> <span class="nav-text">Text类型</span></a></li></ol></li></ol><li class="nav-item nav-level-3"><a class="nav-link" href="#DOM扩展"><span class="nav-number">2.</span> <span class="nav-text">DOM扩展</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#元素遍历方法"><span class="nav-number">2.0.0.1.</span> <span class="nav-text">元素遍历方法</span></a></li></ol></li></div>
             
 
           </div>

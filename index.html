@@ -229,6 +229,229 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/12/【整理】JS DOM操作方法/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="张倩倩">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hermione">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/03/12/【整理】JS DOM操作方法/" itemprop="url">【整理】JS DOM基本操作方法</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-03-12T23:02:06+08:00">
+                2019-03-12
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/js基础/" itemprop="url" rel="index">
+                    <span itemprop="name">js基础</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>面试的时候有问到DOM操作，全给忘了，整理一下。</p>
+<h3 id="DOM"><a href="#DOM" class="headerlink" title="DOM"></a>DOM</h3><h5 id="Node类型"><a href="#Node类型" class="headerlink" title="Node类型"></a>Node类型</h5><p>DOM1级定义了一个Node接口，该接口由DOM中所有节点类型实现。每个节点都有一个nodeType属性，用于表明节点类型。</p>
+<h6 id="属性"><a href="#属性" class="headerlink" title="属性"></a>属性</h6><ul>
+<li>nodeType</li>
+<li>nodeName</li>
+<li>nodeValue</li>
+<li>childNodes<ul>
+<li>保存类数组对象NodeList</li>
+</ul>
+</li>
+<li>parentNode ： 指向文档树中的父节点<ul>
+<li>父节点有firstChild与lastChild属性，分别指向childNodes列表中的第一个和最后一个节点</li>
+</ul>
+</li>
+<li>nextSibling</li>
+<li>previousSibling</li>
+<li>ownerDocument： 指向整个文档的文档节点</li>
+</ul>
+<h6 id="节点操作方法"><a href="#节点操作方法" class="headerlink" title="节点操作方法"></a>节点操作方法</h6><ul>
+<li>appendChild()</li>
+<li>insertBefore()</li>
+<li>replaceChild()<ul>
+<li>接收两个参数：要插入的节点和要替换的节点</li>
+</ul>
+</li>
+<li>removeChild()</li>
+</ul>
+<h6 id="其他方法"><a href="#其他方法" class="headerlink" title="其他方法"></a>其他方法</h6><p>所有节点共有的方法</p>
+<ul>
+<li>cloneNode(): 用于创建节点副本</li>
+<li>normalize(): 处理文档树中的文本节点</li>
+</ul>
+<h5 id="Document类型"><a href="#Document类型" class="headerlink" title="Document类型"></a>Document类型</h5><p>Document类型表示文档，document对象是HTMLDocument的一个实例，表示整个HTML页面。document对象是window对象的一个属性，可以作为全局对象来访问。</p>
+<h6 id="特征"><a href="#特征" class="headerlink" title="特征"></a>特征</h6><ul>
+<li>nodeType: 9</li>
+<li>nodeName:  #document</li>
+<li>nodeValue: null</li>
+<li>parentNode: null</li>
+</ul>
+<h6 id="属性-1"><a href="#属性-1" class="headerlink" title="属性"></a>属性</h6><ul>
+<li>documentElement</li>
+<li>body: 指向<body>元素</body></li>
+<li>doctype: 取得对&lt;!DOCTYPE&gt;的引用</li>
+<li>title: 取得文档标题</li>
+<li>URL</li>
+<li>domain</li>
+</ul>
+<h6 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h6><ul>
+<li>getElementById()</li>
+<li>getElementsByTagName()</li>
+</ul>
+<h5 id="Element类型"><a href="#Element类型" class="headerlink" title="Element类型"></a>Element类型</h5><ul>
+<li>nodeTye: 1</li>
+<li>nodeName:</li>
+<li>nodeValue</li>
+</ul>
+<h6 id="方法-1"><a href="#方法-1" class="headerlink" title="方法"></a>方法</h6><p>主要是属性方法，自定义特性应加上“data-”前缀以便验证</p>
+<ul>
+<li>getAttribute()</li>
+<li>setAttribute()</li>
+<li>removeAttribute()</li>
+<li>attributes()：返回属性的集合</li>
+<li>createElement()</li>
+<li>appendChild()</li>
+</ul>
+<h5 id="Text类型"><a href="#Text类型" class="headerlink" title="Text类型"></a>Text类型</h5><ul>
+<li>nodeType: 3</li>
+<li>nodeName: #text</li>
+<li>nodeValue</li>
+</ul>
+<h3 id="DOM扩展"><a href="#DOM扩展" class="headerlink" title="DOM扩展"></a>DOM扩展</h3><p>核心方法有两个,可以通过Document及Element类型的实例调用，接收css选择器为参数</p>
+<ul>
+<li>querySelector()</li>
+<li>querySelectorAll()</li>
+</ul>
+<h6 id="元素遍历方法"><a href="#元素遍历方法" class="headerlink" title="元素遍历方法"></a>元素遍历方法</h6><ul>
+<li>childElementCount: 返回子元素的个数</li>
+<li>firstElementChild</li>
+<li>lastElementChild</li>
+<li>previousElementSibling</li>
+<li>nextElementSibling</li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/02/记录在浏览器地址栏按回车、F5、Ctrl+F5刷新网页的区别/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1671,157 +1894,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/07/11/flex 布局/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="张倩倩">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Hermione">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/07/11/flex 布局/" itemprop="url">flex布局</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-07-11T15:44:09+08:00">
-                2018-07-11
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/学习笔记/" itemprop="url" rel="index">
-                    <span itemprop="name">学习笔记</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>flex是Flexible Box的缩写，意为“弹性布局”，是css3中作用于动态元素或者不知名大小元素的新布局，主要用于元素对齐、方向和容器的组织方式。flex容器最主要的特点是其能以最好的方式修改不同大小子元素的width和height，使其填满可用空间。</p>
-<h4 id="基础"><a href="#基础" class="headerlink" title="基础"></a>基础</h4><p>flex布局由flex容器的父元素和其直接子元素flex items 组成。<br><img src="https://cdn.scotch.io/scotchy-uploads/2015/04/CSS3-Flexbox-Model.jpg" alt="image"></p>
-<h4 id="用法"><a href="#用法" class="headerlink" title="用法"></a>用法</h4><p>在父HTML元素上设置属性display就可以使用flex布局。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">.flex-container &#123;</span><br><span class="line">    display: -webkit-flex;      //Safari</span><br><span class="line">    display: flex;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>若想表现得像行内元素<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">.flex-container &#123;</span><br><span class="line">    display: -webkit-inline-flex;       //Safari</span><br><span class="line">    display: inline-flex;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p><strong>父元素上只需设置这一个属性，其全部直接子元素会自动转变为flex items。</strong></p>
-<p>有许多方式能组织flexbox属性，但总的来说，最简便的还是将元素分为两个部分：flex容器和flexZ子元素。以下会介绍它们，并且说明其如何影响布局表现。</p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2018/07/11/flex 布局/#more" rel="contents">
-              Read more &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1872,7 +1944,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">13</span>
+                  <span class="site-state-item-count">14</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
