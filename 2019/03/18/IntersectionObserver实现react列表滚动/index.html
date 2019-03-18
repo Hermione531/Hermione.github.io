@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="js,">
+  <meta name="keywords" content="react,">
 
 
 
@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="面试的时候有问到DOM操作，全给忘了，整理一下。 DOMNode类型DOM1级定义了一个Node接口，该接口由DOM中所有节点类型实现。每个节点都有一个nodeType属性，用于表明节点类型。 属性 nodeType nodeName nodeValue childNodes 保存类数组对象NodeList   parentNode ： 指向文档树中的父节点 父节点有firstChild与last">
-<meta name="keywords" content="js">
+<meta name="description" content="前言想法是在列表下方或上方添加一个div元素，当元素出现在浏览器视口，滚动列表。 用法初始化12345678constructor(props) &amp;#123;        super(props);        this.ioNext = null;        this.nextContainer = null;        this.ioPrev = null;        this">
+<meta name="keywords" content="react">
 <meta property="og:type" content="article">
-<meta property="og:title" content="【整理】JS DOM基本操作方法">
-<meta property="og:url" content="http://yoursite.com/2019/03/12/【整理】JS DOM操作方法/index.html">
+<meta property="og:title" content="IntersectionObserver实现react列表滚动">
+<meta property="og:url" content="http://yoursite.com/2019/03/18/IntersectionObserver实现react列表滚动/index.html">
 <meta property="og:site_name" content="Hermione">
-<meta property="og:description" content="面试的时候有问到DOM操作，全给忘了，整理一下。 DOMNode类型DOM1级定义了一个Node接口，该接口由DOM中所有节点类型实现。每个节点都有一个nodeType属性，用于表明节点类型。 属性 nodeType nodeName nodeValue childNodes 保存类数组对象NodeList   parentNode ： 指向文档树中的父节点 父节点有firstChild与last">
+<meta property="og:description" content="前言想法是在列表下方或上方添加一个div元素，当元素出现在浏览器视口，滚动列表。 用法初始化12345678constructor(props) &amp;#123;        super(props);        this.ioNext = null;        this.nextContainer = null;        this.ioPrev = null;        this">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-03-12T15:03:58.432Z">
+<meta property="og:updated_time" content="2019-03-18T15:10:10.544Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="【整理】JS DOM基本操作方法">
-<meta name="twitter:description" content="面试的时候有问到DOM操作，全给忘了，整理一下。 DOMNode类型DOM1级定义了一个Node接口，该接口由DOM中所有节点类型实现。每个节点都有一个nodeType属性，用于表明节点类型。 属性 nodeType nodeName nodeValue childNodes 保存类数组对象NodeList   parentNode ： 指向文档树中的父节点 父节点有firstChild与last">
+<meta name="twitter:title" content="IntersectionObserver实现react列表滚动">
+<meta name="twitter:description" content="前言想法是在列表下方或上方添加一个div元素，当元素出现在浏览器视口，滚动列表。 用法初始化12345678constructor(props) &amp;#123;        super(props);        this.ioNext = null;        this.nextContainer = null;        this.ioPrev = null;        this">
 
 
 
@@ -120,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/03/12/【整理】JS DOM操作方法/">
+  <link rel="canonical" href="http://yoursite.com/2019/03/18/IntersectionObserver实现react列表滚动/">
 
 
 
 
 
-  <title>【整理】JS DOM基本操作方法 | Hermione</title>
+  <title>IntersectionObserver实现react列表滚动 | Hermione</title>
   
 
 
@@ -233,7 +233,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/12/【整理】JS DOM操作方法/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/18/IntersectionObserver实现react列表滚动/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="张倩倩">
@@ -250,7 +250,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">【整理】JS DOM基本操作方法</h1>
+          <h1 class="post-title" itemprop="name headline">IntersectionObserver实现react列表滚动</h1>
         
 
         <div class="post-meta">
@@ -262,8 +262,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-03-12T23:02:06+08:00">
-                2019-03-12
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-03-18T23:09:33+08:00">
+                2019-03-18
               </time>
             
 
@@ -285,8 +285,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/js基础/" itemprop="url" rel="index">
-                    <span itemprop="name">js基础</span>
+                  <a href="/categories/前端基础应用/" itemprop="url" rel="index">
+                    <span itemprop="name">前端基础应用</span>
                   </a>
                 </span>
 
@@ -322,88 +322,16 @@
       
 
       
-        <p>面试的时候有问到DOM操作，全给忘了，整理一下。</p>
-<h3 id="DOM"><a href="#DOM" class="headerlink" title="DOM"></a>DOM</h3><h5 id="Node类型"><a href="#Node类型" class="headerlink" title="Node类型"></a>Node类型</h5><p>DOM1级定义了一个Node接口，该接口由DOM中所有节点类型实现。每个节点都有一个nodeType属性，用于表明节点类型。</p>
-<h6 id="属性"><a href="#属性" class="headerlink" title="属性"></a>属性</h6><ul>
-<li>nodeType</li>
-<li>nodeName</li>
-<li>nodeValue</li>
-<li>childNodes<ul>
-<li>保存类数组对象NodeList</li>
-</ul>
-</li>
-<li>parentNode ： 指向文档树中的父节点<ul>
-<li>父节点有firstChild与lastChild属性，分别指向childNodes列表中的第一个和最后一个节点</li>
-</ul>
-</li>
-<li>nextSibling</li>
-<li>previousSibling</li>
-<li>ownerDocument： 指向整个文档的文档节点</li>
-</ul>
-<h6 id="节点操作方法"><a href="#节点操作方法" class="headerlink" title="节点操作方法"></a>节点操作方法</h6><ul>
-<li>appendChild()</li>
-<li>insertBefore()</li>
-<li>replaceChild()<ul>
-<li>接收两个参数：要插入的节点和要替换的节点</li>
-</ul>
-</li>
-<li>removeChild()</li>
-</ul>
-<h6 id="其他方法"><a href="#其他方法" class="headerlink" title="其他方法"></a>其他方法</h6><p>所有节点共有的方法</p>
+        <h5 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h5><p>想法是在列表下方或上方添加一个div元素，当元素出现在浏览器视口，滚动列表。</p>
+<h5 id="用法"><a href="#用法" class="headerlink" title="用法"></a>用法</h5><h6 id="初始化"><a href="#初始化" class="headerlink" title="初始化"></a>初始化</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">constructor(props) &#123;</span><br><span class="line">        super(props);</span><br><span class="line">        this.ioNext = null;</span><br><span class="line">        this.nextContainer = null;</span><br><span class="line">        this.ioPrev = null;</span><br><span class="line">        this.prevContainer = null;</span><br><span class="line">        this.loadNextMore = this.loadNextMore.bind(this);</span><br><span class="line">        this.loadPrevMore = this.loadPrevMore.bind(this);</span><br></pre></td></tr></table></figure>
 <ul>
-<li>cloneNode(): 用于创建节点副本</li>
-<li>normalize(): 处理文档树中的文本节点</li>
+<li>ioNext是下拉IntersectionObserver对象，ioPrev对应上拉</li>
+<li>nextContainer是需要观察下拉时出现在浏览器视口的元素，prevContainer同理</li>
 </ul>
-<h5 id="Document类型"><a href="#Document类型" class="headerlink" title="Document类型"></a>Document类型</h5><p>Document类型表示文档，document对象是HTMLDocument的一个实例，表示整个HTML页面。document对象是window对象的一个属性，可以作为全局对象来访问。</p>
-<h6 id="特征"><a href="#特征" class="headerlink" title="特征"></a>特征</h6><ul>
-<li>nodeType: 9</li>
-<li>nodeName:  #document</li>
-<li>nodeValue: null</li>
-<li>parentNode: null</li>
-</ul>
-<h6 id="属性-1"><a href="#属性-1" class="headerlink" title="属性"></a>属性</h6><ul>
-<li>documentElement</li>
-<li>body: 指向<body>元素</body></li>
-<li>doctype: 取得对&lt;!DOCTYPE&gt;的引用</li>
-<li>title: 取得文档标题</li>
-<li>URL</li>
-<li>domain</li>
-</ul>
-<h6 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h6><ul>
-<li>getElementById()</li>
-<li>getElementsByTagName()</li>
-</ul>
-<h5 id="Element类型"><a href="#Element类型" class="headerlink" title="Element类型"></a>Element类型</h5><ul>
-<li>nodeTye: 1</li>
-<li>nodeName:</li>
-<li>nodeValue</li>
-</ul>
-<h6 id="方法-1"><a href="#方法-1" class="headerlink" title="方法"></a>方法</h6><p>主要是属性方法，自定义特性应加上“data-”前缀以便验证</p>
-<ul>
-<li>getAttribute()</li>
-<li>setAttribute()</li>
-<li>removeAttribute()</li>
-<li>attributes()：返回属性的集合</li>
-<li>createElement()</li>
-<li>appendChild()</li>
-</ul>
-<h5 id="Text类型"><a href="#Text类型" class="headerlink" title="Text类型"></a>Text类型</h5><ul>
-<li>nodeType: 3</li>
-<li>nodeName: #text</li>
-<li>nodeValue</li>
-</ul>
-<h3 id="DOM扩展"><a href="#DOM扩展" class="headerlink" title="DOM扩展"></a>DOM扩展</h3><p>核心方法有两个,可以通过Document及Element类型的实例调用，接收css选择器为参数</p>
-<ul>
-<li>querySelector()</li>
-<li>querySelectorAll()</li>
-</ul>
-<h6 id="元素遍历方法"><a href="#元素遍历方法" class="headerlink" title="元素遍历方法"></a>元素遍历方法</h6><ul>
-<li>childElementCount: 返回子元素的个数</li>
-<li>firstElementChild</li>
-<li>lastElementChild</li>
-<li>previousElementSibling</li>
-<li>nextElementSibling</li>
-</ul>
+<h6 id="创建元素"><a href="#创建元素" class="headerlink" title="创建元素"></a>创建元素</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">let loadNextMore = &lt;div ref=&#123;div =&gt; &#123;this.nextContainer=div;&#125;&#125;&gt;&lt;Spin tip=&quot;loading...&quot; className=&#123;styles[&apos;loading-tips&apos;]&#125;  /&gt;&lt;/div&gt;; </span><br><span class="line">let loadPrevMore = &lt;div ref=&#123;div =&gt; &#123;this.prevContainer=div;&#125;&#125;&gt;&lt;Spin tip=&quot;loading...&quot; className=&#123;styles[&apos;loading-tips&apos;]&#125;  /&gt;&lt;/div&gt;;</span><br></pre></td></tr></table></figure>
+<p>将loadNextMore、loadPrevMore放在render中return就好，具体用法根据实际情况</p>
+<h6 id="监听元素行为"><a href="#监听元素行为" class="headerlink" title="监听元素行为"></a>监听元素行为</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">componentDidUpdate() &#123;</span><br><span class="line">    if(this.nextContainer) &#123;</span><br><span class="line">        this.ioNext = new IntersectionObserver(entry =&gt; &#123;</span><br><span class="line">            if(window.innerHeight &gt; entry[0].boundingClientRect.top) &#123;</span><br><span class="line">                this.loadNextMore();</span><br><span class="line">            &#125; </span><br><span class="line">        &#125;, &#123;&#125;);</span><br><span class="line">        this.ioNext.observe(this.nextContainer);</span><br><span class="line">    &#125; </span><br><span class="line">    if (this.prevContainer) &#123;</span><br><span class="line">        this.ioPrev = new IntersectionObserver(entry =&gt; &#123;</span><br><span class="line">            if(entry[0].boundingClientRect.top &gt; 0 &amp;&amp; entry[0].boundingClientRect.top &lt; window.innerHeight) &#123;</span><br><span class="line">                this.loadPrevMore();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;, &#123;&#125;);</span><br><span class="line">        this.ioPrev.observe(this.prevContainer);</span><br><span class="line">    &#125; </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">loadPrevMore() &#123;</span><br><span class="line">    //具体实现</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">loadNextMore() &#123;</span><br><span class="line">    //具体实现</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h6 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h6><p>上拉加载的情况，若直接替换state中渲染元素需考虑将上拉加载出来的数据向上偏移一定值。</p>
 
       
     </div>
@@ -421,7 +349,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/js/" rel="tag"># js</a>
+            <a href="/tags/react/" rel="tag"># react</a>
           
         </div>
       
@@ -434,8 +362,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/03/02/记录在浏览器地址栏按回车、F5、Ctrl+F5刷新网页的区别/" rel="next" title="记录浏览器在地址栏按回车、F5、Ctrl+F5刷新网页的区别">
-                <i class="fa fa-chevron-left"></i> 记录浏览器在地址栏按回车、F5、Ctrl+F5刷新网页的区别
+              <a href="/2019/03/12/【整理】JS DOM操作方法/" rel="next" title="【整理】JS DOM基本操作方法">
+                <i class="fa fa-chevron-left"></i> 【整理】JS DOM基本操作方法
               </a>
             
           </div>
@@ -443,10 +371,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/03/18/IntersectionObserver实现react列表滚动/" rel="prev" title="IntersectionObserver实现react列表滚动">
-                IntersectionObserver实现react列表滚动 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -588,7 +512,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#DOM"><span class="nav-number">1.</span> <span class="nav-text">DOM</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Node类型"><span class="nav-number">1.0.1.</span> <span class="nav-text">Node类型</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#属性"><span class="nav-number">1.0.1.1.</span> <span class="nav-text">属性</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#节点操作方法"><span class="nav-number">1.0.1.2.</span> <span class="nav-text">节点操作方法</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#其他方法"><span class="nav-number">1.0.1.3.</span> <span class="nav-text">其他方法</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Document类型"><span class="nav-number">1.0.2.</span> <span class="nav-text">Document类型</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#特征"><span class="nav-number">1.0.2.1.</span> <span class="nav-text">特征</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#属性-1"><span class="nav-number">1.0.2.2.</span> <span class="nav-text">属性</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#方法"><span class="nav-number">1.0.2.3.</span> <span class="nav-text">方法</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Element类型"><span class="nav-number">1.0.3.</span> <span class="nav-text">Element类型</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#方法-1"><span class="nav-number">1.0.3.1.</span> <span class="nav-text">方法</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Text类型"><span class="nav-number">1.0.4.</span> <span class="nav-text">Text类型</span></a></li></ol></li></ol><li class="nav-item nav-level-3"><a class="nav-link" href="#DOM扩展"><span class="nav-number">2.</span> <span class="nav-text">DOM扩展</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#元素遍历方法"><span class="nav-number">2.0.0.1.</span> <span class="nav-text">元素遍历方法</span></a></li></ol></li></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-5"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#用法"><span class="nav-number">2.</span> <span class="nav-text">用法</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#初始化"><span class="nav-number">2.1.</span> <span class="nav-text">初始化</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#创建元素"><span class="nav-number">2.2.</span> <span class="nav-text">创建元素</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#监听元素行为"><span class="nav-number">2.3.</span> <span class="nav-text">监听元素行为</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#注意"><span class="nav-number">2.4.</span> <span class="nav-text">注意</span></a></li></ol></li></ol></div>
             
 
           </div>
