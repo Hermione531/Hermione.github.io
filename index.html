@@ -229,6 +229,168 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/13/PWA初探索/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="张倩倩">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hermione">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/07/13/PWA初探索/" itemprop="url">PWA初探索</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-07-13T22:27:10+08:00">
+                2019-07-13
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/PWA/" itemprop="url" rel="index">
+                    <span itemprop="name">PWA</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="PWA简介"><a href="#PWA简介" class="headerlink" title="PWA简介"></a>PWA简介</h3><p>Progressive Web App, 简称 PWA，是提升 Web App 的体验的一种新方法，能给用户原生应用的体验。</p>
+<p>PWA 本质上是 Web App，借助一些新技术也具备了 Native App 的一些特性，兼具 Web App 和 Native App 的优点。</p>
+<h3 id="实践"><a href="#实践" class="headerlink" title="实践"></a>实践</h3><h5 id="目录结构"><a href="#目录结构" class="headerlink" title="目录结构"></a>目录结构</h5><ul>
+<li>index.html</li>
+<li>manifest.json</li>
+<li>sw.js</li>
+<li>test.png</li>
+</ul>
+<h5 id="index-html"><a href="#index-html" class="headerlink" title="index.html"></a>index.html</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang=&quot;en&quot;&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">	&lt;meta charset=&quot;UTF-8&quot;&gt;</span><br><span class="line">	&lt;link rel=&quot;stylesheet&quot; href=&quot;./manifest.json&quot; /&gt;</span><br><span class="line">	&lt;title&gt;PWA Demo&lt;/title&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">	&lt;p&gt;hello world&lt;/p&gt;</span><br><span class="line">	</span><br><span class="line">	&lt;script&gt;</span><br><span class="line">		if(&apos;serviceWorker&apos; in navigator) &#123;</span><br><span class="line">			window.addEventListener(&apos;load&apos;, function() &#123;</span><br><span class="line">				navigator.serviceWorker.register(&apos;/sw.js&apos;, &#123;scope: &apos;/&apos;&#125;)</span><br><span class="line">				.then(function(registration) &#123;</span><br><span class="line">					console.log(&apos;serviceWorker registration successfull with scope: &apos;, registration.scope);</span><br><span class="line">				&#125;)</span><br><span class="line">				.catch(err =&gt; &#123;</span><br><span class="line">					console.log(&apos;ServiceWorker registration failed: &apos;, err);</span><br><span class="line">				&#125;);</span><br><span class="line">			&#125;);</span><br><span class="line">		&#125;</span><br><span class="line">	&lt;/script&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+<h5 id="manifest-json"><a href="#manifest-json" class="headerlink" title="manifest.json"></a>manifest.json</h5><p>PWA允许将站点添加到桌面，该功能实现依赖于 manifest.json。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">	&quot;name&quot;: &quot;PWA Demo&quot;,</span><br><span class="line">	&quot;short_name&quot;: &quot;PWA Demo&quot;,</span><br><span class="line">	&quot;display&quot;: &quot;standalone&quot;,</span><br><span class="line">	&quot;start_url&quot;: &quot;/&quot;,</span><br><span class="line">	&quot;theme_color&quot;: &quot;#8888ff&quot;,</span><br><span class="line">	&quot;background_color&quot;: &quot;#8888ff&quot;,</span><br><span class="line">	&quot;icons&quot;: [</span><br><span class="line">		&#123;</span><br><span class="line">			&quot;src&quot;: &quot;test.png&quot;,</span><br><span class="line">			&quot;type&quot;: &quot;image/png&quot;,</span><br><span class="line">			&quot;sizes&quot;: &quot;256x256&quot;,</span><br><span class="line"></span><br><span class="line">		&#125;</span><br><span class="line">	]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h5 id="sw-js"><a href="#sw-js" class="headerlink" title="sw.js"></a>sw.js</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br></pre></td><td class="code"><pre><span class="line">//安装</span><br><span class="line">self.addEventListener(&apos;install&apos;, e =&gt; &#123;</span><br><span class="line">	e.waitUntil(</span><br><span class="line">	    //CacheStorage缓存</span><br><span class="line">		caches.open(&apos;my-test-cache-v1&apos;).then(cache =&gt; &#123;</span><br><span class="line">			return cache.addAll([</span><br><span class="line">				&apos;/&apos;,</span><br><span class="line">				&apos;index.html&apos;,</span><br><span class="line">				&apos;test.png&apos;</span><br><span class="line">			]);</span><br><span class="line">		&#125;)</span><br><span class="line">	);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">self.addEventListener(&apos;fetch&apos;, e =&gt; &#123;</span><br><span class="line">	e.respondWith(</span><br><span class="line">		caches.match(e.request).then(res =&gt; &#123;</span><br><span class="line">			if(res) &#123;</span><br><span class="line">				return res;</span><br><span class="line">			&#125;</span><br><span class="line"></span><br><span class="line">			//service worker无返回，直接请求真实远程服务</span><br><span class="line">			var request = e.request.clone();</span><br><span class="line">			return fetch(request).then(httpRes =&gt; &#123;</span><br><span class="line">				if(!httpRes || httpRes.status !== 200) &#123;</span><br><span class="line">					return httpRes;</span><br><span class="line">				&#125;</span><br><span class="line"></span><br><span class="line">				//请求成功，将请求缓存</span><br><span class="line">				var responseClone = httpRes.clone();</span><br><span class="line">				caches.open(&apos;my-test-cache-v1&apos;).then(cache =&gt; &#123;</span><br><span class="line">					cache.put(e.request, responseClone);</span><br><span class="line">				&#125;);</span><br><span class="line"></span><br><span class="line">				return httpRes;</span><br><span class="line">			&#125;);</span><br><span class="line">		&#125;)</span><br><span class="line">	);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">self.addEventListener(&apos;activate&apos;, e =&gt; &#123;</span><br><span class="line">	event.waitUntil(</span><br><span class="line">		Promise.all([</span><br><span class="line">			self.clients.claim(),</span><br><span class="line">			caches.keys().then(cacheList =&gt; &#123;</span><br><span class="line">				return Promise.all(</span><br><span class="line">					cacheList.map(cacheName =&gt; &#123;</span><br><span class="line">						if(cacheName !== &apos;my-test-cache-v1&apos;) &#123;</span><br><span class="line">							return caches.delete(cacheName);</span><br><span class="line">						&#125;</span><br><span class="line">					&#125;)</span><br><span class="line">				);</span><br><span class="line">			&#125;)</span><br><span class="line">		])</span><br><span class="line">	);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h4 id="启动本地-http-server"><a href="#启动本地-http-server" class="headerlink" title="启动本地 http server"></a>启动本地 http server</h4><p>用python在根目录下启动<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">// python 3</span><br><span class="line">python -m http.server 8080</span><br><span class="line"></span><br><span class="line">//python 2</span><br><span class="line">python -m SimpleHTTPServer 8080</span><br></pre></td></tr></table></figure></p>
+<h4 id="查看"><a href="#查看" class="headerlink" title="查看"></a>查看</h4><h6 id="localhost"><a href="#localhost" class="headerlink" title="localhost"></a>localhost</h6><p><img src="https://hermione531.github.io/img/pwa_localhost.png" alt="localhost"></p>
+<p>可以看到成功注册了Service Worker。</p>
+<h6 id="cache"><a href="#cache" class="headerlink" title="cache"></a>cache</h6><p><img src="https://hermione531.github.io/img/pwa_cache.png" alt="cache"></p>
+<p>cache中成功缓存了资源。</p>
+<h6 id="network"><a href="#network" class="headerlink" title="network"></a>network</h6><p><img src="https://hermione531.github.io/img/pwa_network.png" alt="network"></p>
+<p>可以看到网络静态资源从 Service Worker中获取。</p>
+<h6 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h6><p><a href="https://lavas.baidu.com/pwa/README" target="_blank" rel="noopener">PWA文档</a></p>
+<p><a href="https://zhuanlan.zhihu.com/p/25459319" target="_blank" rel="noopener">PWA 入门: 写个非常简单的 PWA 页面</a></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/06/11/搭建vue脚手架（vue-cli）/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1656,171 +1818,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/01/13/React知识点整理/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="张倩倩">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Hermione">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/01/13/React知识点整理/" itemprop="url">React知识点整理</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-01-13T14:56:42+08:00">
-                2019-01-13
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/学习笔记/" itemprop="url" rel="index">
-                    <span itemprop="name">学习笔记</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h2 id="初入React"><a href="#初入React" class="headerlink" title="初入React"></a>初入React</h2><h4 id="JSX语法"><a href="#JSX语法" class="headerlink" title="JSX语法"></a>JSX语法</h4><ul>
-<li>定义标签时，只允许被一个标签包裹</li>
-<li>标签一定要闭合</li>
-<li>注释被{}包起来</li>
-</ul>
-<h4 id="React组件"><a href="#React组件" class="headerlink" title="React组件"></a>React组件</h4><ul>
-<li>无状态组件创建时始终保持了==一个实例==</li>
-<li>有状态组件创建几次组件就会创建几次实例</li>
-</ul>
-<h4 id="React数据流"><a href="#React数据流" class="headerlink" title="React数据流"></a>React数据流</h4><h5 id="state"><a href="#state" class="headerlink" title="state"></a>state</h5><ul>
-<li>setState是==异步==方法<h5 id="props"><a href="#props" class="headerlink" title="props"></a>props</h5></li>
-<li>props本身是不可变的（==readonly==）</li>
-<li><p>==defaultProps==静态变量可以定义props默认配置（==默认类型==）</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">static defaultProps = &#123;</span><br><span class="line">    classPrefix: &apos;tabs&apos;, </span><br><span class="line">    onChange: () =&gt; &#123;&#125;,</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>React中有一个内置的prop：children，代表组件的子组件集合</p>
-</li>
-<li>JavaScript不是强类型的语言，React对此做了改进，==propTypes==用于规范props的类型与必要状态（==类型检查==）。<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">static propTypes = &#123;</span><br><span class="line">  tab: React.PropTypes.oneOfType([</span><br><span class="line">    React.PropTypes.string,</span><br><span class="line">    React.PropTypes.node,</span><br><span class="line">  ]).isRequired,</span><br><span class="line">  order: React.PropTypes.string.isRequired,</span><br><span class="line">  disble: React.PropTypes.bool,</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2019/01/13/React知识点整理/#more" rel="contents">
-              Read more &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1871,7 +1868,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">19</span>
+                  <span class="site-state-item-count">20</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -1882,7 +1879,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-count">7</span>
                   <span class="site-state-item-name">categories</span>
                 </a>
               </div>
@@ -1893,7 +1890,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-count">12</span>
                   <span class="site-state-item-name">tags</span>
                 </a>
               </div>
