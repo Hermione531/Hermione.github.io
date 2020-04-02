@@ -79,13 +79,13 @@
 
 
 
-<meta name="description" content="一级目录   名称 描述     src 源代码   release 发布结果   test 单元测试用例   doc 文档   example 示例    简介起步三种状态Git有三种状态：==已提交（committed）、已修改（modified）和已暂存（staged）==。    状态 描述     committed 数据已经安全的保存在本地数据库中   modified 修改了文件，但">
+<meta name="description" content="一级目录    名称 描述     src 源代码   release 发布结果   test 单元测试用例   doc 文档   example 示例     简介起步三种状态Git有三种状态：==已提交（committed）、已修改（modified）和已暂存（staged）==。     状态 描述     committed 数据已经安全的保存在本地数据库中   modified 修改了文">
 <meta name="keywords" content="git">
 <meta property="og:type" content="article">
 <meta property="og:title" content="git学习笔记">
 <meta property="og:url" content="http://yoursite.com/2018/06/15/git学习笔记/index.html">
 <meta property="og:site_name" content="Hermione">
-<meta property="og:description" content="一级目录   名称 描述     src 源代码   release 发布结果   test 单元测试用例   doc 文档   example 示例    简介起步三种状态Git有三种状态：==已提交（committed）、已修改（modified）和已暂存（staged）==。    状态 描述     committed 数据已经安全的保存在本地数据库中   modified 修改了文件，但">
+<meta property="og:description" content="一级目录    名称 描述     src 源代码   release 发布结果   test 单元测试用例   doc 文档   example 示例     简介起步三种状态Git有三种状态：==已提交（committed）、已修改（modified）和已暂存（staged）==。     状态 描述     committed 数据已经安全的保存在本地数据库中   modified 修改了文">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://progit.bootcss.com/images/areas.png">
 <meta property="og:image" content="https://progit.bootcss.com/images/lifecycle.png">
@@ -94,7 +94,7 @@
 <meta property="og:updated_time" content="2019-02-26T01:58:58.393Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="git学习笔记">
-<meta name="twitter:description" content="一级目录   名称 描述     src 源代码   release 发布结果   test 单元测试用例   doc 文档   example 示例    简介起步三种状态Git有三种状态：==已提交（committed）、已修改（modified）和已暂存（staged）==。    状态 描述     committed 数据已经安全的保存在本地数据库中   modified 修改了文件，但">
+<meta name="twitter:description" content="一级目录    名称 描述     src 源代码   release 发布结果   test 单元测试用例   doc 文档   example 示例     简介起步三种状态Git有三种状态：==已提交（committed）、已修改（modified）和已暂存（staged）==。     状态 描述     committed 数据已经安全的保存在本地数据库中   modified 修改了文">
 <meta name="twitter:image" content="https://progit.bootcss.com/images/areas.png">
 
 
@@ -327,7 +327,8 @@
       
 
       
-        <h4 id="一级目录"><a href="#一级目录" class="headerlink" title="一级目录"></a>一级目录</h4><table>
+        <h4 id="一级目录"><a href="#一级目录" class="headerlink" title="一级目录"></a>一级目录</h4><div class="table-container">
+<table>
 <thead>
 <tr>
 <th>名称</th>
@@ -357,7 +358,9 @@
 </tr>
 </tbody>
 </table>
+</div>
 <h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><h2 id="起步"><a href="#起步" class="headerlink" title="起步"></a>起步</h2><h4 id="三种状态"><a href="#三种状态" class="headerlink" title="三种状态"></a>三种状态</h4><p><strong>Git有三种状态：</strong>==已提交（committed）、已修改（modified）和已暂存（staged）==。</p>
+<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -380,7 +383,9 @@
 </tr>
 </tbody>
 </table>
+</div>
 <h4 id="Git项目的三个工作区域"><a href="#Git项目的三个工作区域" class="headerlink" title="Git项目的三个工作区域"></a>Git项目的三个工作区域</h4><p>==Git仓库、工作目录以及暂存区域==。</p>
+<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -403,6 +408,7 @@
 </tr>
 </tbody>
 </table>
+</div>
 <p><img src="https://progit.bootcss.com/images/areas.png" alt="image"></p>
 <p>基本的Git工作流程：</p>
 <ol>
@@ -427,6 +433,7 @@
 <h5 id="在现有项目或目录下导入所有文件到Git中"><a href="#在现有项目或目录下导入所有文件到Git中" class="headerlink" title="在现有项目或目录下导入所有文件到Git中"></a>在现有项目或目录下导入所有文件到Git中</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git init</span><br></pre></td></tr></table></figure>
 <p>该命令创建一个名为.git的子目录，包含初始化的Git仓库中所有的必须文件，这些文件是Git仓库的主干。</p>
 <h6 id="git文件夹"><a href="#git文件夹" class="headerlink" title=".git文件夹"></a>.git文件夹</h6><p><img src="https://img-blog.csdn.net/20171128121600539?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvbWF5Zmxh/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center" alt="image"></p>
+<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -493,6 +500,7 @@
 </tr>
 </tbody>
 </table>
+</div>
 <p>当更新一个引用时，git不会packed-refs，而是会在refs/heads下写入一个新文件。当查找一个引用时，git首先在refs目录下查找，如果未找到则到packed-refs文件中去查找</p>
 <h5 id="从一个服务器克隆一个现有的Git仓库"><a href="#从一个服务器克隆一个现有的Git仓库" class="headerlink" title="从一个服务器克隆一个现有的Git仓库"></a>从一个服务器克隆一个现有的Git仓库</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone [url]</span><br></pre></td></tr></table></figure>
 <p>==Git克隆的是该Git仓库服务器上的几乎所有数据==<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone ../../test</span><br></pre></td></tr></table></figure></p>
@@ -511,6 +519,7 @@
 </ul>
 <p>使用Git时文件的生命周期：<br><img src="https://progit.bootcss.com/images/lifecycle.png" alt="image"></p>
 <h5 id="检查当前文件状态"><a href="#检查当前文件状态" class="headerlink" title="检查当前文件状态"></a>检查当前文件状态</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">git status</span><br><span class="line"></span><br><span class="line">//状态简揽</span><br><span class="line">git status -s</span><br></pre></td></tr></table></figure>
+<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -537,6 +546,7 @@
 </tr>
 </tbody>
 </table>
+</div>
 <h5 id="跟踪新文件"><a href="#跟踪新文件" class="headerlink" title="跟踪新文件"></a>跟踪新文件</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git add [file]</span><br></pre></td></tr></table></figure>
 <p>此时再运行git status查看文件状态。</p>
 <h5 id="忽略文件"><a href="#忽略文件" class="headerlink" title="忽略文件"></a>忽略文件</h5><p>无需纳入Git管理，也不希望出现在未跟踪文件列表的文件。</p>
@@ -589,6 +599,7 @@
 <li>服务端钩子作用于诸如接受被推送的提交的联网操作</li>
 </ul>
 <h4 id="Git内部原理"><a href="#Git内部原理" class="headerlink" title="Git内部原理"></a>Git内部原理</h4><h5 id="底层命令和高层命令"><a href="#底层命令和高层命令" class="headerlink" title="底层命令和高层命令"></a>底层命令和高层命令</h5><p>.git目录初始默认结构：</p>
+<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -627,6 +638,7 @@
 </tr>
 </tbody>
 </table>
+</div>
 <h5 id="Git对象"><a href="#Git对象" class="headerlink" title="Git对象"></a>Git对象</h5>
       
     </div>
@@ -746,7 +758,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">21</span>
+                  <span class="site-state-item-count">24</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -757,7 +769,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-count">8</span>
                   <span class="site-state-item-name">categories</span>
                 </a>
               </div>
@@ -768,7 +780,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">12</span>
+                  <span class="site-state-item-count">13</span>
                   <span class="site-state-item-name">tags</span>
                 </a>
               </div>
