@@ -79,13 +79,13 @@
 
 
 
-<meta name="description" content="本文提出基于对抗学习的策略来进行知识蒸馏，定义逐级训练损失来指导和优化预定义的学生网络以回复教师模型中的知识，并使判别器网络同时区分老师和学生特征。 简介来源：  神经网络中包含冗余信息（知识） 整体神经网络较大且训练慢  提出：基于学习的集成方法。即，学习多个神经网络的集成，而不会产生任何额外的测试成本。 利用不同神经网络输出集合作为监督训练目标网络。">
+<meta name="description" content="本文提出基于对抗学习的策略来进行知识蒸馏，定义逐级训练损失来指导和优化预定义的学生网络以回复教师模型中的知识，并使判别器网络同时区分老师和学生特征。 简介来源：  神经网络中包含冗余信息（知识） 整体神经网络较大且训练慢  提出：基于学习的集成方法。即，学习多个神经网络的集成，而不会产生任何额外的测试成本。 利用不同神经网络输出集合作为监督训练目标网络。 网络介绍">
 <meta name="keywords" content="Distillation">
 <meta property="og:type" content="article">
 <meta property="og:title" content="MEAL: Multi-Model Ensemble via Adversarial Learning">
 <meta property="og:url" content="http://yoursite.com/2020/04/02/Multi-Model Ensemble via Adversarial Learning/index.html">
 <meta property="og:site_name" content="Hermione">
-<meta property="og:description" content="本文提出基于对抗学习的策略来进行知识蒸馏，定义逐级训练损失来指导和优化预定义的学生网络以回复教师模型中的知识，并使判别器网络同时区分老师和学生特征。 简介来源：  神经网络中包含冗余信息（知识） 整体神经网络较大且训练慢  提出：基于学习的集成方法。即，学习多个神经网络的集成，而不会产生任何额外的测试成本。 利用不同神经网络输出集合作为监督训练目标网络。">
+<meta property="og:description" content="本文提出基于对抗学习的策略来进行知识蒸馏，定义逐级训练损失来指导和优化预定义的学生网络以回复教师模型中的知识，并使判别器网络同时区分老师和学生特征。 简介来源：  神经网络中包含冗余信息（知识） 整体神经网络较大且训练慢  提出：基于学习的集成方法。即，学习多个神经网络的集成，而不会产生任何额外的测试成本。 利用不同神经网络输出集合作为监督训练目标网络。 网络介绍">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://hermione531.github.io/img/meal_network.png">
 <meta property="og:image" content="https://hermione531.github.io/img/meal_pooling_loss_block.png">
@@ -96,10 +96,10 @@
 <meta property="og:image" content="https://hermione531.github.io/img/meal_algorithm.png">
 <meta property="og:image" content="https://hermione531.github.io/img/meal_result_table.png">
 <meta property="og:image" content="https://hermione531.github.io/img/meal_result_figure.png">
-<meta property="og:updated_time" content="2020-04-02T09:17:57.332Z">
+<meta property="og:updated_time" content="2020-04-03T08:16:53.582Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="MEAL: Multi-Model Ensemble via Adversarial Learning">
-<meta name="twitter:description" content="本文提出基于对抗学习的策略来进行知识蒸馏，定义逐级训练损失来指导和优化预定义的学生网络以回复教师模型中的知识，并使判别器网络同时区分老师和学生特征。 简介来源：  神经网络中包含冗余信息（知识） 整体神经网络较大且训练慢  提出：基于学习的集成方法。即，学习多个神经网络的集成，而不会产生任何额外的测试成本。 利用不同神经网络输出集合作为监督训练目标网络。">
+<meta name="twitter:description" content="本文提出基于对抗学习的策略来进行知识蒸馏，定义逐级训练损失来指导和优化预定义的学生网络以回复教师模型中的知识，并使判别器网络同时区分老师和学生特征。 简介来源：  神经网络中包含冗余信息（知识） 整体神经网络较大且训练慢  提出：基于学习的集成方法。即，学习多个神经网络的集成，而不会产生任何额外的测试成本。 利用不同神经网络输出集合作为监督训练目标网络。 网络介绍">
 <meta name="twitter:image" content="https://hermione531.github.io/img/meal_network.png">
 
 
@@ -340,8 +340,8 @@
 </ul>
 <p>提出：<br>基于学习的集成方法。即，学习多个神经网络的集成，而不会产生任何额外的测试成本。</p>
 <p>利用不同神经网络输出集合作为监督训练目标网络。</p>
-<a id="more"></a>
 <h4 id="网络介绍"><a href="#网络介绍" class="headerlink" title="网络介绍"></a>网络介绍</h4><p><img src="https://hermione531.github.io/img/meal_network.png" alt="network"></p>
+<a id="more"></a>
 <p>三种计算teacher与student中间block损失的方法</p>
 <ul>
 <li>L1 Loss</li>
@@ -395,6 +395,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2020/04/03/Improved Knowledge Distillation via Teacher Assistant/" rel="prev" title="Improved Knowledge Distillation via Teacher Assistant">
+                Improved Knowledge Distillation via Teacher Assistant <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -471,7 +475,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">24</span>
+                  <span class="site-state-item-count">26</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
