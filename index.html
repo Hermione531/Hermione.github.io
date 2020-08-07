@@ -229,6 +229,153 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/08/08/Redux源码阅读_2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="张倩倩">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hermione">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/08/08/Redux源码阅读_2/" itemprop="url">Redux源码阅读_1</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-08-08T10:20:08+08:00">
+                2020-08-08
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/源码阅读/" itemprop="url" rel="index">
+                    <span itemprop="name">源码阅读</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h4 id="compose-ts"><a href="#compose-ts" class="headerlink" title="compose.ts"></a>compose.ts</h4><p>从右到左来组合多个函数，是reduce函数的一个应用实现。</p>
+<p>首先仍然是重载了多个参数的函数声明，区别主要是传入参数个数。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">export default function compose&lt;F extends Function&gt;(f: F): F</span><br><span class="line"></span><br><span class="line">/* two functions */</span><br><span class="line">export default function compose&lt;A, T extends any[], R&gt;(</span><br><span class="line">  f1: (a: A) =&gt; R,</span><br><span class="line">  f2: Func&lt;T, A&gt;</span><br><span class="line">): Func&lt;T, R&gt;</span><br><span class="line"></span><br><span class="line">/* three functions */</span><br><span class="line">export default function compose&lt;A, B, T extends any[], R&gt;(</span><br><span class="line">  f1: (b: B) =&gt; R,</span><br><span class="line">  f2: (a: A) =&gt; B,</span><br><span class="line">  f3: Func&lt;T, A&gt;</span><br><span class="line">): Func&lt;T, R&gt;</span><br><span class="line"></span><br><span class="line">/* four functions */</span><br><span class="line">export default function compose&lt;A, B, C, T extends any[], R&gt;(</span><br><span class="line">  f1: (c: C) =&gt; R,</span><br><span class="line">  f2: (b: B) =&gt; C,</span><br><span class="line">  f3: (a: A) =&gt; B,</span><br><span class="line">  f4: Func&lt;T, A&gt;</span><br><span class="line">): Func&lt;T, R&gt;</span><br><span class="line"></span><br><span class="line">/* rest */</span><br><span class="line">export default function compose&lt;R&gt;(</span><br><span class="line">  f1: (a: any) =&gt; R,</span><br><span class="line">  ...funcs: Function[]</span><br><span class="line">): (...args: any[]) =&gt; R</span><br><span class="line"></span><br><span class="line">export default function compose&lt;R&gt;(...funcs: Function[]): (...args: any[]) =&gt; R</span><br></pre></td></tr></table></figure></p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2020/08/08/Redux源码阅读_2/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/08/07/Redux源码阅读_1/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -321,8 +468,7 @@
 
       
         
-          
-            <h4 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h4><p>看完 <a href="https://www.redux.org.cn/" target="_blank" rel="noopener">Redux文档</a>，对Redux的内部运作不是很了解，大致问题记录如下：</p>
+          <h4 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h4><p>看完 <a href="https://www.redux.org.cn/" target="_blank" rel="noopener">Redux文档</a>，对Redux的内部运作不是很了解，大致问题记录如下：</p>
 <ul>
 <li>容器组件怎么通过connect将store里的数据传入展示型组件的props中？</li>
 <li>mapStateToProps与mapDispatchToProps怎么将state与dispatch的值组装到props？</li>
@@ -331,25 +477,13 @@
 </ul>
 <p>带着这些问题打开<a href="https://github.com/reduxjs/redux" target="_blank" rel="noopener">Redux源码](https://github.com/reduxjs/redux</a><br>)，发现才一年的时间没做前端，Redux源码都从js换成ts了，屁颠屁颠跑去看<a href="https://www.tslang.cn/docs/handbook/basic-types.html" target="_blank" rel="noopener">TS文档</a>，没咋看懂，但是应该能上源码了。</p>
 <h4 id="源码结构"><a href="#源码结构" class="headerlink" title="源码结构"></a>源码结构</h4><p>首先看看文件夹目录结构<br><img src="https://upload-images.jianshu.io/upload_images/12559554-f2aff766cc5bb03f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="src"><br>几个常用的api都在src/下，再下一级目录就是封装的一些类型，这些后面再详细描述，先开始上源码！</p>
-<h4 id="index-ts"><a href="#index-ts" class="headerlink" title="index.ts"></a>index.ts</h4><p>这个文件主要导出了一些常用的接口<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">import createStore from &apos;./createStore&apos;</span><br><span class="line">import combineReducers from &apos;./combineReducers&apos;</span><br><span class="line">import bindActionCreators from &apos;./bindActionCreators&apos;</span><br><span class="line">import applyMiddleware from &apos;./applyMiddleware&apos;</span><br><span class="line">import compose from &apos;./compose&apos;</span><br><span class="line">import warning from &apos;./utils/warning&apos;</span><br><span class="line">import __DO_NOT_USE__ActionTypes from &apos;./utils/actionTypes&apos;</span><br><span class="line"></span><br><span class="line">//中间省略一些代码</span><br><span class="line">···</span><br><span class="line">export &#123;</span><br><span class="line">  createStore,</span><br><span class="line">  combineReducers,</span><br><span class="line">  bindActionCreators,</span><br><span class="line">  applyMiddleware,</span><br><span class="line">  compose,</span><br><span class="line">  __DO_NOT_USE__ActionTypes</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>可以看到我们Redux里常用的api，createstore、combineReducers、applyMiddleware、compose都给导出了，bindActionCreators之前没有用到过，正好可以看一下实现和用法。</p>
-<p>按照导出顺序挨个看看这些文件</p>
-<h4 id="createStore-ts"><a href="#createStore-ts" class="headerlink" title="createStore.ts"></a>createStore.ts</h4><p>这个文件重载了两个createStore方法，主要区别是有无 <strong>preloadedState</strong> 这个参数。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">export default function createStore&lt;</span><br><span class="line">  S,</span><br><span class="line">  A extends Action,</span><br><span class="line">  Ext = &#123;&#125;,</span><br><span class="line">  StateExt = never</span><br><span class="line">&gt;(</span><br><span class="line">  reducer: Reducer&lt;S, A&gt;,</span><br><span class="line">  enhancer?: StoreEnhancer&lt;Ext, StateExt&gt;</span><br><span class="line">): Store&lt;ExtendState&lt;S, StateExt&gt;, A, StateExt, Ext&gt; &amp; Ext</span><br><span class="line">export default function createStore&lt;</span><br><span class="line">  S,</span><br><span class="line">  A extends Action,</span><br><span class="line">  Ext = &#123;&#125;,</span><br><span class="line">  StateExt = never</span><br><span class="line">&gt;(</span><br><span class="line">  reducer: Reducer&lt;S, A&gt;,</span><br><span class="line">  preloadedState?: PreloadedState&lt;S&gt;,</span><br><span class="line">  enhancer?: StoreEnhancer&lt;Ext, StateExt&gt;</span><br><span class="line">): Store&lt;ExtendState&lt;S, StateExt&gt;, A, StateExt, Ext&gt; &amp; Ext</span><br></pre></td></tr></table></figure></p>
-<p>用UML画了个假装是createStore的类图，主要是为了方便看这个函数里面定义的一些属性和方法。<br><img src="https://upload-images.jianshu.io/upload_images/12559554-5bcddddee6c2a87b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="假装是createStore的类图"></p>
-<p>函数申明<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">export default function createStore&lt;</span><br><span class="line">  S,</span><br><span class="line">  A extends Action,</span><br><span class="line">  Ext = &#123;&#125;,</span><br><span class="line">  StateExt = never</span><br><span class="line">&gt;(</span><br><span class="line">  reducer: Reducer&lt;S, A&gt;,</span><br><span class="line">  preloadedState?: PreloadedState&lt;S&gt; | StoreEnhancer&lt;Ext, StateExt&gt;,</span><br><span class="line">  enhancer?: StoreEnhancer&lt;Ext, StateExt&gt;</span><br><span class="line">): Store&lt;ExtendState&lt;S, StateExt&gt;, A, StateExt, Ext&gt; &amp; Ext</span><br></pre></td></tr></table></figure></p>
-<p>这个函数接收两到三个参数，其中，若只传入两个参数，且第二个参数为函数，会把第二个参数preloadedState赋值给enhancer，然后preloadedState赋值为undefined。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">if (</span><br><span class="line">    (typeof preloadedState === &apos;function&apos; &amp;&amp; typeof enhancer === &apos;function&apos;) ||</span><br><span class="line">    (typeof enhancer === &apos;function&apos; &amp;&amp; typeof arguments[3] === &apos;function&apos;)</span><br><span class="line">  ) &#123;</span><br><span class="line">    throw new Error(</span><br><span class="line">      &apos;It looks like you are passing several store enhancers to &apos; +</span><br><span class="line">        &apos;createStore(). This is not supported. Instead, compose them &apos; +</span><br><span class="line">        &apos;together to a single function.&apos;</span><br><span class="line">    )</span><br><span class="line">  &#125;</span><br><span class="line">// 这里，其他都是类型检测</span><br><span class="line">  if (typeof preloadedState === &apos;function&apos; &amp;&amp; typeof enhancer === &apos;undefined&apos;) &#123;</span><br><span class="line">    enhancer = preloadedState as StoreEnhancer&lt;Ext, StateExt&gt;</span><br><span class="line">    preloadedState = undefined</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  if (typeof enhancer !== &apos;undefined&apos;) &#123;</span><br><span class="line">    if (typeof enhancer !== &apos;function&apos;) &#123;</span><br><span class="line">      throw new Error(&apos;Expected the enhancer to be a function.&apos;)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    return enhancer(createStore)(</span><br><span class="line">      reducer,</span><br><span class="line">      preloadedState as PreloadedState&lt;S&gt;</span><br><span class="line">    ) as Store&lt;ExtendState&lt;S, StateExt&gt;, A, StateExt, Ext&gt; &amp; Ext</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  if (typeof reducer !== &apos;function&apos;) &#123;</span><br><span class="line">    throw new Error(&apos;Expected the reducer to be a function.&apos;)</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure></p>
-<p>然后就是方法内其他函数的介绍</p>
-<h5 id="dispatch-action"><a href="#dispatch-action" class="headerlink" title="dispatch(action)"></a>dispatch(action)</h5><p>该方法主要做了如下三个操作：<br>1、修改 <strong>isDispatching</strong>的值（这个属性默认值为<strong>false</strong>，定义这个有点类似于锁的思想，阻止其他操作的修改）。<br>2、执行listeners[]数组里的每个listener方法。<br>3、返回action（这个action为函数传入的action）</p>
-<p>代码如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">function dispatch(action: A) &#123;</span><br><span class="line">    if (!isPlainObject(action)) &#123;</span><br><span class="line">      throw new Error(</span><br><span class="line">        &apos;Actions must be plain objects. &apos; +</span><br><span class="line">          &apos;Use custom middleware for async actions.&apos;</span><br><span class="line">      )</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    if (typeof action.type === &apos;undefined&apos;) &#123;</span><br><span class="line">      throw new Error(</span><br><span class="line">        &apos;Actions may not have an undefined &quot;type&quot; property. &apos; +</span><br><span class="line">          &apos;Have you misspelled a constant?&apos;</span><br><span class="line">      )</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    if (isDispatching) &#123;</span><br><span class="line">      throw new Error(&apos;Reducers may not dispatch actions.&apos;)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    try &#123;</span><br><span class="line">      isDispatching = true</span><br><span class="line">      currentState = currentReducer(currentState, action)</span><br><span class="line">    &#125; finally &#123;</span><br><span class="line">      isDispatching = false</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    const listeners = (currentListeners = nextListeners)</span><br><span class="line">    for (let i = 0; i &lt; listeners.length; i++) &#123;</span><br><span class="line">      const listener = listeners[i]</span><br><span class="line">      listener()</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    return action</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure></p>
-<h5 id="subscribe-listener"><a href="#subscribe-listener" class="headerlink" title="subscribe(listener)"></a>subscribe(listener)</h5><p>添加一个变化监听器，每当 dispatch action 的时候就会执行。</p>
-<p>该方法主要有如下操作：<br>1、将listener推入listeners队列，等待dispatch action时调用。<br>2、修改isSubscribe的值。<br>3、返回unsubscribe函数。（函数内操作：1、修改isSubscribe值；1、listeners队列删除listener）</p>
-<p>代码如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line">function subscribe(listener: () =&gt; void) &#123;</span><br><span class="line">    if (typeof listener !== &apos;function&apos;) &#123;</span><br><span class="line">      throw new Error(&apos;Expected the listener to be a function.&apos;)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    if (isDispatching) &#123;</span><br><span class="line">      throw new Error(</span><br><span class="line">        &apos;You may not call store.subscribe() while the reducer is executing. &apos; +</span><br><span class="line">          &apos;If you would like to be notified after the store has been updated, subscribe from a &apos; +</span><br><span class="line">          &apos;component and invoke store.getState() in the callback to access the latest state. &apos; +</span><br><span class="line">          &apos;See https://redux.js.org/api/store#subscribelistener for more details.&apos;</span><br><span class="line">      )</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    let isSubscribed = true</span><br><span class="line"></span><br><span class="line">    ensureCanMutateNextListeners()</span><br><span class="line">    nextListeners.push(listener)</span><br><span class="line"></span><br><span class="line">    return function unsubscribe() &#123;</span><br><span class="line">      if (!isSubscribed) &#123;</span><br><span class="line">        return</span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">      if (isDispatching) &#123;</span><br><span class="line">        throw new Error(</span><br><span class="line">          &apos;You may not unsubscribe from a store listener while the reducer is executing. &apos; +</span><br><span class="line">            &apos;See https://redux.js.org/api/store#subscribelistener for more details.&apos;</span><br><span class="line">        )</span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">      isSubscribed = false</span><br><span class="line"></span><br><span class="line">      ensureCanMutateNextListeners()</span><br><span class="line">      const index = nextListeners.indexOf(listener)</span><br><span class="line">      nextListeners.splice(index, 1)</span><br><span class="line">      currentListeners = null</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure></p>
-<h5 id="replateReducer-nextReducer"><a href="#replateReducer-nextReducer" class="headerlink" title="replateReducer(nextReducer)"></a>replateReducer(nextReducer)</h5><p>这个方法没怎么用到过，代码写法也有地方没看懂。。。</p>
-<p>主要操作：<br>1、将当前reducer替换为nextReducer。<br>2、dispatch一个replace action。（dispatch的操作就是上面那个函数里的，修改属性状态啦，执行所有listener啦，返回action啦）<br>3、返回store。</p>
-<p>代码如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">function replaceReducer&lt;NewState, NewActions extends A&gt;(</span><br><span class="line">  nextReducer: Reducer&lt;NewState, NewActions&gt;</span><br><span class="line">): Store&lt;ExtendState&lt;NewState, StateExt&gt;, NewActions, StateExt, Ext&gt; &amp; Ext &#123;</span><br><span class="line">  if (typeof nextReducer !== &apos;function&apos;) &#123;</span><br><span class="line">    throw new Error(&apos;Expected the nextReducer to be a function.&apos;)</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  ;((currentReducer as unknown) as Reducer&lt;</span><br><span class="line">    NewState,</span><br><span class="line">    NewActions</span><br><span class="line">  &gt;) = nextReducer</span><br><span class="line"></span><br><span class="line">  dispatch(&#123; type: ActionTypes.REPLACE &#125; as A)</span><br><span class="line">  // change the type of the store by casting it to the new store</span><br><span class="line">  return (store as unknown) as Store&lt;</span><br><span class="line">    ExtendState&lt;NewState, StateExt&gt;,</span><br><span class="line">    NewActions,</span><br><span class="line">    StateExt,</span><br><span class="line">    Ext</span><br><span class="line">  &gt; &amp;</span><br><span class="line">    Ext</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>createStore文件的主要内容就是这些，还有其他一些类型检测以及工具函数的代码未放上来，这个源码里都有。</p>
-
-          
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2020/08/07/Redux源码阅读_1/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -551,147 +685,6 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/04/15/Learn To Pay Attention/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="张倩倩">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Hermione">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/04/15/Learn To Pay Attention/" itemprop="url">Knowledge Squeezed Adversarial Network Compression</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-04-15T15:50:00+08:00">
-                2020-04-15
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Papers/" itemprop="url" rel="index">
-                    <span itemprop="name">Papers</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h4 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h4><h4 id="网络介绍"><a href="#网络介绍" class="headerlink" title="网络介绍"></a>网络介绍</h4><h4 id="结果"><a href="#结果" class="headerlink" title="结果"></a>结果</h4>
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/04/15/Knowledge Squeezed Adversarial Network Compression/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -793,6 +786,147 @@
             </a>
           </div>
           <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/04/15/Learn To Pay Attention/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="张倩倩">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hermione">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/04/15/Learn To Pay Attention/" itemprop="url">Knowledge Squeezed Adversarial Network Compression</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-04-15T15:50:00+08:00">
+                2020-04-15
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Papers/" itemprop="url" rel="index">
+                    <span itemprop="name">Papers</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h4 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h4><h4 id="网络介绍"><a href="#网络介绍" class="headerlink" title="网络介绍"></a>网络介绍</h4><h4 id="结果"><a href="#结果" class="headerlink" title="结果"></a>结果</h4>
+          
         
       
     </div>
@@ -1569,163 +1703,11 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/13/PWA初探索/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="张倩倩">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Hermione">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/07/13/PWA初探索/" itemprop="url">PWA初探索</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-07-13T22:27:10+08:00">
-                2019-07-13
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/PWA/" itemprop="url" rel="index">
-                    <span itemprop="name">PWA</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h3 id="PWA简介"><a href="#PWA简介" class="headerlink" title="PWA简介"></a>PWA简介</h3><p>Progressive Web App, 简称 PWA，是提升 Web App 的体验的一种新方法，能给用户原生应用的体验。</p>
-<p>PWA 本质上是 Web App，借助一些新技术也具备了 Native App 的一些特性，兼具 Web App 和 Native App 的优点。</p>
-<h3 id="实践"><a href="#实践" class="headerlink" title="实践"></a>实践</h3><h5 id="目录结构"><a href="#目录结构" class="headerlink" title="目录结构"></a>目录结构</h5><ul>
-<li>index.html</li>
-<li>manifest.json</li>
-<li>sw.js</li>
-<li><p>test.png</p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2019/07/13/PWA初探索/#more" rel="contents">
-              Read more &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </li></ul></div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -1771,7 +1753,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">30</span>
+                  <span class="site-state-item-count">31</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>

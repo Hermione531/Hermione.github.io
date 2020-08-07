@@ -89,7 +89,7 @@
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/12559554-f2aff766cc5bb03f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/12559554-5bcddddee6c2a87b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2020-08-07T14:41:08.834Z">
+<meta property="og:updated_time" content="2020-08-07T14:48:20.755Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Redux源码阅读_1">
 <meta name="twitter:description" content="前言看完 Redux文档，对Redux的内部运作不是很了解，大致问题记录如下：  容器组件怎么通过connect将store里的数据传入展示型组件的props中？ mapStateToProps与mapDispatchToProps怎么将state与dispatch的值组装到props？ action是什么？dispatch action做了些什么操作？ 若dispatch 一个函数，则函数默认参">
@@ -334,6 +334,7 @@
 </ul>
 <p>带着这些问题打开<a href="https://github.com/reduxjs/redux" target="_blank" rel="noopener">Redux源码](https://github.com/reduxjs/redux</a><br>)，发现才一年的时间没做前端，Redux源码都从js换成ts了，屁颠屁颠跑去看<a href="https://www.tslang.cn/docs/handbook/basic-types.html" target="_blank" rel="noopener">TS文档</a>，没咋看懂，但是应该能上源码了。</p>
 <h4 id="源码结构"><a href="#源码结构" class="headerlink" title="源码结构"></a>源码结构</h4><p>首先看看文件夹目录结构<br><img src="https://upload-images.jianshu.io/upload_images/12559554-f2aff766cc5bb03f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="src"><br>几个常用的api都在src/下，再下一级目录就是封装的一些类型，这些后面再详细描述，先开始上源码！</p>
+<a id="more"></a>
 <h4 id="index-ts"><a href="#index-ts" class="headerlink" title="index.ts"></a>index.ts</h4><p>这个文件主要导出了一些常用的接口<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">import createStore from &apos;./createStore&apos;</span><br><span class="line">import combineReducers from &apos;./combineReducers&apos;</span><br><span class="line">import bindActionCreators from &apos;./bindActionCreators&apos;</span><br><span class="line">import applyMiddleware from &apos;./applyMiddleware&apos;</span><br><span class="line">import compose from &apos;./compose&apos;</span><br><span class="line">import warning from &apos;./utils/warning&apos;</span><br><span class="line">import __DO_NOT_USE__ActionTypes from &apos;./utils/actionTypes&apos;</span><br><span class="line"></span><br><span class="line">//中间省略一些代码</span><br><span class="line">···</span><br><span class="line">export &#123;</span><br><span class="line">  createStore,</span><br><span class="line">  combineReducers,</span><br><span class="line">  bindActionCreators,</span><br><span class="line">  applyMiddleware,</span><br><span class="line">  compose,</span><br><span class="line">  __DO_NOT_USE__ActionTypes</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <p>可以看到我们Redux里常用的api，createstore、combineReducers、applyMiddleware、compose都给导出了，bindActionCreators之前没有用到过，正好可以看一下实现和用法。</p>
 <p>按照导出顺序挨个看看这些文件</p>
@@ -390,6 +391,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2020/08/08/Redux源码阅读_2/" rel="prev" title="Redux源码阅读_1">
+                Redux源码阅读_1 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -466,7 +471,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">30</span>
+                  <span class="site-state-item-count">31</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
