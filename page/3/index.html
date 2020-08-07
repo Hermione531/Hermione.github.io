@@ -229,6 +229,497 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/01/13/React知识点整理/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="张倩倩">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hermione">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/01/13/React知识点整理/" itemprop="url">React知识点整理</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-01-13T14:56:42+08:00">
+                2019-01-13
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/学习笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">学习笔记</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h2 id="初入React"><a href="#初入React" class="headerlink" title="初入React"></a>初入React</h2><h4 id="JSX语法"><a href="#JSX语法" class="headerlink" title="JSX语法"></a>JSX语法</h4><ul>
+<li>定义标签时，只允许被一个标签包裹</li>
+<li>标签一定要闭合</li>
+<li>注释被{}包起来</li>
+</ul>
+<h4 id="React组件"><a href="#React组件" class="headerlink" title="React组件"></a>React组件</h4><ul>
+<li>无状态组件创建时始终保持了==一个实例==</li>
+<li>有状态组件创建几次组件就会创建几次实例</li>
+</ul>
+<h4 id="React数据流"><a href="#React数据流" class="headerlink" title="React数据流"></a>React数据流</h4><h5 id="state"><a href="#state" class="headerlink" title="state"></a>state</h5><ul>
+<li>setState是==异步==方法<h5 id="props"><a href="#props" class="headerlink" title="props"></a>props</h5></li>
+<li>props本身是不可变的（==readonly==）</li>
+<li><p>==defaultProps==静态变量可以定义props默认配置（==默认类型==）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">static defaultProps = &#123;</span><br><span class="line">    classPrefix: &apos;tabs&apos;, </span><br><span class="line">    onChange: () =&gt; &#123;&#125;,</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>React中有一个内置的prop：children，代表组件的子组件集合</p>
+</li>
+<li>JavaScript不是强类型的语言，React对此做了改进，==propTypes==用于规范props的类型与必要状态（==类型检查==）。<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">static propTypes = &#123;</span><br><span class="line">  tab: React.PropTypes.oneOfType([</span><br><span class="line">    React.PropTypes.string,</span><br><span class="line">    React.PropTypes.node,</span><br><span class="line">  ]).isRequired,</span><br><span class="line">  order: React.PropTypes.string.isRequired,</span><br><span class="line">  disble: React.PropTypes.bool,</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2019/01/13/React知识点整理/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/12/07/ant design修改默认样式/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="张倩倩">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hermione">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/12/07/ant design修改默认样式/" itemprop="url">ant design修改默认样式</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-12-07T14:23:52+08:00">
+                2018-12-07
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/前端基础应用/" itemprop="url" rel="index">
+                    <span itemprop="name">前端基础应用</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>将ant design文件编译成less文件，首先需安装less、less-loader</p>
+<h6 id="版本信息"><a href="#版本信息" class="headerlink" title="版本信息"></a>版本信息</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&quot;antd&quot;: &quot;^3.13.4&quot;,</span><br><span class="line">&quot;less&quot;: &quot;^3.9.0&quot;,</span><br><span class="line">&quot;less-loader&quot;: &quot;^4.1.0&quot;,</span><br><span class="line">&quot;css-loader&quot;: &quot;^2.1.0&quot;,</span><br><span class="line">&quot;style-loader&quot;: &quot;^0.23.1&quot;,</span><br></pre></td></tr></table></figure>
+<h6 id="babelrc配置"><a href="#babelrc配置" class="headerlink" title=".babelrc配置"></a>.babelrc配置</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    &quot;presets&quot;: [</span><br><span class="line">        &quot;env&quot;,</span><br><span class="line">        &quot;latest&quot;,</span><br><span class="line">        &quot;react&quot;,</span><br><span class="line">        &quot;stage-0&quot;</span><br><span class="line">    ],</span><br><span class="line">    &quot;plugins&quot;:[</span><br><span class="line">        &quot;transform-runtime&quot;,</span><br><span class="line">        &quot;transform-object-rest-spread&quot;,</span><br><span class="line">        [</span><br><span class="line">            &quot;import&quot;, &#123;</span><br><span class="line">                &quot;libraryName&quot;: &quot;antd&quot;,</span><br><span class="line">                &quot;style&quot;: true</span><br><span class="line">            &#125;</span><br><span class="line">        ]</span><br><span class="line">    ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h6 id="webpack-module"><a href="#webpack-module" class="headerlink" title="webpack module"></a>webpack module</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    test: /\.less$/,</span><br><span class="line">    use: [&apos;style-loader&apos;, &apos;css-loader&apos;, &#123;</span><br><span class="line">        loader: &apos;less-loader&apos;,</span><br><span class="line">        options: &#123;</span><br><span class="line">            modifyVars: &#123;</span><br><span class="line">                &quot;primary-color&quot;: &quot;#169BD5&quot;,</span><br><span class="line">                &quot;link-color&quot;: &quot;#169BD5&quot;</span><br><span class="line">            &#125;,</span><br><span class="line">            javascriptEnabled: true</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/09/与后台进行通信webpack配置/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="张倩倩">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hermione">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/11/09/与后台进行通信webpack配置/" itemprop="url">与后台进行通信webpack配置</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-11-09T16:48:12+08:00">
+                2018-11-09
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/前端基础应用/" itemprop="url" rel="index">
+                    <span itemprop="name">前端基础应用</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>一直不清楚做项目的时候前台怎么和后台进行通信，虽然知道可以通过ajax请求后台数据，但是不知道在具体项目中怎么运用的，正好自己搭项目的时候也遇到了这个问题，简单记录一下。</p>
+<p>起因是webpack可以自己指定port(本地代码，host为<a href="http://localhost:port)，并将文件打包，运行在指定的host上面。同时，后台也指定了程序运行的端口号。若前台指定的端口号和后台一样，肯定会有错误，若指定不同端口号，请求的url又跨域了，此时的做法是在webpack配置上加上一个devserver配置，加上一个代理" target="_blank" rel="noopener">http://localhost:port)，并将文件打包，运行在指定的host上面。同时，后台也指定了程序运行的端口号。若前台指定的端口号和后台一样，肯定会有错误，若指定不同端口号，请求的url又跨域了，此时的做法是在webpack配置上加上一个devserver配置，加上一个代理</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">devServer: &#123;</span><br><span class="line">    proxy: &#123;</span><br><span class="line">        &apos;/api/v1&apos;: &apos;http://localhost:8025&apos;,</span><br><span class="line">    &#125;,</span><br><span class="line">    contentBase: [path.join(__dirname, &quot;dist&quot;)],</span><br><span class="line">    compress: true,</span><br><span class="line">    historyApiFallback: true,</span><br><span class="line">    hot: true,</span><br><span class="line">    port: port</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>配置</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>proxy</td>
+<td>请求到 /api/v1 会被代理请求到<a href="http://localhost:8025/api/v1" target="_blank" rel="noopener">http://localhost:8025/api/v1</a></td>
+</tr>
+<tr>
+<td>contentBase</td>
+<td>告诉服务器从哪个目录内容提供文件</td>
+</tr>
+<tr>
+<td>compress</td>
+<td>一切服务都启用gzip压缩</td>
+</tr>
+<tr>
+<td>historyApiFallback</td>
+<td>默认禁用404响应被替代为index.html</td>
+</tr>
+<tr>
+<td>hot</td>
+<td>启用webpack的模块热加载功能（必须有 webpack.HotModuleReplacementPlugin 才能完全启用 HMR）</td>
+</tr>
+<tr>
+<td>port</td>
+<td>指定要监听请求的端口号</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>详细配置见 <a href="https://webpack.docschina.org/configuration/dev-server/#devserver" target="_blank" rel="noopener">devserver</a></p>
+<p>webpack.config.js文件：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br></pre></td><td class="code"><pre><span class="line">const path = require(&apos;path&apos;);</span><br><span class="line">const webpack = require(&apos;webpack&apos;);</span><br><span class="line"></span><br><span class="line">const CopyWebpackPlugin = require(&apos;copy-webpack-plugin&apos;);</span><br><span class="line">const HtmlwebpackPlugin = require(&apos;html-webpack-plugin&apos;);</span><br><span class="line">const HtmlWebpackIncludeAssetsPlugin = require(&apos;html-webpack-include-assets-plugin&apos;);</span><br><span class="line">const OpenBrowerPlugin = require(&apos;open-browser-webpack-plugin&apos;);</span><br><span class="line"></span><br><span class="line">const port = 8026;</span><br><span class="line">const host = `http://localhost:$&#123;port&#125;/`;</span><br><span class="line"></span><br><span class="line">module.exports = &#123;</span><br><span class="line">    entry: &#123;</span><br><span class="line">        bundle: &apos;./src/index.js&apos;,</span><br><span class="line">        vendor: [</span><br><span class="line">            &apos;classnames&apos;,</span><br><span class="line">            &apos;redux&apos;,</span><br><span class="line">            &apos;redux-thunk&apos;,</span><br><span class="line">            &apos;redux-immutable&apos;,</span><br><span class="line">            &apos;redux-actions&apos;,</span><br><span class="line">            &apos;react-router&apos;,</span><br><span class="line">            &apos;react-router-dom&apos;,</span><br><span class="line">            &apos;history/createBrowserHistory&apos;</span><br><span class="line">        ]</span><br><span class="line">    &#125;,</span><br><span class="line">    output: &#123;</span><br><span class="line">        path: path.resolve(__dirname, &quot;dist&quot;),</span><br><span class="line">        filename: &apos;js/[name].js&apos;,</span><br><span class="line">        chunkFilename: &apos;lib/[name].min.js&apos;,</span><br><span class="line">        publicPath: host</span><br><span class="line">    &#125;,</span><br><span class="line"></span><br><span class="line">    resolve: &#123;</span><br><span class="line">        modules: [</span><br><span class="line">            &quot;node_modules&quot;,</span><br><span class="line">            path.resolve(__dirname, &quot;src&quot;)</span><br><span class="line">        ],</span><br><span class="line">        extensions: [&quot;.js&quot;, &quot;.jsx&quot;, &quot;.json&quot;, &quot;.css&quot;, &quot;.scss&quot;]</span><br><span class="line">    &#125;,</span><br><span class="line"></span><br><span class="line">    mode: &apos;development&apos;,</span><br><span class="line">    devtool: &apos;eval-source-map&apos;,</span><br><span class="line"></span><br><span class="line">    devServer: &#123;</span><br><span class="line">        contentBase: &apos;./src&apos;,</span><br><span class="line">        historyApiFallback: true,</span><br><span class="line">        inline: true,</span><br><span class="line">        open: true,</span><br><span class="line">        hot: true,</span><br><span class="line">        compress: true,</span><br><span class="line">        port: port</span><br><span class="line">    &#125;,</span><br><span class="line"></span><br><span class="line">    module: &#123;</span><br><span class="line">        rules: [&#123;</span><br><span class="line">            test: /\.jsx?$/,</span><br><span class="line">            use: &#123;</span><br><span class="line">                loader: &apos;babel-loader&apos;,</span><br><span class="line">                query: &#123;</span><br><span class="line">                    presets: [&apos;react&apos;, &apos;es2017&apos;],</span><br><span class="line">                    plugins: [&apos;transform-object-rest-spread&apos;, &quot;syntax-dynamic-import&quot;]</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;,</span><br><span class="line">            exclude: /node_modules/</span><br><span class="line">        &#125;,&#123;</span><br><span class="line">            test: /\.scss$/,</span><br><span class="line">            use: [&apos;style-loader&apos;, &apos;css-loader?modules&apos;, &#123;</span><br><span class="line">                loader: &apos;postcss-loader&apos;,</span><br><span class="line">                options: &#123;</span><br><span class="line">                    plugins: () =&gt; [</span><br><span class="line">                        require(&apos;autoprefixer&apos;)(&#123; browsers: [&apos;last 10 Chrome versions&apos;, &apos;last 5 Firefox versions&apos;, &apos;Safari &gt;= 6&apos;, &apos;ie &gt; 8&apos;] &#125;)</span><br><span class="line">                    ]</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;, &apos;sass-loader&apos;]</span><br><span class="line">        &#125;,&#123;</span><br><span class="line">            test: /\.less$/,</span><br><span class="line">            use: [&apos;style-loader&apos;, &apos;css-loader&apos;, &#123;</span><br><span class="line">                loader: &apos;less-loader&apos;,</span><br><span class="line">                options: &#123;</span><br><span class="line">                    modifyVars: &#123;</span><br><span class="line">                        &quot;primary-color&quot;: &quot;#169BD5&quot;,</span><br><span class="line">                        &quot;link-color&quot;: &quot;#169BD5&quot;</span><br><span class="line">                    &#125;,</span><br><span class="line">                    javascriptEnabled: true</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;]</span><br><span class="line">        &#125;,&#123;</span><br><span class="line">            test: /\.css$/,</span><br><span class="line">            use: [&apos;style-loader&apos;, &apos;css-loader&apos;]</span><br><span class="line">        &#125;,&#123;</span><br><span class="line">            test: /\.(?:png|jpg|gif)/,</span><br><span class="line">            loader:&apos;url-loader?limit=8192&amp;name=image/[hash].[ext]&apos;</span><br><span class="line">        &#125;,&#123;</span><br><span class="line">            test: /\.svg$/,</span><br><span class="line">            loader: &apos;svg-url-loader&apos;</span><br><span class="line">        &#125;]</span><br><span class="line">    &#125;,</span><br><span class="line"></span><br><span class="line">    devServer: &#123;</span><br><span class="line">        proxy: &#123;</span><br><span class="line">            &apos;/api/v1&apos;: &apos;http://localhost:8025&apos;,</span><br><span class="line">        &#125;,</span><br><span class="line">        contentBase: [path.join(__dirname, &quot;dist&quot;)],</span><br><span class="line">        compress: true,</span><br><span class="line">        historyApiFallback: true,</span><br><span class="line">        hot: true,</span><br><span class="line">        port: port</span><br><span class="line">    &#125;,</span><br><span class="line"></span><br><span class="line">    plugins: [</span><br><span class="line">        // new webpack.optimize.CommonsChunkPlugin(&#123;</span><br><span class="line">        //     names: [&apos;vendor&apos;],</span><br><span class="line">        //     filename: &apos;lib/[name].min.js&apos;,</span><br><span class="line">        // &#125;),</span><br><span class="line">        new webpack.optimize.SplitChunksPlugin(&#123;</span><br><span class="line">            cacheGroups: &#123;</span><br><span class="line">                commons: &#123;</span><br><span class="line">                    chunks: &apos;initial&apos;,</span><br><span class="line">                    minChunks: 2,</span><br><span class="line">                    maxInitialRequetst: 5,</span><br><span class="line">                    minSize: 0</span><br><span class="line">                &#125;,</span><br><span class="line">                vendor: &#123;</span><br><span class="line">                    test: /node_modules/,</span><br><span class="line">                    chunks: &apos;initial&apos;,</span><br><span class="line">                    name: &apos;vendor&apos;,</span><br><span class="line">                    priority: 10,</span><br><span class="line">                    enforce: true</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">        &#125;),</span><br><span class="line">        new CopyWebpackPlugin([&#123;</span><br><span class="line">            from: &apos;node_modules/antd/dist/antd.min.js&apos;,</span><br><span class="line">            to: &apos;/lib&apos;</span><br><span class="line">        &#125;,&#123;</span><br><span class="line">            from: &apos;node_modules/react/cjs/react.development.js&apos;,</span><br><span class="line">            to: &apos;/lib&apos;</span><br><span class="line">        &#125;,&#123;</span><br><span class="line">            from: &apos;node_modules/react-dom/cjs/react-dom.development.js&apos;,</span><br><span class="line">            to: &apos;/lib&apos;</span><br><span class="line">        &#125;]),</span><br><span class="line"></span><br><span class="line">        new HtmlwebpackPlugin(&#123;</span><br><span class="line">            filename: &apos;index.html&apos;,</span><br><span class="line">            template: &apos;src/index.ejs&apos;,</span><br><span class="line">            title: &apos;RShare&apos;</span><br><span class="line">        &#125;),</span><br><span class="line"></span><br><span class="line">        new HtmlWebpackIncludeAssetsPlugin(&#123;</span><br><span class="line">            assets: [</span><br><span class="line">                &apos;lib/react-dom.development.js&apos;,</span><br><span class="line">                &apos;lib/react.development.js&apos;,</span><br><span class="line">                &apos;lib/antd.min.js&apos;</span><br><span class="line">            ],</span><br><span class="line">            append: false</span><br><span class="line">        &#125;),</span><br><span class="line">        new OpenBrowerPlugin(&#123;</span><br><span class="line">            url: host</span><br><span class="line">        &#125;),</span><br><span class="line">    ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/10/11/伪元素实现文字左右横线/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1456,7 +1947,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">27</span>
+                  <span class="site-state-item-count">30</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -1467,7 +1958,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-count">9</span>
                   <span class="site-state-item-name">categories</span>
                 </a>
               </div>
@@ -1478,7 +1969,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">13</span>
+                  <span class="site-state-item-count">16</span>
                   <span class="site-state-item-name">tags</span>
                 </a>
               </div>
