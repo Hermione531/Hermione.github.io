@@ -1,0 +1,749 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Redux,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="combineReducers.ts函数重载声明首先是对combineReducers函数的重载，重载了三个函数，主要区别是传参reducers类型的不同。 12345678910111213// 重载函数export default function combineReducers&amp;lt;S&amp;gt;(  reducers: ReducersMapObject&amp;lt;S, any&amp;gt;): Re">
+<meta name="keywords" content="Redux">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Redux源码阅读_3">
+<meta property="og:url" content="http://yoursite.com/2020/08/08/Redux源码阅读_3/index.html">
+<meta property="og:site_name" content="Hermione">
+<meta property="og:description" content="combineReducers.ts函数重载声明首先是对combineReducers函数的重载，重载了三个函数，主要区别是传参reducers类型的不同。 12345678910111213// 重载函数export default function combineReducers&amp;lt;S&amp;gt;(  reducers: ReducersMapObject&amp;lt;S, any&amp;gt;): Re">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/12559554-b841eecc3ec1fbc3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2020-08-08T13:05:11.745Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Redux源码阅读_3">
+<meta name="twitter:description" content="combineReducers.ts函数重载声明首先是对combineReducers函数的重载，重载了三个函数，主要区别是传参reducers类型的不同。 12345678910111213// 重载函数export default function combineReducers&amp;lt;S&amp;gt;(  reducers: ReducersMapObject&amp;lt;S, any&amp;gt;): Re">
+<meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/12559554-b841eecc3ec1fbc3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2020/08/08/Redux源码阅读_3/">
+
+
+
+
+
+  <title>Redux源码阅读_3 | Hermione</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Hermione</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/08/08/Redux源码阅读_3/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="张倩倩">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hermione">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Redux源码阅读_3</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-08-08T20:47:41+08:00">
+                2020-08-08
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/源码阅读/" itemprop="url" rel="index">
+                    <span itemprop="name">源码阅读</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h4 id="combineReducers-ts"><a href="#combineReducers-ts" class="headerlink" title="combineReducers.ts"></a>combineReducers.ts</h4><h5 id="函数重载声明"><a href="#函数重载声明" class="headerlink" title="函数重载声明"></a>函数重载声明</h5><p>首先是对combineReducers函数的重载，重载了三个函数，主要区别是传参<strong>reducers</strong>类型的不同。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">// 重载函数</span><br><span class="line">export default function combineReducers&lt;S&gt;(</span><br><span class="line">  reducers: ReducersMapObject&lt;S, any&gt;</span><br><span class="line">): Reducer&lt;CombinedState&lt;S&gt;&gt;</span><br><span class="line">export default function combineReducers&lt;S, A extends Action = AnyAction&gt;(</span><br><span class="line">  reducers: ReducersMapObject&lt;S, A&gt;</span><br><span class="line">): Reducer&lt;CombinedState&lt;S&gt;, A&gt;</span><br><span class="line">export default function combineReducers&lt;M extends ReducersMapObject&gt;(</span><br><span class="line">  reducers: M</span><br><span class="line">): Reducer&lt;</span><br><span class="line">  CombinedState&lt;StateFromReducersMapObject&lt;M&gt;&gt;,</span><br><span class="line">  ActionFromReducersMapObject&lt;M&gt;</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
+<h5 id="函数结构"><a href="#函数结构" class="headerlink" title="函数结构"></a>函数结构</h5><p>然后看看combineReducers函数的结构。<br><img src="https://upload-images.jianshu.io/upload_images/12559554-b841eecc3ec1fbc3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="combineReducers函数结构"></p>
+<a id="more"></a>
+<p>可以看到combineReducers是个高阶函数，返回值也是一个函数，返回的函数接收state与action两个变量。在官方手册给的用法，combineReducer之后是直接可以作为参数传入给createStore（具体分析见<a href="[https://hermione531.github.io/2020/08/07/Redux%E6%BA%90%E7%A0%81%E9%98%85%E8%AF%BB_1/">Redux源码阅读_1</a>）来生成store的，但是源码的返回值却是个函数，这是怎么回事？</p>
+<p>带着这个问题继续看……</p>
+<p>函数体内声明的变量定义了两种特殊的类型，<strong>ReducersMapObject</strong>和<strong>StateFromReducersMapObject</strong>，看看这两种类型的定义。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">export type Reducer&lt;S = any, A extends Action = AnyAction&gt; = (</span><br><span class="line">  state: S | undefined,</span><br><span class="line">  action: A</span><br><span class="line">) =&gt; S</span><br><span class="line"></span><br><span class="line">export type ReducersMapObject&lt;S = any, A extends Action = AnyAction&gt; = &#123;</span><br><span class="line">  [K in keyof S]: Reducer&lt;S[K], A&gt;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">export type StateFromReducersMapObject&lt;M&gt; = M extends ReducersMapObject</span><br><span class="line">  ? &#123; [P in keyof M]: M[P] extends Reducer&lt;infer S, any&gt; ? S : never &#125;</span><br><span class="line">  : never</span><br></pre></td></tr></table></figure></p>
+<p>可以看到：</p>
+<ul>
+<li>Reducers是入参为state与action，且返回一个state的函数（state类型为S）。</li>
+<li><p>ReducersMapObject是value值为Reducer类型的Object。（之前以为ReducerMapObject是key值为state，value值为Reducer类型的Map，看了发现命名不太对。。定义的key是[K in keyof S]，state 为 S 类型，而我们定义的state又是Object，那state的key就是string，那么ReducerMapObject的key也是string类型，所以他应该是个Object，而不是Map）</p>
+</li>
+<li><p>StateFromReducersMapObject是value值为是state的Object（之前以为类型是key值为Reducer类型，value为state的Map，但是定义的M继承自ReducersMapObject，那么 M 的 key 类型为 string，那么 P 类型就是 string，所以他的类型应该是Object而不是Map）。</p>
+</li>
+</ul>
+<p>现在就可以回答上面的问题了，combineReducers返回一个接受state与action的函数，而redux里定义的reducer也是这样的一个函数，所以combineReducers的返回值类型其实就是一个Reducer……（被自己蠢到了，因为想看源码就把ts快速过了一遍，类型这一块刚看有点懵，看源码的时候一直在纠结这个变量是啥类型、那个变量是啥类型的问题。。）</p>
+<h5 id="函数实现"><a href="#函数实现" class="headerlink" title="函数实现"></a>函数实现</h5><p>combineReducers函数内部主要操作：</p>
+<ul>
+<li>将value类型为function的所有reducers复制到finalReducers</li>
+<li>返回combine函数</li>
+</ul>
+<p>combine函数的操作：</p>
+<ul>
+<li>新建 nextState : StateFromReducersMapObject<typeof reducers> 变量</typeof></li>
+<li>遍历finalReducers，计算当前state与nextState值，并将nextState赋值给对应key值的nextState，修改hasChanged标识变量的值</li>
+<li>根据hasChanged标识变量确定是返回传入参数state还是新建变量nextState</li>
+</ul>
+<p><strong>由combine函数操作可知，redux返回的state都是全新的state，而不是在之前的state上做修改，其内存地址有变化</strong></p>
+<p>具体代码如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br></pre></td><td class="code"><pre><span class="line">export default function combineReducers(reducers: ReducersMapObject) &#123;</span><br><span class="line">  const reducerKeys = Object.keys(reducers)</span><br><span class="line">  const finalReducers: ReducersMapObject = &#123;&#125;</span><br><span class="line">  for (let i = 0; i &lt; reducerKeys.length; i++) &#123;</span><br><span class="line">    const key = reducerKeys[i]</span><br><span class="line"></span><br><span class="line">    if (process.env.NODE_ENV !== &apos;production&apos;) &#123;</span><br><span class="line">      if (typeof reducers[key] === &apos;undefined&apos;) &#123;</span><br><span class="line">        warning(`No reducer provided for key &quot;$&#123;key&#125;&quot;`)</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    if (typeof reducers[key] === &apos;function&apos;) &#123;</span><br><span class="line">      finalReducers[key] = reducers[key]</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  const finalReducerKeys = Object.keys(finalReducers)</span><br><span class="line"></span><br><span class="line">  // This is used to make sure we don&apos;t warn about the same</span><br><span class="line">  // keys multiple times.</span><br><span class="line">  let unexpectedKeyCache: &#123; [key: string]: true &#125;</span><br><span class="line">  if (process.env.NODE_ENV !== &apos;production&apos;) &#123;</span><br><span class="line">    unexpectedKeyCache = &#123;&#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  let shapeAssertionError: Error</span><br><span class="line">  try &#123;</span><br><span class="line">    assertReducerShape(finalReducers)</span><br><span class="line">  &#125; catch (e) &#123;</span><br><span class="line">    shapeAssertionError = e</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  return function combination(</span><br><span class="line">    state: StateFromReducersMapObject&lt;typeof reducers&gt; = &#123;&#125;,</span><br><span class="line">    action: AnyAction</span><br><span class="line">  ) &#123;</span><br><span class="line">    if (shapeAssertionError) &#123;</span><br><span class="line">      throw shapeAssertionError</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    if (process.env.NODE_ENV !== &apos;production&apos;) &#123;</span><br><span class="line">      const warningMessage = getUnexpectedStateShapeWarningMessage(</span><br><span class="line">        state,</span><br><span class="line">        finalReducers,</span><br><span class="line">        action,</span><br><span class="line">        unexpectedKeyCache</span><br><span class="line">      )</span><br><span class="line">      if (warningMessage) &#123;</span><br><span class="line">        warning(warningMessage)</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    let hasChanged = false</span><br><span class="line">    const nextState: StateFromReducersMapObject&lt;typeof reducers&gt; = &#123;&#125;</span><br><span class="line">    for (let i = 0; i &lt; finalReducerKeys.length; i++) &#123;</span><br><span class="line">      const key = finalReducerKeys[i]</span><br><span class="line">      const reducer = finalReducers[key]</span><br><span class="line">      const previousStateForKey = state[key]</span><br><span class="line">      const nextStateForKey = reducer(previousStateForKey, action)</span><br><span class="line">      if (typeof nextStateForKey === &apos;undefined&apos;) &#123;</span><br><span class="line">        const errorMessage = getUndefinedStateErrorMessage(key, action)</span><br><span class="line">        throw new Error(errorMessage)</span><br><span class="line">      &#125;</span><br><span class="line">      nextState[key] = nextStateForKey</span><br><span class="line">      hasChanged = hasChanged || nextStateForKey !== previousStateForKey</span><br><span class="line">    &#125;</span><br><span class="line">    hasChanged =</span><br><span class="line">      hasChanged || finalReducerKeys.length !== Object.keys(state).length</span><br><span class="line">    return hasChanged ? nextState : state</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Redux/" rel="tag"># Redux</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2020/08/08/Redux源码阅读_2/" rel="next" title="Redux源码阅读_2">
+                <i class="fa fa-chevron-left"></i> Redux源码阅读_2
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">张倩倩</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">32</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-name">categories</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">16</span>
+                  <span class="site-state-item-name">tags</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/Hermione531" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-globe"></i>GitHub</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#combineReducers-ts"><span class="nav-number">1.</span> <span class="nav-text">combineReducers.ts</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#函数重载声明"><span class="nav-number">1.1.</span> <span class="nav-text">函数重载声明</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#函数结构"><span class="nav-number">1.2.</span> <span class="nav-text">函数结构</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#函数实现"><span class="nav-number">1.3.</span> <span class="nav-text">函数实现</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">张倩倩</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
