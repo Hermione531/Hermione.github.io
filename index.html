@@ -229,6 +229,152 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/08/10/Redux源码阅读_4/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="张倩倩">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hermione">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/08/10/Redux源码阅读_4/" itemprop="url">Redux源码阅读_4</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-08-10T22:25:41+08:00">
+                2020-08-10
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/源码阅读/" itemprop="url" rel="index">
+                    <span itemprop="name">源码阅读</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h4 id="applyMiddleware-ts"><a href="#applyMiddleware-ts" class="headerlink" title="applyMiddleware.ts"></a>applyMiddleware.ts</h4><h5 id="函数重载声明"><a href="#函数重载声明" class="headerlink" title="函数重载声明"></a>函数重载声明</h5><p>首先是对applyMiddleware函数的重载，重载了七个函数，主要是传入参数个数的区别。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">export default function applyMiddleware(): StoreEnhancer</span><br><span class="line">export default function applyMiddleware&lt;Ext1, S&gt;(</span><br><span class="line">  middleware1: Middleware&lt;Ext1, S, any&gt;</span><br><span class="line">): StoreEnhancer&lt;&#123; dispatch: Ext1 &#125;&gt;</span><br><span class="line">export default function applyMiddleware&lt;Ext1, Ext2, S&gt;(</span><br><span class="line">  middleware1: Middleware&lt;Ext1, S, any&gt;,</span><br><span class="line">  middleware2: Middleware&lt;Ext2, S, any&gt;</span><br><span class="line">): StoreEnhancer&lt;&#123; dispatch: Ext1 &amp; Ext2 &#125;&gt;</span><br><span class="line">export default function applyMiddleware&lt;Ext1, Ext2, Ext3, S&gt;(</span><br><span class="line">  middleware1: Middleware&lt;Ext1, S, any&gt;,</span><br><span class="line">  middleware2: Middleware&lt;Ext2, S, any&gt;,</span><br><span class="line">  middleware3: Middleware&lt;Ext3, S, any&gt;</span><br><span class="line">): StoreEnhancer&lt;&#123; dispatch: Ext1 &amp; Ext2 &amp; Ext3 &#125;&gt;</span><br><span class="line">export default function applyMiddleware&lt;Ext1, Ext2, Ext3, Ext4, S&gt;(</span><br><span class="line">  middleware1: Middleware&lt;Ext1, S, any&gt;,</span><br><span class="line">  middleware2: Middleware&lt;Ext2, S, any&gt;,</span><br><span class="line">  middleware3: Middleware&lt;Ext3, S, any&gt;,</span><br><span class="line">  middleware4: Middleware&lt;Ext4, S, any&gt;</span><br><span class="line">): StoreEnhancer&lt;&#123; dispatch: Ext1 &amp; Ext2 &amp; Ext3 &amp; Ext4 &#125;&gt;</span><br><span class="line">export default function applyMiddleware&lt;Ext1, Ext2, Ext3, Ext4, Ext5, S&gt;(</span><br><span class="line">  middleware1: Middleware&lt;Ext1, S, any&gt;,</span><br><span class="line">  middleware2: Middleware&lt;Ext2, S, any&gt;,</span><br><span class="line">  middleware3: Middleware&lt;Ext3, S, any&gt;,</span><br><span class="line">  middleware4: Middleware&lt;Ext4, S, any&gt;,</span><br><span class="line">  middleware5: Middleware&lt;Ext5, S, any&gt;</span><br><span class="line">): StoreEnhancer&lt;&#123; dispatch: Ext1 &amp; Ext2 &amp; Ext3 &amp; Ext4 &amp; Ext5 &#125;&gt;</span><br><span class="line">export default function applyMiddleware&lt;Ext, S = any&gt;(</span><br><span class="line">  ...middlewares: Middleware&lt;any, S, any&gt;[]</span><br><span class="line">): StoreEnhancer&lt;&#123; dispatch: Ext &#125;&gt;</span><br></pre></td></tr></table></figure></p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2020/08/10/Redux源码阅读_4/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/08/08/Redux源码阅读_3/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -770,23 +916,15 @@
 
       
         
-          
-            <p>缩减每个卷积层通道数，通过知识蒸馏，对网络进行压缩，其中，教师网络为原网络，学生网络为缩减通道数之后网络。</p>
+          <p>缩减每个卷积层通道数，通过知识蒸馏，对网络进行压缩，其中，教师网络为原网络，学生网络为缩减通道数之后网络。</p>
 <h4 id="网络介绍"><a href="#网络介绍" class="headerlink" title="网络介绍"></a>网络介绍</h4><p>网络结构：<br><img src="https://hermione531.github.io/img/SKT_network.png" alt="network"></p>
-<p>其中计算三个损失，Intra-PT，Inter-RT与Soft Ground-Truth。</p>
-<h5 id="Intra-PT"><a href="#Intra-PT" class="headerlink" title="Intra-PT"></a>Intra-PT</h5><p><img src="https://hermione531.github.io/img/SKT_h.png" alt="h"><br>h为student每层需蒸馏的特征图经过 1×1卷积层后输出。</p>
-<p><img src="https://hermione531.github.io/img/SKT_cos.png" alt="cos"><br>对student与teacher feature map 做cos。</p>
-<p>loss:<br><img src="https://hermione531.github.io/img/SKT_lintra.png" alt="Lintra"></p>
-<h5 id="Intra-RT"><a href="#Intra-RT" class="headerlink" title="Intra-RT"></a>Intra-RT</h5><p>计算FSP：<br><img src="https://hermione531.github.io/img/SKT_f.png" alt="FSP"></p>
-<p>loss:<br><img src="https://hermione531.github.io/img/SKT_linter.png" alt="Linter"></p>
-<h5 id="Soft-Ground-Truth"><a href="#Soft-Ground-Truth" class="headerlink" title="Soft Ground-Truth"></a>Soft Ground-Truth</h5><p><img src="https://hermione531.github.io/img/SKT_lm.png" alt="Lm"></p>
-<p>网络总体损失：<br><img src="https://hermione531.github.io/img/SKT_loss.png" alt="loss"></p>
-<h4 id="Ablation-Study"><a href="#Ablation-Study" class="headerlink" title="Ablation Study"></a>Ablation Study</h4><p>对通道数：<br><img src="https://hermione531.github.io/img/SKT_asn.png" alt="AS"></p>
-<p>对中间loss:<br><img src="https://hermione531.github.io/img/SKT_asl.png" alt="AS"></p>
-<p>对GT:<br><img src="https://hermione531.github.io/img/SKT_asgt.png" alt="AS"><br>soft为将student密度图作为监督，hard为将GT作为监督。</p>
-<h4 id="结果"><a href="#结果" class="headerlink" title="结果"></a>结果</h4><p>在ShanghaiTech数据集上结果：<br><img src="https://hermione531.github.io/img/SKT_result.png" alt="result"></p>
-
-          
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2020/04/21/Efficient Crowd Counting via Structured Knowledge Transfer/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1557,153 +1695,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/04/01/Zero-Shot Knowledge Distillation in Deep Networks/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="张倩倩">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Hermione">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/04/01/Zero-Shot Knowledge Distillation in Deep Networks/" itemprop="url">Zero-Shot Knowledge Distillation in Deep Networks</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-04-01T14:56:00+08:00">
-                2020-04-01
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Papers/" itemprop="url" rel="index">
-                    <span itemprop="name">Papers</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h4 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h4><p>使用一种无数据的方法根据teacher网络来训练student网络。</p>
-<p>即不使用元数据，而是从复杂的teacher模型中合成 data impression，并将其作为原始训练数据样本的替代，通过知识蒸馏的方式，将teacher模型特征转移到student上。</p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2020/04/01/Zero-Shot Knowledge Distillation in Deep Networks/#more" rel="contents">
-              Read more &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1754,7 +1745,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">32</span>
+                  <span class="site-state-item-count">33</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>

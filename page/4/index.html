@@ -229,6 +229,240 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/06/15/git学习笔记/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="张倩倩">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hermione">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/06/15/git学习笔记/" itemprop="url">git学习笔记</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-06-15T11:27:36+08:00">
+                2018-06-15
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/学习笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">学习笔记</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h4 id="一级目录"><a href="#一级目录" class="headerlink" title="一级目录"></a>一级目录</h4><div class="table-container">
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>src</td>
+<td>源代码</td>
+</tr>
+<tr>
+<td>release</td>
+<td>发布结果</td>
+</tr>
+<tr>
+<td>test</td>
+<td>单元测试用例</td>
+</tr>
+<tr>
+<td>doc</td>
+<td>文档</td>
+</tr>
+<tr>
+<td>example</td>
+<td>示例</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><h2 id="起步"><a href="#起步" class="headerlink" title="起步"></a>起步</h2><h4 id="三种状态"><a href="#三种状态" class="headerlink" title="三种状态"></a>三种状态</h4><p><strong>Git有三种状态：</strong>==已提交（committed）、已修改（modified）和已暂存（staged）==。</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>状态</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>committed</td>
+<td>数据已经安全的保存在本地数据库中</td>
+</tr>
+<tr>
+<td>modified</td>
+<td>修改了文件，但还没保存到数据库中</td>
+</tr>
+<tr>
+<td>staged</td>
+<td>对一个已修改文件的当前版本做了标记，使之包含在下次提交的快照中</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h4 id="Git项目的三个工作区域"><a href="#Git项目的三个工作区域" class="headerlink" title="Git项目的三个工作区域"></a>Git项目的三个工作区域</h4><p>==Git仓库、工作目录以及暂存区域==。</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>工作区域</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Git仓库目录</td>
+<td>Git中最重要的部分。用来保存项目的元数据库</td>
+</tr>
+<tr>
+<td>工作目录</td>
+<td>对项目某个版本独立出来的内容</td>
+</tr>
+<tr>
+<td>暂存区域</td>
+<td>保存了下次将提交的文件列表信息，一般在Git仓库目录中</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><img src="https://progit.bootcss.com/images/areas.png" alt="image"></p>
+<p>基本的Git工作流程：</p>
+<ol>
+<li>在工作目录中修改文件。</li>
+<li>暂存文件，将文件的快照放入暂存区域</li>
+<li>提交更新，找到暂存区域的文件，将快照永久性存储到Git仓库目录</li>
+</ol>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/06/15/git学习笔记/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/06/08/js继承的几种方式/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -584,7 +818,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">32</span>
+                  <span class="site-state-item-count">33</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>

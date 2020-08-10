@@ -1,0 +1,737 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Redux,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="applyMiddleware.ts函数重载声明首先是对applyMiddleware函数的重载，重载了七个函数，主要是传入参数个数的区别。1234567891011121314151617181920212223242526272829export default function applyMiddleware(): StoreEnhancerexport default function a">
+<meta name="keywords" content="Redux">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Redux源码阅读_4">
+<meta property="og:url" content="http://yoursite.com/2020/08/10/Redux源码阅读_4/index.html">
+<meta property="og:site_name" content="Hermione">
+<meta property="og:description" content="applyMiddleware.ts函数重载声明首先是对applyMiddleware函数的重载，重载了七个函数，主要是传入参数个数的区别。1234567891011121314151617181920212223242526272829export default function applyMiddleware(): StoreEnhancerexport default function a">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2020-08-10T14:25:19.432Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Redux源码阅读_4">
+<meta name="twitter:description" content="applyMiddleware.ts函数重载声明首先是对applyMiddleware函数的重载，重载了七个函数，主要是传入参数个数的区别。1234567891011121314151617181920212223242526272829export default function applyMiddleware(): StoreEnhancerexport default function a">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2020/08/10/Redux源码阅读_4/">
+
+
+
+
+
+  <title>Redux源码阅读_4 | Hermione</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Hermione</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/08/10/Redux源码阅读_4/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="张倩倩">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hermione">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Redux源码阅读_4</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-08-10T22:25:41+08:00">
+                2020-08-10
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/源码阅读/" itemprop="url" rel="index">
+                    <span itemprop="name">源码阅读</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h4 id="applyMiddleware-ts"><a href="#applyMiddleware-ts" class="headerlink" title="applyMiddleware.ts"></a>applyMiddleware.ts</h4><h5 id="函数重载声明"><a href="#函数重载声明" class="headerlink" title="函数重载声明"></a>函数重载声明</h5><p>首先是对applyMiddleware函数的重载，重载了七个函数，主要是传入参数个数的区别。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">export default function applyMiddleware(): StoreEnhancer</span><br><span class="line">export default function applyMiddleware&lt;Ext1, S&gt;(</span><br><span class="line">  middleware1: Middleware&lt;Ext1, S, any&gt;</span><br><span class="line">): StoreEnhancer&lt;&#123; dispatch: Ext1 &#125;&gt;</span><br><span class="line">export default function applyMiddleware&lt;Ext1, Ext2, S&gt;(</span><br><span class="line">  middleware1: Middleware&lt;Ext1, S, any&gt;,</span><br><span class="line">  middleware2: Middleware&lt;Ext2, S, any&gt;</span><br><span class="line">): StoreEnhancer&lt;&#123; dispatch: Ext1 &amp; Ext2 &#125;&gt;</span><br><span class="line">export default function applyMiddleware&lt;Ext1, Ext2, Ext3, S&gt;(</span><br><span class="line">  middleware1: Middleware&lt;Ext1, S, any&gt;,</span><br><span class="line">  middleware2: Middleware&lt;Ext2, S, any&gt;,</span><br><span class="line">  middleware3: Middleware&lt;Ext3, S, any&gt;</span><br><span class="line">): StoreEnhancer&lt;&#123; dispatch: Ext1 &amp; Ext2 &amp; Ext3 &#125;&gt;</span><br><span class="line">export default function applyMiddleware&lt;Ext1, Ext2, Ext3, Ext4, S&gt;(</span><br><span class="line">  middleware1: Middleware&lt;Ext1, S, any&gt;,</span><br><span class="line">  middleware2: Middleware&lt;Ext2, S, any&gt;,</span><br><span class="line">  middleware3: Middleware&lt;Ext3, S, any&gt;,</span><br><span class="line">  middleware4: Middleware&lt;Ext4, S, any&gt;</span><br><span class="line">): StoreEnhancer&lt;&#123; dispatch: Ext1 &amp; Ext2 &amp; Ext3 &amp; Ext4 &#125;&gt;</span><br><span class="line">export default function applyMiddleware&lt;Ext1, Ext2, Ext3, Ext4, Ext5, S&gt;(</span><br><span class="line">  middleware1: Middleware&lt;Ext1, S, any&gt;,</span><br><span class="line">  middleware2: Middleware&lt;Ext2, S, any&gt;,</span><br><span class="line">  middleware3: Middleware&lt;Ext3, S, any&gt;,</span><br><span class="line">  middleware4: Middleware&lt;Ext4, S, any&gt;,</span><br><span class="line">  middleware5: Middleware&lt;Ext5, S, any&gt;</span><br><span class="line">): StoreEnhancer&lt;&#123; dispatch: Ext1 &amp; Ext2 &amp; Ext3 &amp; Ext4 &amp; Ext5 &#125;&gt;</span><br><span class="line">export default function applyMiddleware&lt;Ext, S = any&gt;(</span><br><span class="line">  ...middlewares: Middleware&lt;any, S, any&gt;[]</span><br><span class="line">): StoreEnhancer&lt;&#123; dispatch: Ext &#125;&gt;</span><br></pre></td></tr></table></figure></p>
+<a id="more"></a>
+<h5 id="函数实现"><a href="#函数实现" class="headerlink" title="函数实现"></a>函数实现</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">export default function applyMiddleware(</span><br><span class="line">  ...middlewares: Middleware[]</span><br><span class="line">): StoreEnhancer&lt;any&gt; &#123;</span><br><span class="line">  return (createStore: StoreEnhancerStoreCreator) =&gt; &lt;S, A extends AnyAction&gt;(</span><br><span class="line">    reducer: Reducer&lt;S, A&gt;,</span><br><span class="line">    preloadedState?: PreloadedState&lt;S&gt;</span><br><span class="line">  ) =&gt; &#123;</span><br><span class="line">    const store = createStore(reducer, preloadedState)</span><br><span class="line">    let dispatch: Dispatch = () =&gt; &#123;</span><br><span class="line">      throw new Error(</span><br><span class="line">        &apos;Dispatching while constructing your middleware is not allowed. &apos; +</span><br><span class="line">          &apos;Other middleware would not be applied to this dispatch.&apos;</span><br><span class="line">      )</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    const middlewareAPI: MiddlewareAPI = &#123;</span><br><span class="line">      getState: store.getState,</span><br><span class="line">      dispatch: (action, ...args) =&gt; dispatch(action, ...args)</span><br><span class="line">    &#125;</span><br><span class="line">    const chain = middlewares.map(middleware =&gt; middleware(middlewareAPI))</span><br><span class="line">    dispatch = compose&lt;typeof dispatch&gt;(...chain)(store.dispatch)</span><br><span class="line"></span><br><span class="line">    return &#123;</span><br><span class="line">      ...store,</span><br><span class="line">      dispatch</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>可以看到applyMiddleware返回一个对象，对象内容为{…store, dispatch}。</p>
+<p>首先看看定义的两个接口 MiddlewareAPI与Middleware：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">export interface MiddlewareAPI&lt;D extends Dispatch = Dispatch, S = any&gt; &#123;</span><br><span class="line">  dispatch: D</span><br><span class="line">  getState(): S</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">export interface Middleware&lt;</span><br><span class="line">  _DispatchExt = &#123;&#125;, // TODO: remove unused component (breaking change)</span><br><span class="line">  S = any,</span><br><span class="line">  D extends Dispatch = Dispatch</span><br><span class="line">&gt; &#123;</span><br><span class="line">  (api: MiddlewareAPI&lt;D, S&gt;): (</span><br><span class="line">    next: D</span><br><span class="line">  ) =&gt; (action: D extends Dispatch&lt;infer A&gt; ? A : never) =&gt; any</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>可以看到，MiddlewareAPI是一个包含dispath与state属性的对象，而Middleware是一个高阶函数，将Middleware写成函数形式，其结构大致为：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">function Middleware(api: ...) &#123;</span><br><span class="line">    return (next: ...) =&gt; (action: ...) &#123;</span><br><span class="line">        ...</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>若在上面的结构上做出如下类型申明：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">type Next&lt;...&gt; = (next: ...) =&gt; (action: ...) =&gt; any</span><br></pre></td></tr></table></figure></p>
+<p>则可以看做Middleware的返回值类型是个Next。</p>
+<p>回到applyMiddleware函数代码中，带入参数看看函数内部运作。</p>
+<p>若传入参数 middlewares = [middleware1, middleware2, middleware3]</p>
+<p>则 chain = [next1, next2, next3]</p>
+<p>由前文提到 compose实现（ <a href="https://www.jianshu.com/p/bf4204e163a6" target="_blank" rel="noopener">Redux源码阅读_2</a>）</p>
+<p>dispatch = compose<typeof dispatch>(…chain)(store.dispatch)<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; =next1(next2(next3(store.dispatch))) </typeof></p>
+<p>就是个逐层进行函数运算的操作。</p>
+<h4 id="后记"><a href="#后记" class="headerlink" title="后记"></a>后记</h4><p>redux源码到这里就告一段落（还有个bindActionCreator函数实现没整理，但是平时没怎么用到就不弄了），回到最开始的问题，基本都是react-redux的内容，这个之后再去看……</p>
+<p>只有一个可以回到的问题，action相关……</p>
+<p>看看redux关于action的声明<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">export interface Action&lt;T = any&gt; &#123;</span><br><span class="line">  type: T</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>就是一个包含type属性的对象…… dispatch action的操作在前面关于dispatch函数的分析中也写到了……</p>
+<p> 文档上写到的基本也就是源码的所有内容，不过只看文档还是有点不知所云，结合源码还是更能理解一点。（给自己找点借口……）</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Redux/" rel="tag"># Redux</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2020/08/08/Redux源码阅读_3/" rel="next" title="Redux源码阅读_3">
+                <i class="fa fa-chevron-left"></i> Redux源码阅读_3
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">张倩倩</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">33</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-name">categories</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">16</span>
+                  <span class="site-state-item-name">tags</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/Hermione531" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-globe"></i>GitHub</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#applyMiddleware-ts"><span class="nav-number">1.</span> <span class="nav-text">applyMiddleware.ts</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#函数重载声明"><span class="nav-number">1.1.</span> <span class="nav-text">函数重载声明</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#函数实现"><span class="nav-number">1.2.</span> <span class="nav-text">函数实现</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#后记"><span class="nav-number">2.</span> <span class="nav-text">后记</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">张倩倩</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
