@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="vue,">
+  <meta name="keywords" content="MongoDB,">
 
 
 
@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="安装node.js npm123//查看node npm版本信息node -vnpm -v 安装vue、vue-cli123npm install vuenpm install --global vue-cli 创建基于webpack模板项目创建项目123//project-name为项目名vue init webpack project-name 安装项目依赖1npm install 运行项目1">
-<meta name="keywords" content="vue">
+<meta name="description" content="基础用法（增删改查） 新建数据库 12// DATABASE_NAME  为数据库名称use DATABASE_NAME  查看所有数据库 1show dbs">
+<meta name="keywords" content="MongoDB">
 <meta property="og:type" content="article">
-<meta property="og:title" content="搭建vue脚手架(vue-cli)">
-<meta property="og:url" content="http://yoursite.com/2019/06/11/搭建vue脚手架（vue-cli）/index.html">
+<meta property="og:title" content="MongoDB记录_基本操作">
+<meta property="og:url" content="http://yoursite.com/2020/08/20/MongoDB记录_基本操作/index.html">
 <meta property="og:site_name" content="Hermione">
-<meta property="og:description" content="安装node.js npm123//查看node npm版本信息node -vnpm -v 安装vue、vue-cli123npm install vuenpm install --global vue-cli 创建基于webpack模板项目创建项目123//project-name为项目名vue init webpack project-name 安装项目依赖1npm install 运行项目1">
+<meta property="og:description" content="基础用法（增删改查） 新建数据库 12// DATABASE_NAME  为数据库名称use DATABASE_NAME  查看所有数据库 1show dbs">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-06-11T07:12:02.421Z">
+<meta property="og:updated_time" content="2020-09-02T15:03:53.036Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="搭建vue脚手架(vue-cli)">
-<meta name="twitter:description" content="安装node.js npm123//查看node npm版本信息node -vnpm -v 安装vue、vue-cli123npm install vuenpm install --global vue-cli 创建基于webpack模板项目创建项目123//project-name为项目名vue init webpack project-name 安装项目依赖1npm install 运行项目1">
+<meta name="twitter:title" content="MongoDB记录_基本操作">
+<meta name="twitter:description" content="基础用法（增删改查） 新建数据库 12// DATABASE_NAME  为数据库名称use DATABASE_NAME  查看所有数据库 1show dbs">
 
 
 
@@ -120,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/06/11/搭建vue脚手架（vue-cli）/">
+  <link rel="canonical" href="http://yoursite.com/2020/08/20/MongoDB记录_基本操作/">
 
 
 
 
 
-  <title>搭建vue脚手架(vue-cli) | Hermione</title>
+  <title>MongoDB记录_基本操作 | Hermione</title>
   
 
 
@@ -233,7 +233,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/06/11/搭建vue脚手架（vue-cli）/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/08/20/MongoDB记录_基本操作/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="张倩倩">
@@ -250,7 +250,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">搭建vue脚手架(vue-cli)</h1>
+          <h1 class="post-title" itemprop="name headline">MongoDB记录_基本操作</h1>
         
 
         <div class="post-meta">
@@ -262,8 +262,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-06-11T15:11:20+08:00">
-                2019-06-11
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-08-20T22:26:20+08:00">
+                2020-08-20
               </time>
             
 
@@ -322,11 +322,41 @@
       
 
       
-        <h3 id="安装node-js-npm"><a href="#安装node-js-npm" class="headerlink" title="安装node.js npm"></a>安装node.js npm</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">//查看node npm版本信息</span><br><span class="line">node -v</span><br><span class="line">npm -v</span><br></pre></td></tr></table></figure>
-<h3 id="安装vue、vue-cli"><a href="#安装vue、vue-cli" class="headerlink" title="安装vue、vue-cli"></a>安装vue、vue-cli</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">npm install vue</span><br><span class="line"></span><br><span class="line">npm install --global vue-cli</span><br></pre></td></tr></table></figure>
-<h3 id="创建基于webpack模板项目"><a href="#创建基于webpack模板项目" class="headerlink" title="创建基于webpack模板项目"></a>创建基于webpack模板项目</h3><h5 id="创建项目"><a href="#创建项目" class="headerlink" title="创建项目"></a>创建项目</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">//project-name为项目名</span><br><span class="line"></span><br><span class="line">vue init webpack project-name</span><br></pre></td></tr></table></figure>
-<h5 id="安装项目依赖"><a href="#安装项目依赖" class="headerlink" title="安装项目依赖"></a>安装项目依赖</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install</span><br></pre></td></tr></table></figure>
-<h5 id="运行项目"><a href="#运行项目" class="headerlink" title="运行项目"></a>运行项目</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm run dev</span><br></pre></td></tr></table></figure>
+        <h4 id="基础用法（增删改查）"><a href="#基础用法（增删改查）" class="headerlink" title="基础用法（增删改查）"></a>基础用法（增删改查）</h4><ul>
+<li><p>新建数据库</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">// DATABASE_NAME  为数据库名称</span><br><span class="line">use DATABASE_NAME</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>查看所有数据库</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">show dbs</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<a id="more"></a>
+<ul>
+<li><p>删除数据库</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">db.Dropdatabase()</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>删除集合</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">db.collection.drop()</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>插入文档<br>使用insert()或save()方法向集合中插入文档。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">db.collection_name.insert(document)</span><br><span class="line"></span><br><span class="line">db.collection_name.save(document)</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p><strong>区别：</strong><br> save()：如果 _id 主键存在则更新数据，如果不存在就插入数据。<br>insert()：若插入的数据主键已经存在，则会抛 org.springframework.dao.DuplicateKeyException 异常，提示主键重复，不保存当前数据。</p>
+<ul>
+<li>删除文档<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">db.collection.remove(&lt;query&gt;, &lt;justone&gt;)</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p><strong>参数：</strong><br>query：可选，删除文档的条件<br>justone: 可选，若设置为true或1，则只删除一个文档</p>
+<ul>
+<li>更新文档<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">db.collection.update(</span><br><span class="line">    &lt;query&gt;,</span><br><span class="line">    &lt;update&gt;,</span><br><span class="line">    &#123;</span><br><span class="line">        upsert: &lt;boolean&gt;,</span><br><span class="line">        multi: &lt;boolean&gt;,</span><br><span class="line">        writeConcern: &lt;document&gt;</span><br><span class="line">    &#125;</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p><strong>参数</strong><br>query: 查询条件<br>update: update的对象以及更新操作符<br>upsert: 可选，若不存在update记录，是否插入，true为插入，默认false，不插入<br>multi: 可选，默认false，只更新找到的第一条记录，若为true，则将查找出来所有记录都更新<br>writeConcern: 可选，抛出异常的级别</p>
+<ul>
+<li>查询文档<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">db.collection_name.find()  // 以非结构化的方式显示所有文档</span><br><span class="line"></span><br><span class="line">db.collection_name.find().pretty()  // 以结构化的方式显示所有文档</span><br><span class="line"></span><br><span class="line">db.collection_name.findOne()  // 只返回一个文档</span><br></pre></td></tr></table></figure></li>
+</ul>
+
       
     </div>
     
@@ -343,7 +373,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/vue/" rel="tag"># vue</a>
+            <a href="/tags/MongoDB/" rel="tag"># MongoDB</a>
           
         </div>
       
@@ -356,8 +386,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/04/15/富文本使用以及其他问题/" rel="next" title="富文本编辑器（wangEditor）使用以及其他问题">
-                <i class="fa fa-chevron-left"></i> 富文本编辑器（wangEditor）使用以及其他问题
+              <a href="/2020/08/10/Redux源码阅读_4/" rel="next" title="Redux源码阅读_4">
+                <i class="fa fa-chevron-left"></i> Redux源码阅读_4
               </a>
             
           </div>
@@ -365,10 +395,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/07/02/JS基础：Event Loop/" rel="prev" title="JS基础：Event Loop">
-                JS基础：Event Loop <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -510,7 +536,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#安装node-js-npm"><span class="nav-number">1.</span> <span class="nav-text">安装node.js npm</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安装vue、vue-cli"><span class="nav-number">2.</span> <span class="nav-text">安装vue、vue-cli</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#创建基于webpack模板项目"><span class="nav-number">3.</span> <span class="nav-text">创建基于webpack模板项目</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#创建项目"><span class="nav-number">3.0.1.</span> <span class="nav-text">创建项目</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#安装项目依赖"><span class="nav-number">3.0.2.</span> <span class="nav-text">安装项目依赖</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#运行项目"><span class="nav-number">3.0.3.</span> <span class="nav-text">运行项目</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#基础用法（增删改查）"><span class="nav-number">1.</span> <span class="nav-text">基础用法（增删改查）</span></a></li></ol></div>
             
 
           </div>
