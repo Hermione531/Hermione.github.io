@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Koa,">
+  <meta name="keywords" content="性能优化,">
 
 
 
@@ -79,18 +79,25 @@
 
 
 
-<meta name="description" content="之前做内部项目，后台用koa搭建，router处理那里是由各个细分路由组合起来，在每个路由的回调里处理业务代码，将数据返回给前台。这几天看koa的书，里面讲到在koa里运用MVC将各个模块抽出来，实现代码解耦，记录一下。 原代码结构|— src&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; |— router/&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;">
-<meta name="keywords" content="Koa">
+<meta name="description" content="问题环境 vue : 2.6.10 element-ui : 2.13.0 koa : 2.7.0  描述列表数据大概300条左右，请求一次性请求所有数据，在操作之后到页面上显示表格数据大概有3秒卡顿，想到用chrome performance面板进行分析。对performance运用比较陌生，看了两篇performance调试文章，链接贴出来前端性能测试全新Chrome Devtool Perf">
+<meta name="keywords" content="性能优化">
 <meta property="og:type" content="article">
-<meta property="og:title" content="MongoDB记录_基本操作">
-<meta property="og:url" content="http://yoursite.com/2020/09/08/koa router抽象实现业务代码解耦/index.html">
+<meta property="og:title" content="优化列表数据显示卡顿">
+<meta property="og:url" content="http://yoursite.com/2020/09/08/优化列表数据显示卡顿/index.html">
 <meta property="og:site_name" content="Hermione">
-<meta property="og:description" content="之前做内部项目，后台用koa搭建，router处理那里是由各个细分路由组合起来，在每个路由的回调里处理业务代码，将数据返回给前台。这几天看koa的书，里面讲到在koa里运用MVC将各个模块抽出来，实现代码解耦，记录一下。 原代码结构|— src&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; |— router/&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;">
+<meta property="og:description" content="问题环境 vue : 2.6.10 element-ui : 2.13.0 koa : 2.7.0  描述列表数据大概300条左右，请求一次性请求所有数据，在操作之后到页面上显示表格数据大概有3秒卡顿，想到用chrome performance面板进行分析。对performance运用比较陌生，看了两篇performance调试文章，链接贴出来前端性能测试全新Chrome Devtool Perf">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2020-09-08T14:23:15.116Z">
+<meta property="og:image" content="https://hermione531.github.io/img/optimize_list_data_performance.png">
+<meta property="og:image" content="https://hermione531.github.io/img/optimize_list_data_times.png">
+<meta property="og:image" content="https://hermione531.github.io/img/optimize_list_data_onetime_performance.png">
+<meta property="og:image" content="https://hermione531.github.io/img/optimize_list_data_onetime_times.png">
+<meta property="og:image" content="https://hermione531.github.io/img/optimize_list_data_result_performance.png">
+<meta property="og:image" content="https://hermione531.github.io/img/optimize_list_data_result_times.png">
+<meta property="og:updated_time" content="2020-09-08T14:29:22.911Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="MongoDB记录_基本操作">
-<meta name="twitter:description" content="之前做内部项目，后台用koa搭建，router处理那里是由各个细分路由组合起来，在每个路由的回调里处理业务代码，将数据返回给前台。这几天看koa的书，里面讲到在koa里运用MVC将各个模块抽出来，实现代码解耦，记录一下。 原代码结构|— src&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; |— router/&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;">
+<meta name="twitter:title" content="优化列表数据显示卡顿">
+<meta name="twitter:description" content="问题环境 vue : 2.6.10 element-ui : 2.13.0 koa : 2.7.0  描述列表数据大概300条左右，请求一次性请求所有数据，在操作之后到页面上显示表格数据大概有3秒卡顿，想到用chrome performance面板进行分析。对performance运用比较陌生，看了两篇performance调试文章，链接贴出来前端性能测试全新Chrome Devtool Perf">
+<meta name="twitter:image" content="https://hermione531.github.io/img/optimize_list_data_performance.png">
 
 
 
@@ -120,13 +127,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2020/09/08/koa router抽象实现业务代码解耦/">
+  <link rel="canonical" href="http://yoursite.com/2020/09/08/优化列表数据显示卡顿/">
 
 
 
 
 
-  <title>MongoDB记录_基本操作 | Hermione</title>
+  <title>优化列表数据显示卡顿 | Hermione</title>
   
 
 
@@ -233,7 +240,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/09/08/koa router抽象实现业务代码解耦/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/09/08/优化列表数据显示卡顿/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="张倩倩">
@@ -250,7 +257,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">MongoDB记录_基本操作</h1>
+          <h1 class="post-title" itemprop="name headline">优化列表数据显示卡顿</h1>
         
 
         <div class="post-meta">
@@ -262,7 +269,7 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-09-08T22:05:20+08:00">
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-09-08T16:21:20+08:00">
                 2020-09-08
               </time>
             
@@ -285,8 +292,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/学习笔记/" itemprop="url" rel="index">
-                    <span itemprop="name">学习笔记</span>
+                  <a href="/categories/性能优化/" itemprop="url" rel="index">
+                    <span itemprop="name">性能优化</span>
                   </a>
                 </span>
 
@@ -322,23 +329,30 @@
       
 
       
-        <p>之前做内部项目，后台用koa搭建，router处理那里是由各个细分路由组合起来，在每个路由的回调里处理业务代码，将数据返回给前台。这几天看koa的书，里面讲到在koa里运用MVC将各个模块抽出来，实现代码解耦，记录一下。</p>
-<h4 id="原代码结构"><a href="#原代码结构" class="headerlink" title="原代码结构"></a>原代码结构</h4><p>|— src<br>&nbsp;&nbsp;&nbsp;&nbsp; |— router/<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|—index.js<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|—test.js<br>&nbsp;&nbsp;&nbsp;&nbsp; |— app.js</p>
-<a id="more"></a>
-<ul>
-<li><p>app.js中读取加载router文件夹下所有router</p>
-</li>
-<li><p>index.js 中导出所有router</p>
-</li>
-<li>test.js 中处理路由以及执行业务处理</li>
+        <h4 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h4><h6 id="环境"><a href="#环境" class="headerlink" title="环境"></a>环境</h6><ul>
+<li>vue : 2.6.10</li>
+<li>element-ui : 2.13.0</li>
+<li>koa : 2.7.0</li>
 </ul>
-<p>test.js结构大致为：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">const router = require(&apos;koa-router&apos;)();</span><br><span class="line"></span><br><span class="line">router.get(&apos;/index&apos;, async(ctx, next) =&gt; &#123;</span><br><span class="line">//处理业务代码</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">router.post(&apos;/path&apos;, async(ctx, next) =&gt; &#123;</span><br><span class="line">//处理业务代码</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">module.exports = router</span><br></pre></td></tr></table></figure></p>
-<h4 id="koa中实现MVC"><a href="#koa中实现MVC" class="headerlink" title="koa中实现MVC"></a>koa中实现MVC</h4><p>思路就是将router中处理业务代码的地方抽出来放在单独的文件中，实现业务解耦。</p>
-<p>代码结构：<br>|— src<br>&nbsp;&nbsp;&nbsp;&nbsp;|— controller/<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|— home.js<br>&nbsp;&nbsp;&nbsp;&nbsp; |— router/<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|—index.js<br>&nbsp;&nbsp;&nbsp;&nbsp; |— app.js</p>
-<p>其中，新增controller文件夹用，home.js用于处理业务逻辑，多个router js可对应多个controller js,这里只记录一个。</p>
-<p>home.js大致结构为：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">module.exports = &#123;</span><br><span class="line">    index: async (ctx, next) =&gt; &#123;</span><br><span class="line">        ctx.response.body = &apos;....&apos; //业务处理代码</span><br><span class="line">    &#125;，</span><br><span class="line">   // 从router js中抽象出来的各种业务代码</span><br><span class="line">    path: async (ctx, next) =&gt; &#123;</span><br><span class="line"></span><br><span class="line">    &#125;,</span><br><span class="line">  ……</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>router.js可相应作出修改：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">const router = require(&apos;koa-router&apos;)();</span><br><span class="line">cosnt HomeController = require(&apos;../controller/home&apos;);</span><br><span class="line"></span><br><span class="line">module.exports = (app) =&gt; &#123;</span><br><span class="line">    router.get(&apos;/index&apos;, HomeController.home);</span><br><span class="line">    router.post(&apos;/path&apos;, HomeController.path);</span><br><span class="line">    // 其他路由处理</span><br><span class="line">    ……</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>相应代码可相应作出修改。</p>
+<h6 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h6><p>列表数据大概300条左右，请求一次性请求所有数据，在操作之后到页面上显示表格数据大概有3秒卡顿，想到用chrome performance面板进行分析。<br>对performance运用比较陌生，看了两篇performance调试文章，链接贴出来<br><a href="https://testerhome.com/articles/23762" target="_blank" rel="noopener">前端性能测试</a><br><a href="https://zhuanlan.zhihu.com/p/29879682" target="_blank" rel="noopener">全新Chrome Devtool Performance使用指南</a></p>
+<p>结果如下：<br><img src="https://hermione531.github.io/img/optimize_list_data_performance.png" alt="原网页性能分析"></p>
+<a id="more"></a>
+<p>可以看到，从界面上点击显示列表数据到界面上有数据显示出来的总耗时为：<br><img src="https://hermione531.github.io/img/optimize_list_data_times.png" alt="总耗时"></p>
+<p>其中优化主要点在于：</p>
+<ul>
+<li>js脚本执行时间过长（1197ms）</li>
+<li>界面渲染时间过长（682ms）<br>空闲时间（313ms）相较于这两者来说不算太长，可以先暂时不用考虑优化</li>
+</ul>
+<p>针对以上两点进行分析，js脚本执行时间太长可能是因为数据量大导致（只是猜测，从performance面板进不到js文件里），界面渲染时间过长是因为需要一次性渲染近300条数据，dom操作频繁导致。</p>
+<p>由此想到将数据分片进行展示，原代码获取列表数据只发了一次请求获取全部数据，可以考虑首先获取少量数据进行渲染，填充当前界面显示区域，再获取全部数据（此处也可获取较多条数的数据，譬如1000条，缓存到前端，等到缓存区数据不够是再请求获取多条数据，由于数据量不够大，故此处直接获取全部数据）。</p>
+<h4 id="验证"><a href="#验证" class="headerlink" title="验证"></a>验证</h4><p>为验证以上方法，首先请求20条数据（分页设定每页显示20条数据），用performance对从操作到数据显示的结果为：<br><img src="https://hermione531.github.io/img/optimize_list_data_onetime_performance.png" alt="只发一条请求，请求少量数据"></p>
+<p>总耗时：<br><img src="https://hermione531.github.io/img/optimize_list_data_onetime_times.png" alt="总耗时"></p>
+<p>可以看到，当请求数据量少时，卡顿时间明显减少，js脚本执行时间与render渲染时间明显下降。</p>
+<p>在此之后再请求所有数据，前端进行数据缓存，分页后每翻一页从缓存里取数据渲染界面，发两次请求从操作到数据显示结果为：<br><img src="https://hermione531.github.io/img/optimize_list_data_result_performance.png" alt="两次请求"></p>
+<p>总耗时：<br><img src="https://hermione531.github.io/img/optimize_list_data_result_times.png" alt="总耗时"></p>
+<p>相较于只发一次请求耗时略有增加，主要体现在js脚本执行时间与空闲时间的增减，但相较于原网页请求耗时仍有明显减少。</p>
+<h4 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h4><p>其实以前做的请求多条数据都是用这种方式实现的，发两次请求，一次用于显示，一次用于缓存数据，只是一直没从性能的角度进行分析，对performance面板的运用也不太熟，之后需要进行学习。</p>
+<p>但本次的优化之后虽然卡顿时间确有下降，但是可以从上面总耗时图中看到，空闲时间仍有很多（265ms），此处也是有待进一步优化之处。</p>
 
       
     </div>
@@ -356,7 +370,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/Koa/" rel="tag"># Koa</a>
+            <a href="/tags/性能优化/" rel="tag"># 性能优化</a>
           
         </div>
       
@@ -369,8 +383,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2020/09/08/优化列表数据显示卡顿/" rel="next" title="优化列表数据显示卡顿">
-                <i class="fa fa-chevron-left"></i> 优化列表数据显示卡顿
+              <a href="/2020/08/20/MongoDB记录_基本操作/" rel="next" title="MongoDB记录_基本操作">
+                <i class="fa fa-chevron-left"></i> MongoDB记录_基本操作
               </a>
             
           </div>
@@ -378,6 +392,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2020/09/08/koa router抽象实现业务代码解耦/" rel="prev" title="MongoDB记录_基本操作">
+                MongoDB记录_基本操作 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -519,7 +537,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#原代码结构"><span class="nav-number">1.</span> <span class="nav-text">原代码结构</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#koa中实现MVC"><span class="nav-number">2.</span> <span class="nav-text">koa中实现MVC</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#问题"><span class="nav-number">1.</span> <span class="nav-text">问题</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#环境"><span class="nav-number">1.0.1.</span> <span class="nav-text">环境</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#描述"><span class="nav-number">1.0.2.</span> <span class="nav-text">描述</span></a></li></ol></li></ol><li class="nav-item nav-level-4"><a class="nav-link" href="#验证"><span class="nav-number">2.</span> <span class="nav-text">验证</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#总结"><span class="nav-number">3.</span> <span class="nav-text">总结</span></a></li></div>
             
 
           </div>
