@@ -92,8 +92,8 @@
 <meta property="og:image" content="https://hermione531.github.io/img/optimize_list_data_onetime_performance.png">
 <meta property="og:image" content="https://hermione531.github.io/img/optimize_list_data_onetime_times.png">
 <meta property="og:image" content="https://hermione531.github.io/img/optimize_list_data_result_performance.png">
-<meta property="og:image" content="https://hermione531.github.io/img/optimize_list_data_result_performance.png">
-<meta property="og:updated_time" content="2020-09-08T14:20:59.296Z">
+<meta property="og:image" content="https://hermione531.github.io/img/optimize_list_data_result_times.png">
+<meta property="og:updated_time" content="2020-09-08T14:31:36.993Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="优化列表数据显示卡顿">
 <meta name="twitter:description" content="问题环境 vue : 2.6.10 element-ui : 2.13.0 koa : 2.7.0  描述列表数据大概300条左右，请求一次性请求所有数据，在操作之后到页面上显示表格数据大概有3秒卡顿，想到用chrome performance面板进行分析。对performance运用比较陌生，看了两篇performance调试文章，链接贴出来前端性能测试全新Chrome Devtool Perf">
@@ -349,7 +349,7 @@
 <p>总耗时：<br><img src="https://hermione531.github.io/img/optimize_list_data_onetime_times.png" alt="总耗时"></p>
 <p>可以看到，当请求数据量少时，卡顿时间明显减少，js脚本执行时间与render渲染时间明显下降。</p>
 <p>在此之后再请求所有数据，前端进行数据缓存，分页后每翻一页从缓存里取数据渲染界面，发两次请求从操作到数据显示结果为：<br><img src="https://hermione531.github.io/img/optimize_list_data_result_performance.png" alt="两次请求"></p>
-<p>总耗时：<br><img src="https://hermione531.github.io/img/optimize_list_data_result_performance.png" alt="总耗时"></p>
+<p>总耗时：<br><img src="https://hermione531.github.io/img/optimize_list_data_result_times.png" alt="总耗时"></p>
 <p>相较于只发一次请求耗时略有增加，主要体现在js脚本执行时间与空闲时间的增减，但相较于原网页请求耗时仍有明显减少。</p>
 <h4 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h4><p>其实以前做的请求多条数据都是用这种方式实现的，发两次请求，一次用于显示，一次用于缓存数据，只是一直没从性能的角度进行分析，对performance面板的运用也不太熟，之后需要进行学习。</p>
 <p>但本次的优化之后虽然卡顿时间确有下降，但是可以从上面总耗时图中看到，空闲时间仍有很多（265ms），此处也是有待进一步优化之处。</p>
@@ -393,8 +393,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2020/09/08/koa router抽象实现业务代码解耦/" rel="prev" title="MongoDB记录_基本操作">
-                MongoDB记录_基本操作 <i class="fa fa-chevron-right"></i>
+              <a href="/2020/09/08/koa router抽象实现业务代码解耦/" rel="prev" title="koa router抽象实现业务代码解耦">
+                koa router抽象实现业务代码解耦 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
